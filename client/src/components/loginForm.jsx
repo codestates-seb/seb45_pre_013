@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import GlobalStyle from "../styles/global";
 
@@ -8,7 +8,8 @@ const LoginContainer = styled.div`
   height: 234px;
   padding: 24px;
   margin-top: 24px;
-  background:   background-color: var(black--500;);
+  margin-bottom: 20px;
+  background-color: var(black--500;);
   border-radius: 7px;
   box-shadow: 0 10px 24px hsla(0, 0%, 0%, 0.05),
     0 20px 48px hsla(0, 0%, 0%, 0.05), 0 1px 4px hsla(0, 0%, 0%, 0.1);
@@ -23,18 +24,6 @@ const LoginContainer = styled.div`
       font-size: 15px;
       font-weight: bold;
       padding-bottom: 6px;
-    }
-
-    button {
-      margin: 0;
-      color: var--;
-    }
-
-    p {
-      margin: 2px;
-      padding: 2px;
-      color: #d0390e;
-      font-size: 12px;
     }
 
     input {
@@ -62,6 +51,8 @@ const LoginContainer = styled.div`
 `;
 
 const LoginForm = () => {
+  // const [loginInfo, setLoginInfo] = useState({ email: "", password: "" });
+
   return (
     <>
       <GlobalStyle />
