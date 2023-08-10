@@ -1,5 +1,5 @@
-import { Head } from "@/styles/HeadStyle";
-import { Btn } from "@/styles/BtnStyle";
+import { Head } from "@/styles/HeaderStyle";
+import { TopBtn, TopBtnDiv } from "@/styles/TopBtnStyle";
 import SearchForm from "./SearchForm";
 import BrandLogo from "./BrandLogo";
 import MenuBtn from "./MenuBtn";
@@ -10,17 +10,21 @@ const Header = () => {
     <>
       <Head>
         <MenuBtn />
-        <MenuList />
         <BrandLogo />
+        <MenuList />
         <SearchForm />
-        <div>
-          <Btn color="--powder-700" bgColor="--powder-100" hover="--powder-400">
+        <TopBtnDiv>
+          <TopBtn
+            color="--powder-700"
+            bgColor="--powder-100"
+            hover="--powder-400"
+          >
             Log in
-          </Btn>
-          <Btn color="--white" bgColor="--blue-500" hover="--blue-700">
+          </TopBtn>
+          <TopBtn color="--white" bgColor="--blue-500" hover="--blue-700">
             Sign up
-          </Btn>
-        </div>
+          </TopBtn>
+        </TopBtnDiv>
       </Head>
     </>
   );
