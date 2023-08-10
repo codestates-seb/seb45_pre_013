@@ -2,11 +2,13 @@ import { Head } from "@/styles/HeadStyle";
 import { Btn } from "@/styles/BtnStyle";
 import SearchForm from "./SearchForm";
 import BrandLogo from "./BrandLogo";
+import MenuBtn from "./MenuBtn";
 
 const Header = () => {
   return (
     <>
       <Head>
+        <MenuBtn />
         <BrandLogo />
         <SearchForm />
         <div>

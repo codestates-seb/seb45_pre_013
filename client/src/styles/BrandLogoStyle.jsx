@@ -5,6 +5,7 @@ export const Logo = styled.a`
   align-items: center;
   justify-content: center;
   margin-top: -10px;
+  padding: 0 8px;
 `;
 
 export const LogoImg = styled.img`
