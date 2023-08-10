@@ -1,10 +1,12 @@
 import { Head } from "@/styles/HeadStyle";
 import { Btn } from "@/styles/BtnStyle";
+import SearchForm from "./SearchForm";
 
 const Header = () => {
   return (
     <>
       <Head>
+        <SearchForm />
         <div>
           <Btn color="--powder-700" bgColor="--powder-100" hover="--powder-400">
             Log in
