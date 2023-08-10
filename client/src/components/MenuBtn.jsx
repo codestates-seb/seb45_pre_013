@@ -2,13 +2,9 @@ import { Menubtn, MenuLine } from "@/styles/MenuBtnStyle";
 import { useState } from "react";
 
 const MenuBtn = () => {
-  const [val, setValue] = useState(0);
+  const [val, setVal] = useState(0);
   const change = () => {
-    if (!val) {
-      setValue(45);
-    } else {
-      setValue(0);
-    }
+    !val ? setVal(45) : setVal(0);
   };
 
   return (

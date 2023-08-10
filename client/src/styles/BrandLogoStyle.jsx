@@ -2,10 +2,11 @@ import styled from "styled-components";
 
 export const Logo = styled.a`
   display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: -10px;
-  padding: 0 8px;
+  padding: 0 8px 5px 8px;
+  height: 100%;
+  &:hover {
+    background-color: var(--black-100);
+  }
 `;
 
 export const LogoImg = styled.img`

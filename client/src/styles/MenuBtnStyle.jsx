@@ -3,9 +3,15 @@ import styled from "styled-components";
 export const Menubtn = styled.div`
   cursor: pointer;
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
   padding: 0 16px;
   width: 50px;
+  height: 100%;
+  &:hover {
+    background-color: var(--black-100);
+  }
 `;
 export const MenuLine = styled.div`
   display: ${(props) => props.dp};

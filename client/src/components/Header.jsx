@@ -3,12 +3,14 @@ import { Btn } from "@/styles/BtnStyle";
 import SearchForm from "./SearchForm";
 import BrandLogo from "./BrandLogo";
 import MenuBtn from "./MenuBtn";
+import MenuList from "./MenuList";
 
 const Header = () => {
   return (
     <>
       <Head>
         <MenuBtn />
+        <MenuList />
         <BrandLogo />
         <SearchForm />
         <div>
