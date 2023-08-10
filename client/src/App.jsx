@@ -1,10 +1,10 @@
 import GlobalStyle from "@/styles/global";
-
+import LoginPage from "../src/pages/login";
 function App() {
   return (
     <>
       <GlobalStyle />
-      Hello
+      <LoginPage />
     </>
   );
 }
