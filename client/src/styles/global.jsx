@@ -8,7 +8,7 @@ const setScreenSize = () => {
 };
 setScreenSize();
 
-const globalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
   :root {
     --white: hsl(0, 0%, 100%);
     --black: hsl(210, 8%, 5%);
@@ -95,4 +95,4 @@ const globalStyle = createGlobalStyle`
   }
 `;
 
-export default globalStyle;
+export default GlobalStyle;
