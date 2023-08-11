@@ -15,7 +15,6 @@ export const FooterBg = styled.div`
 `;
 
 export const FooterContent = styled.div`
-  display: flex;
   flex: 1;
   height: 100%;
   color: var(--black-100);
@@ -24,4 +23,13 @@ export const FooterContent = styled.div`
 export const LogoImage = styled.img`
   width: 32px;
   height: 37px;
+`;
+
+export const FootoerTitle = styled.p`
+  color: var(--black-200);
+  font-size: 18px;
+`;
+export const FootoerText = styled.p`
+  color: var(--black-400);
+  font-size: 13px;
 `;

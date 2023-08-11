@@ -1,29 +1,87 @@
-import { Head } from "@/styles/HeaderStyle";
-import { TopBtn, TopBtnDiv } from "@/styles/TopBtnStyle";
-import SearchForm from "./SearchForm";
-import BrandLogo from "./BrandLogo";
-import MenuBtn from "./MenuBtn";
-import MenuList from "./MenuList";
-import TopUserinfo from "./TopUserinfo";
+import {
+  Head,
+  Menubtn,
+  MenuLine,
+  Logo,
+  LogoImg,
+  MenuLi,
+  MenuOl,
+  Input,
+  SearchDiv,
+  TopBtn,
+  TopBtnDiv,
+  UserImg,
+  IconDiv,
+} from "@/styles/HeaderStyle";
+import {
+  SearchIcon,
+  HiInboxIcon,
+  QuestionIcon,
+  FcBiohazardOIcon,
+  MdSourceIcon,
+} from "@/styles/IconStyle";
+import { BrandLogoImg, userProfileImg } from "@/config/config";
 import { useState } from "react";
 
 const Header = () => {
-  const [inOutWhether, setInOutWhether] = useState(false);
+  const [logInOutWhether, setLogInOutWhether] = useState(false);
+  const [ageVal, setAgeVal] = useState(0);
 
+  const change = () => {
+    !ageVal ? setAgeVal(45) : setAgeVal(0);
+  };
   const changeInOutWhether = () => {
-    setInOutWhether(true);
+    setLogInOutWhether(!logInOutWhether);
   };
 
   return (
     <>
       <Head>
-        <MenuBtn />
-        <BrandLogo />
-        <MenuList />
-        <SearchForm />
+        <Menubtn onClick={change}>
+          <MenuLine age={-ageVal} y={ageVal} />
+          <MenuLine dp={ageVal && "none"} />
+          <MenuLine age={ageVal} y={-ageVal} />
+        </Menubtn>
+
+        <Logo href="https://stackoverflow.com">
+          <LogoImg src={BrandLogoImg} />
+        </Logo>
+
+        <MenuOl>
+          <MenuLi>About</MenuLi>
+          <MenuLi>Products</MenuLi>
+          <MenuLi>For Teams</MenuLi>
+        </MenuOl>
+
+        <SearchDiv>
+          <SearchIcon />
+          <Input
+            type="text"
+            role="combobox"
+            placeholder="Search..."
+            maxlength="240"
+          />
+        </SearchDiv>
+
         <TopBtnDiv>
-          {inOutWhether ? (
-            <TopUserinfo setInOutWhether={setInOutWhether} />
+          {logInOutWhether ? (
+            <>
+              <IconDiv>
+                <UserImg src={userProfileImg} />
+              </IconDiv>
+              <IconDiv>
+                <HiInboxIcon />
+              </IconDiv>
+              <IconDiv>
+                <FcBiohazardOIcon />
+              </IconDiv>
+              <IconDiv>
+                <QuestionIcon />
+              </IconDiv>
+              <IconDiv>
+                <MdSourceIcon onClick={changeInOutWhether} />
+              </IconDiv>
+            </>
           ) : (
             <>
               <TopBtn
