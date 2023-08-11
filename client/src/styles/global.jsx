@@ -92,6 +92,7 @@ const globalStyle = createGlobalStyle`
     width: 100vw;
     height: 100vh;
     display: flex;
+    position: relative;
     justify-content: center;
   }
 `;

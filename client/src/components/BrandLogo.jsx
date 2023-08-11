@@ -1,10 +1,10 @@
-import { logoImg } from "@/config/config";
+import { BrandLogoImg } from "@/config/config";
 import { Logo, LogoImg } from "@/styles/BrandLogoStyle";
 
 const BrandLogo = () => {
   return (
     <Logo href="https://stackoverflow.com">
-      <LogoImg src={logoImg} />
+      <LogoImg src={BrandLogoImg} />
     </Logo>
   );
 };
