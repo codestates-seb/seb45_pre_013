@@ -32,14 +32,14 @@ const PageContainer = styled.div`
     width: 421px;
     height: 327px;
     /* background-color: royalblue; */
-    margin: auto;
+    margin-right: 48px;
   }
 
-  .join {
+  .headline {
     width: 421px;
     height: 54px;
     font-size: 27px;
-    margin-bottom: auto;
+    margin-bottom: 40px;
     font-weight: 400;
   }
 
@@ -51,10 +51,11 @@ const PageContainer = styled.div`
   }
 
   .item2 {
+    margin: auto;
     width: 421px;
     height: 34px;
     font-size: 13px;
-    color: var(--black-400);
+    color: var(--black-500);
   }
 
   .item img {
@@ -68,13 +69,13 @@ const SignUpPage = () => {
     <>
       <PageContainer>
         <div className="itemcontainer">
-          <div className="join">Join the Stack Overflow community</div>
+          <div className="headline">Join the Stack Overflow community</div>
           <div className="item">
-            <img src="src/asset/image/unstruck.svg" alt="earn"></img>
+            <img src="src/asset/image/unstruck.svg" alt="unstruck"></img>
             Get unstruck — ask a question
           </div>
           <div className="item">
-            <img src="src/asset/image/unlock.svg" alt="earn"></img>
+            <img src="src/asset/image/unlock.svg" alt="unlock"></img>
             Unlock new privileges like voting and commenting
           </div>
           <div className="item">

@@ -3,11 +3,12 @@ import styled from "styled-components";
 import GlobalStyle from "../styles/global";
 
 const SignUpContainer = styled.div`
+  align-items: center;
   width: 100%;
   max-width: 316px;
-  height: 692px;
+  height: 450px;
   padding: 24px;
-  margin: auto;
+
   /* margin-top: 24px;
   margin-bottom: 20px; */
   background-color: var(--white);
@@ -42,6 +43,11 @@ const SignUpContainer = styled.div`
       margin-top: 20px;
       margin-bottom: 20px;
     }
+
+    button:hover {
+      cursor: pointer;
+      background-color: var(--blue-700);
+    }
   }
 
   .signup-email {
@@ -55,13 +61,14 @@ const SignUpContainer = styled.div`
   .agreement {
     display: block;
     font-size: 11px;
-    color: var(--black-400);
+    color: var(--black-500);
   }
 
-  p {
+  .passwordwarning {
+    color: var(--black-500);
     font-size: 11px;
-    color: var(--black-400);
   }
+
   a {
     vertical-align: baseline;
     color: var(--blue);
@@ -88,7 +95,7 @@ const SignUpForm = () => {
         <div className="login-password">
           <label htmlFor="email">Password</label>
           <input id="password" type="password" />
-          <p className="passwordtip">
+          <p className="passwordwarning">
             Passwords must contain at least eight characters, including at least
             1 letter and 1 number.
           </p>
