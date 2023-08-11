@@ -60,8 +60,12 @@ const GlobalStyle = createGlobalStyle`
     --powder-400: hsl(205, 56%, 76%);
     --powder-500: hsl(205, 41%, 63%);
     --powder-600: hsl(205, 36%, 53%);
-    --fs-base: 13px;
+    --fs-base: 15px;
+    --fs-normal: 13px;
+    --fs-small: 12px;
     --fs-headline: 21px;
+    --fs-headline1: 27px;
+    --fs-headline2: 21px;
   }
 
   * {
@@ -70,21 +74,16 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     border: 0;
     background: unset;
-    color: var(--theme-fore);
-    font-family: var(--font-family-base);
-    font-size: var(--font-size-base);
-    font-weight: var(--font-weight-normal);
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
     vertical-align: middle;
     text-decoration-line: none;
   }
 
   body {
-    background-color: var(--theme-back);
-    background: linear-gradient(
-      to right,
-      var(--theme-skyblue),
-      var(--theme-indipink)
-    );
+    font-size: var(--fs-base);
   }
 
   #root {
