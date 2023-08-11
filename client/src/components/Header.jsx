@@ -1,10 +1,8 @@
 import {
   Head,
-  Menubtn,
   MenuLine,
   Logo,
   MenuUl,
-  Input,
   SearchDiv,
   TopBtn,
   TopBtnDiv,
@@ -35,11 +33,11 @@ const Header = () => {
   return (
     <>
       <Head>
-        <Menubtn onClick={change}>
+        <div className="Menubtn" onClick={change}>
           <MenuLine age={-ageVal} y={ageVal} />
           <MenuLine dp={ageVal && "none"} />
           <MenuLine age={ageVal} y={-ageVal} />
-        </Menubtn>
+        </div>
 
         <Logo href="https://stackoverflow.com">
           <img src={BrandLogoImg} />
@@ -53,11 +51,11 @@ const Header = () => {
 
         <SearchDiv>
           <SearchIcon />
-          <Input
+          <input
             type="text"
             role="combobox"
             placeholder="Search..."
-            maxlength="240"
+            maxLength={240}
           />
         </SearchDiv>
 

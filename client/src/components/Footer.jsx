@@ -1,30 +1,25 @@
-import {
-  FooterBg,
-  FooterContent,
-  FootoerText,
-  FootoerTitle,
-} from "@/styles/FooterStyle";
+import { FooterBg } from "@/styles/FooterStyle";
 import { logoImg } from "@/config/config";
 
 const Footer = () => {
   return (
     <FooterBg>
-      <FooterContent>
+      <div className="FooterContent">
         <img src={logoImg} />
-      </FooterContent>
-      <FooterContent>
-        <FootoerTitle>Front End</FootoerTitle>
-        <FootoerText>윤은소</FootoerText>
-        <FootoerText>성열홍</FootoerText>
-        <FootoerText>조상옥</FootoerText>
-      </FooterContent>
-      <FooterContent>
-        <FootoerTitle>Back End</FootoerTitle>
-        <FootoerText>양재용</FootoerText>
-        <FootoerText>전수은</FootoerText>
-        <FootoerText>임석현</FootoerText>
-      </FooterContent>
-      <FooterContent>내용3</FooterContent>
+      </div>
+      <div className="FooterContent">
+        <p className="FootoerTitle">Front End</p>
+        <p className="FootoerText">윤은소</p>
+        <p className="FootoerText">성열홍</p>
+        <p className="FootoerText">조상옥</p>
+      </div>
+      <div className="FooterContent">
+        <p className="FootoerTitle">Back End</p>
+        <p className="FootoerText">양재용</p>
+        <p className="FootoerText">전수은</p>
+        <p className="FootoerText">임석현</p>
+      </div>
+      <div className="FooterContent">내용3</div>
     </FooterBg>
   );
 };

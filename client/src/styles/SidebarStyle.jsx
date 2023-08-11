@@ -9,11 +9,11 @@ export const SidebarDiv = styled.div`
   width: 164px;
   height: 100%;
   border-right: 1px solid var(--black-100);
-`;
 
-export const SidebarContent = styled.div`
-  position: fixed;
-  padding-top: 70px;
+  .SidebarContent {
+    position: fixed;
+    padding-top: 70px;
+  }
 
   li {
     width: 164px;

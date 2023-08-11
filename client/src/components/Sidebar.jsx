@@ -1,15 +1,15 @@
-import { SidebarDiv, SidebarContent } from "@/styles/SidebarStyle";
+import { SidebarDiv } from "@/styles/SidebarStyle";
 
 const Sidebar = () => {
   return (
     <SidebarDiv>
-      <SidebarContent>
+      <div className="SidebarContent">
         <ul>
           <li>Home</li>
           <li>Questions</li>
           <li>Users</li>
         </ul>
-      </SidebarContent>
+      </div>
     </SidebarDiv>
   );
 };

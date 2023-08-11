@@ -11,21 +11,21 @@ export const Head = styled.header`
   height: 56px;
   border-top: 3px solid var(--orange);
   border-bottom: 1px solid var(--black-200);
-`;
 
-export const Menubtn = styled.div`
-  cursor: pointer;
-  display: flex;
-  flex: 0.2;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  margin-bottom: 5px;
-  padding: 0 16px;
-  width: 50px;
-  height: 100%;
-  &:hover {
-    background-color: var(--black-100);
+  .Menubtn {
+    cursor: pointer;
+    display: flex;
+    flex: 0.2;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 5px;
+    padding: 0 16px;
+    width: 50px;
+    height: 100%;
+    &:hover {
+      background-color: var(--black-100);
+    }
   }
 `;
 
@@ -73,12 +73,6 @@ export const MenuUl = styled.ul`
   }
 `;
 
-export const Input = styled.input`
-  padding: 7.8px 9.2px 7.8px 10px;
-  font-size: 13px;
-  width: 100%;
-`;
-
 export const SearchDiv = styled.div`
   display: flex;
   flex: 3;
@@ -88,6 +82,12 @@ export const SearchDiv = styled.div`
   border-radius: 5px;
   width: auto;
   height: 32.59px;
+
+  input {
+    padding: 7.8px 9.2px 7.8px 10px;
+    font-size: 13px;
+    width: 100%;
+  }
 `;
 
 export const TopBtnDiv = styled.div`
@@ -113,14 +113,6 @@ export const TopBtn = styled.button`
   }
 `;
 
-export const UserImg = styled.img`
-  cursor: pointer;
-  width: 40px;
-  &:hover {
-    background-color: var(--black-100);
-  }
-`;
-
 export const IconDiv = styled.div`
   cursor: pointer;
   display: flex;
@@ -129,6 +121,14 @@ export const IconDiv = styled.div`
   margin: 0 4px 5px 4px;
   width: 40px;
   height: 53px;
+  &:hover {
+    background-color: var(--black-100);
+  }
+`;
+
+export const UserImg = styled.img`
+  cursor: pointer;
+  width: 40px;
   &:hover {
     background-color: var(--black-100);
   }
