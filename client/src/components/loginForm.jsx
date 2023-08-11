@@ -9,7 +9,7 @@ const LoginContainer = styled.div`
   padding: 24px;
   margin-top: 24px;
   margin-bottom: 20px;
-  background-color: var(black--500;);
+  background-color: var(--white);
   border-radius: 7px;
   box-shadow: 0 10px 24px hsla(0, 0%, 0%, 0.05),
     0 20px 48px hsla(0, 0%, 0%, 0.05), 0 1px 4px hsla(0, 0%, 0%, 0.1);

@@ -7,10 +7,10 @@ const SignUpContainer = styled.div`
   max-width: 316px;
   height: 692px;
   padding: 24px;
-  margin:auto;
+  margin: auto;
   /* margin-top: 24px;
   margin-bottom: 20px; */
-  background-color: 
+  background-color: var(--white);
   border-radius: 7px;
   box-shadow: 0 10px 24px hsla(0, 0%, 0%, 0.05),
     0 20px 48px hsla(0, 0%, 0%, 0.05), 0 1px 4px hsla(0, 0%, 0%, 0.1);
@@ -43,8 +43,6 @@ const SignUpContainer = styled.div`
       margin-bottom: 20px;
     }
   }
-
-
 
   .signup-email {
     margin-bottom: 10px;
