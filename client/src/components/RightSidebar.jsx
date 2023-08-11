@@ -8,6 +8,11 @@ const Sidebar = styled.div`
   background-color: var(--yellow);
   border-radius: 4px;
   border: 1px solid var(--orange-200);
+
+  @media (max-width: 980px) {
+    width: 100%;
+    margin-left: 0;
+  }
 `;
 
 const RightSidebar = () => {

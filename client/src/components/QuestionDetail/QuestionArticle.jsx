@@ -6,8 +6,18 @@ import Vote from "@/components/QuestionDetail/Vote";
 import AnswerArticle from "@/components/QuestionDetail/AnswerArticle";
 import AnswerForm from "@/components/QuestionDetail/AnswerForm";
 
-const ArticleMoreData = styled.div`
+const Div = styled.div`
   width: 1051px;
+  padding-left: 16px;
+  padding-right: 16px;
+
+  @media (max-width: 1265px) {
+    width: calc(100vw - 214px);
+  }
+`;
+
+const ArticleMoreData = styled.div`
+  width: 100%;
   display: flex;
   padding-bottom: 8px;
   border-bottom: 1px solid var(--black-100);
@@ -26,7 +36,7 @@ const ArticleMoreData = styled.div`
 `;
 
 const Writer = styled.div`
-  width: calc(1051px - 324px);
+  width: 100%;
   display: flex;
   flex-direction: row-reverse;
 
@@ -64,9 +74,17 @@ const Writer = styled.div`
 `;
 
 const Main = styled.main`
-  width: calc(1051px - 324px);
+  width: 100%;
   display: flex;
   flex-direction: column;
+`;
+
+const FlexMain = styled.div`
+  display: flex;
+
+  @media (max-width: 980px) {
+    flex-direction: column;
+  }
 `;
 
 const Flex = styled.div`
@@ -103,6 +121,10 @@ const AnswerStart = styled.div`
   }
 `;
 
+const More = styled.p`
+  font-size: var(--fs-headline2);
+`;
+
 const QuestionArticle = () => {
   const question = {
     id: 0,
@@ -113,10 +135,14 @@ const QuestionArticle = () => {
     created: "today",
     modified: "today",
     vote: 10,
+    answer: [{ article: "hi" }, { article: "good" }],
   }; //임시
 
+  const moreText =
+    "Not the answer you're looking for? Browse other questions or ask your own question.";
+
   return (
-    <>
+    <Div>
       <ArticleTitle title={question.title} />
       <ArticleMoreData>
         <div>
@@ -128,7 +154,7 @@ const QuestionArticle = () => {
           <div>{question.modified}</div>
         </div>
       </ArticleMoreData>
-      <Flex>
+      <FlexMain>
         <Main>
           <Flex>
             <Vote />
@@ -149,20 +175,21 @@ const QuestionArticle = () => {
             </Writer>
           </Flex>
           <AnswerStart>
-            <h2>2 Answer</h2>
+            <h2>{question.answer.length} Answer</h2>
             <div>
               <p>sorted by:</p>
               <div>Highest score (default)</div>
             </div>
           </AnswerStart>
-          {[{ article: "hi" }, { article: "good" }].map((item, index) => {
+          {question.answer.map((item, index) => {
             return <AnswerArticle key={index} answer={item} />;
           })}
           <AnswerForm />
+          <More>{moreText}</More>
         </Main>
         <RightSidebar />
-      </Flex>
-    </>
+      </FlexMain>
+    </Div>
   );
 };
 

@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
 const Div = styled.div`
-  width: 1051px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
 
   h1 {
-    width: calc(1051px - 100px);
+    width: calc(100% - 105px);
     display: flex;
     font-size: var(--fs-headline1);
     flex-wrap: wrap;
