@@ -1,4 +1,5 @@
-import { Input, SearchIcon, SearchDiv } from "@/styles/SearchStyle";
+import { Input, SearchDiv } from "@/styles/SearchStyle";
+import { SearchIcon } from "@/styles/IconStyle";
 
 const SearchForm = () => {
   return (

@@ -18,6 +18,7 @@ export const TopBtn = styled.button`
 export const TopBtnDiv = styled.div`
   min-width: 130px;
   display: flex;
+  align-items: center;
   flex: 1;
   padding-right: 12px;
 `;
