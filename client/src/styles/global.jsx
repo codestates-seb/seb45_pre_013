@@ -60,6 +60,7 @@ const globalStyle = createGlobalStyle`
     --powder-400: hsl(205, 56%, 76%);
     --powder-500: hsl(205, 41%, 63%);
     --powder-600: hsl(205, 36%, 53%);
+    --powder-700: hsl(205,47%,42%);
     --fs-base: 13px;
     --fs-headline: 21px;
   }
@@ -90,6 +91,7 @@ const globalStyle = createGlobalStyle`
   #root {
     width: 100vw;
     height: 100vh;
+    position: relative;
     display: flex;
     justify-content: center;
   }
