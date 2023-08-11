@@ -32,7 +32,7 @@ const LoginPage = () => {
       <PageContainer>
         <Icon
           className="icon"
-          src="src/assets/image/stackoverflow-icon-mini.svg"
+          src="src/assets/image/minilogo.svg"
           alt="minilogo"
         />
         <LoginForm />

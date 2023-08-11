@@ -71,20 +71,20 @@ const SignUpPage = () => {
         <div className="itemcontainer">
           <div className="headline">Join the Stack Overflow community</div>
           <div className="item">
-            <img src="src/asset/image/unstruck.svg" alt="unstruck"></img>
+            <img src="src/s/image/unstruck.svg" alt="unstruck"></img>
             Get unstruck — ask a question
           </div>
           <div className="item">
-            <img src="src/asset/image/unlock.svg" alt="unlock"></img>
+            <img src="src/assets/image/unlock.svg" alt="unlock"></img>
             Unlock new privileges like voting and commenting
           </div>
           <div className="item">
-            <img src="src/asset/image/save.svg" alt="earn"></img>Save your
+            <img src="src/assets/image/save.svg" alt="earn"></img>Save your
             favorite questions, answers, watch tags, and more
           </div>
           <div className="item">
-            <img src="src/asset/image/earn.svg" alt="earn"></img>Earn reputation
-            and badges
+            <img src="src/assets/image/earn.svg" alt="earn"></img>Earn
+            reputation and badges
           </div>
           <div className="item2">
             Collaborate and share knowledge with a private group for FREE.
