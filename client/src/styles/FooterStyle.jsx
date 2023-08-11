@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const FooterBg = styled.div`
+  z-index: 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
