@@ -1,19 +1,14 @@
-import {
-  SidebarDiv,
-  SidebarContent,
-  SidebarUl,
-  SidebarLi,
-} from "@/styles/SidebarStyle";
+import { SidebarDiv, SidebarContent } from "@/styles/SidebarStyle";
 
 const Sidebar = () => {
   return (
     <SidebarDiv>
       <SidebarContent>
-        <SidebarUl>
-          <SidebarLi>Home</SidebarLi>
-          <SidebarLi>Questions</SidebarLi>
-          <SidebarLi>Users</SidebarLi>
-        </SidebarUl>
+        <ul>
+          <li>Home</li>
+          <li>Questions</li>
+          <li>Users</li>
+        </ul>
       </SidebarContent>
     </SidebarDiv>
   );

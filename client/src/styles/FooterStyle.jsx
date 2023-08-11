@@ -18,11 +18,11 @@ export const FooterContent = styled.div`
   flex: 1;
   height: 100%;
   color: var(--black-100);
-`;
 
-export const LogoImage = styled.img`
-  width: 32px;
-  height: 37px;
+  img {
+    width: 32px;
+    height: 37px;
+  }
 `;
 
 export const FootoerTitle = styled.p`

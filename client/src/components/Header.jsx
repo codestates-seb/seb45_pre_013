@@ -3,9 +3,7 @@ import {
   Menubtn,
   MenuLine,
   Logo,
-  LogoImg,
-  MenuLi,
-  MenuOl,
+  MenuUl,
   Input,
   SearchDiv,
   TopBtn,
@@ -44,14 +42,14 @@ const Header = () => {
         </Menubtn>
 
         <Logo href="https://stackoverflow.com">
-          <LogoImg src={BrandLogoImg} />
+          <img src={BrandLogoImg} />
         </Logo>
 
-        <MenuOl>
-          <MenuLi>About</MenuLi>
-          <MenuLi>Products</MenuLi>
-          <MenuLi>For Teams</MenuLi>
-        </MenuOl>
+        <MenuUl>
+          <li>About</li>
+          <li>Products</li>
+          <li>For Teams</li>
+        </MenuUl>
 
         <SearchDiv>
           <SearchIcon />

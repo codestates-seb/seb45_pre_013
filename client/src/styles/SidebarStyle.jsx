@@ -14,20 +14,19 @@ export const SidebarDiv = styled.div`
 export const SidebarContent = styled.div`
   position: fixed;
   padding-top: 70px;
-`;
 
-export const SidebarUl = styled.ul``;
-export const SidebarLi = styled.li`
-  width: 164px;
-  font-size: 13px;
-  padding: 4px 4px 4px 30px;
-  color: var(--black-300);
-  &:hover {
-    color: var(--black);
-  }
-  &:active {
-    color: var(--black);
-    border-right: 2px solid var(--orange);
-    background-color: var(--black-100);
+  li {
+    width: 164px;
+    font-size: 13px;
+    padding: 4px 4px 4px 30px;
+    color: var(--black-300);
+    &:hover {
+      color: var(--black);
+    }
+    &:active {
+      color: var(--black);
+      border-right: 2px solid var(--orange);
+      background-color: var(--black-100);
+    }
   }
 `;

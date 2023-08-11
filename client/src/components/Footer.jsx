@@ -1,6 +1,5 @@
 import {
   FooterBg,
-  LogoImage,
   FooterContent,
   FootoerText,
   FootoerTitle,
@@ -11,7 +10,7 @@ const Footer = () => {
   return (
     <FooterBg>
       <FooterContent>
-        <LogoImage src={logoImg} />
+        <img src={logoImg} />
       </FooterContent>
       <FooterContent>
         <FootoerTitle>Front End</FootoerTitle>

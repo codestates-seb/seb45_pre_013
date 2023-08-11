@@ -50,26 +50,26 @@ export const Logo = styled.a`
   &:hover {
     background-color: var(--black-100);
   }
+
+  img {
+    width: 150px;
+  }
 `;
 
-export const LogoImg = styled.img`
-  width: 150px;
-`;
-
-export const MenuOl = styled.ul`
+export const MenuUl = styled.ul`
   display: flex;
   flex: 1;
   list-style: none;
   padding: 2px;
   min-width: 252px;
-`;
 
-export const MenuLi = styled.li`
-  cursor: pointer;
-  padding: 6px 12px;
-  border-radius: 20px;
-  &:hover {
-    background-color: var(--black-100);
+  li {
+    cursor: pointer;
+    padding: 6px 12px;
+    border-radius: 20px;
+    &:hover {
+      background-color: var(--black-100);
+    }
   }
 `;
 
@@ -90,6 +90,14 @@ export const SearchDiv = styled.div`
   height: 32.59px;
 `;
 
+export const TopBtnDiv = styled.div`
+  min-width: 130px;
+  display: flex;
+  align-items: center;
+  flex: 1;
+  padding-right: 12px;
+`;
+
 export const TopBtn = styled.button`
   cursor: pointer;
   margin-left: 4px;
@@ -103,14 +111,6 @@ export const TopBtn = styled.button`
   &:hover {
     background-color: ${(props) => `var(${props.hover})`};
   }
-`;
-
-export const TopBtnDiv = styled.div`
-  min-width: 130px;
-  display: flex;
-  align-items: center;
-  flex: 1;
-  padding-right: 12px;
 `;
 
 export const UserImg = styled.img`
