@@ -1,6 +1,5 @@
-import React from "react";
 import styled from "styled-components";
-import SignUpForm from "../components/signupForm";
+import SignUpForm from "../components/SignupForm";
 
 const PageContainer = styled.div`
   display: flex;
