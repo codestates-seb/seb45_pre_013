@@ -1,11 +1,19 @@
 import GlobalStyle from "@/styles/global";
-import QuestionDetail from "@/pages/QuestionDetail";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Header from "@/components/Header";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Header />,
+  },
+]);
 
 function App() {
   return (
     <>
       <GlobalStyle />
-      <QuestionDetail />
+      <RouterProvider router={router} />
     </>
   );
 }

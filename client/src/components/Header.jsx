@@ -16,7 +16,7 @@ import {
   FcBiohazardOIcon,
   MdSourceIcon,
 } from "@/styles/IconStyle";
-import { BrandLogoImg, userProfileImg } from "@/config/config";
+import { BRANDLOGOIMG, USERPROFILEIMG } from "@/config/config";
 import { useState } from "react";
 
 const Header = () => {
@@ -40,7 +40,7 @@ const Header = () => {
         </div>
 
         <Logo href="https://stackoverflow.com">
-          <img src={BrandLogoImg} />
+          <img src={BRANDLOGOIMG} />
         </Logo>
 
         <MenuUl>
@@ -63,7 +63,7 @@ const Header = () => {
           {logInOutWhether ? (
             <>
               <IconDiv>
-                <UserImg src={userProfileImg} />
+                <UserImg src={USERPROFILEIMG} />
               </IconDiv>
               <IconDiv>
                 <HiInboxIcon />
