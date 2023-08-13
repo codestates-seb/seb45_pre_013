@@ -1,5 +1,3 @@
-import React from "react";
-import styled from "styled-components";
 import SignUpForm from "../components/SignupForm";
 import { PageContainer } from "../styles/Signup/SignupPageStyle";
 

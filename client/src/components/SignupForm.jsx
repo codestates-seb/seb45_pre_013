@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-import styled from "styled-components";
 import GlobalStyle from "../styles/global";
 import { SignUpContainer } from "../styles/Signup/SignupFormStyle";
 
