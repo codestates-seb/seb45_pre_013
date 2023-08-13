@@ -1,4 +1,4 @@
-import { VoteForm } from "@/styles/VoteStyle";
+import { VoteForm } from "@/styles/QuestionDetail/VoteStyle";
 
 const Vote = () => {
   return (
