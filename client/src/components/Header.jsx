@@ -18,6 +18,7 @@ import {
 } from "@/styles/IconStyle";
 import { BRANDLOGOIMG, USERPROFILEIMG } from "@/config/config";
 import { useState } from "react";
+import { Link, Outlet } from "react-router-dom";
 
 const Header = () => {
   const [logInOutWhether, setLogInOutWhether] = useState(false);
@@ -39,9 +40,11 @@ const Header = () => {
           <MenuLine age={ageVal} y={-ageVal} />
         </div>
 
-        <Logo href="https://stackoverflow.com">
-          <img src={BRANDLOGOIMG} />
-        </Logo>
+        <Link to={"/"}>
+          <Logo>
+            <img src={BRANDLOGOIMG} />
+          </Logo>
+        </Link>
 
         <MenuUl>
           <li>About</li>
@@ -80,21 +83,26 @@ const Header = () => {
             </>
           ) : (
             <>
-              <TopBtn
-                onClick={changeInOutWhether}
-                color="--powder-700"
-                bgColor="--powder-100"
-                hover="--powder-400"
-              >
-                Log in
-              </TopBtn>
-              <TopBtn color="--white" bgColor="--blue-500" hover="--blue-700">
-                Sign up
-              </TopBtn>
+              <Link to={"/Login"}>
+                <TopBtn
+                  onClick={changeInOutWhether}
+                  color="--powder-700"
+                  bgColor="--powder-100"
+                  hover="--powder-400"
+                >
+                  Log in
+                </TopBtn>
+              </Link>
+              <Link to={"/Signup"}>
+                <TopBtn color="--white" bgColor="--blue-500" hover="--blue-700">
+                  Sign up
+                </TopBtn>
+              </Link>
             </>
           )}
         </TopBtnDiv>
       </Head>
+      <Outlet />
     </>
   );
 };
