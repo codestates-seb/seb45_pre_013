@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import GlobalStyle from "../styles/global";
+import GlobalStyle from "@/styles/global";
 import { SignUpContainer } from "../styles/Signup/SignupFormStyle";
 
 const SignUpForm = () => {
@@ -23,7 +23,7 @@ const SignUpForm = () => {
           <input id="password" type="password" />
           <p className="passwordwarning">
             Passwords must contain at least eight characters, including at least
-            1 letter and 1 number.
+            1 letter in english and 1 number and 1 special character.
           </p>
         </div>
         <div>
