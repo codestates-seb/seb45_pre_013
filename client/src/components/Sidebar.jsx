@@ -1,19 +1,42 @@
 import { SidebarDiv } from "@/styles/SidebarStyle";
+import { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 
 const Sidebar = () => {
+  const [selectedPage, setSelectedPage] = useState("Home");
+
+  const selectPage = (e) => {
+    const currentPage = e.target.innerHTML;
+    setSelectedPage(currentPage);
+  };
+
   return (
     <SidebarDiv>
       <div className="SidebarContent">
         <ul>
           <Link to={"/"}>
-            <li>Home</li>
+            <li
+              className={selectedPage === "Home" ? "selectedPage" : ""}
+              onClick={(e) => selectPage(e)}
+            >
+              Home
+            </li>
           </Link>
           <Link to={"/QuestionDetail"}>
-            <li>Questions</li>
+            <li
+              className={selectedPage === "Questions" ? "selectedPage" : ""}
+              onClick={(e) => selectPage(e)}
+            >
+              Questions
+            </li>
           </Link>
-          <Link to={"/Users"}>
-            <li>User</li>
+          <Link to={"/User"}>
+            <li
+              className={selectedPage === "User" ? "selectedPage" : ""}
+              onClick={(e) => selectPage(e)}
+            >
+              User
+            </li>
           </Link>
         </ul>
       </div>

@@ -1,13 +1,11 @@
 import styled from "styled-components";
 
-export const FooterBg = styled.div`
+export const FooterBg = styled.footer`
   z-index: 9999;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  bottom: 0;
   padding: 32px 12px 12px;
   width: 100%;
   height: 322px;

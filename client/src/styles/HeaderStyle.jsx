@@ -4,16 +4,26 @@ export const Head = styled.header`
   z-index: 9999;
   display: flex;
   position: fixed;
-  flex-wrap: wrap;
+  top: 0;
+  justify-content: center;
   align-items: center;
   background-color: var(--white);
   width: 100%;
-  height: 56px;
   border-top: 3px solid var(--orange);
   border-bottom: 1px solid var(--black-200);
 
+  .contents {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 1264px;
+    height: 56px;
+  }
+
   .Menubtn {
     cursor: pointer;
+    position: relative;
     display: flex;
     flex: 0.2;
     align-items: center;
@@ -58,6 +68,7 @@ export const Logo = styled.a`
 
 export const MenuUl = styled.ul`
   display: flex;
+  justify-content: center;
   flex: 1;
   list-style: none;
   padding: 2px;
@@ -75,7 +86,7 @@ export const MenuUl = styled.ul`
 
 export const SearchDiv = styled.div`
   display: flex;
-  flex: 3;
+  flex: 2;
   margin-right: 5px;
   align-items: center;
   border: 1px solid var(--black-200);
@@ -91,9 +102,9 @@ export const SearchDiv = styled.div`
 `;
 
 export const TopBtnDiv = styled.div`
-  min-width: 130px;
   display: flex;
   align-items: center;
+  justify-content: center;
   flex: 1;
   padding-right: 12px;
 `;

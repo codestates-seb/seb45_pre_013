@@ -5,8 +5,9 @@ export const PageContainer = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-top: 56px;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background-color: var(--black-050);
 
   a {
