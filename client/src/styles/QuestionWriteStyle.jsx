@@ -6,24 +6,29 @@ export const Background = styled.div`
   height: 100vh;
   display: flex;
   justify-content: center;
+  overflow-y: auto;
 `;
 
 export const Div = styled.div`
   display: flex;
   flex-wrap: wrap;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
   width: 1216px;
+  height: max-content;
+  margin-bottom: 48px;
+  padding: 0 24px 24px 24px;
+`;
 
-  @media (max-width: 1265px) {
-    width: calc(100vw - 214px);
-  }
+export const Null = styled.div`
+  width: 1px;
+  height: 1px;
 `;
 
 export const HeadlineDiv = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 130px;
 
   h1 {
     width: 100%;
@@ -36,13 +41,19 @@ export const HeadlineDiv = styled.div`
   img {
     height: 130px;
   }
+
+  @media (max-width: 1050px) {
+    img {
+      display: none;
+    }
+  }
 `;
 
 export const Notice = styled.div`
   width: 850px;
-  height: 250px;
+  height: min-content;
   margin-top: 16px;
-  margin-bottom: 16px;
+  margin-bottom: 4px;
   padding: 24px;
   border: 1px solid var(--powder-300);
   border-radius: 4px;
@@ -62,14 +73,6 @@ export const Notice = styled.div`
     margin-bottom: 16px;
   }
 
-  span.link {
-    color: var(--blue-600);
-
-    &:hover {
-      color: var(--blue-500);
-    }
-  }
-
   h5 {
     font-size: var(--fs-normal);
     font-weight: 800;
@@ -79,23 +82,41 @@ export const Notice = styled.div`
   ul {
     margin-left: 30px;
     font-size: var(--fs-normal);
-    height: 85px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+  }
+
+  span.link {
+    color: var(--blue-600);
+
+    &:hover {
+      color: var(--blue-500);
+    }
+  }
+
+  @media (max-width: 1265px) {
+    width: calc(100% - 318px);
+  }
+
+  @media (max-width: 1100px) {
+    width: 100%;
   }
 `;
 
-export const TitleWrite = styled.div`
+export const Write = styled.div`
   width: 850px;
-  height: 124px;
+  height: min-content;
   padding: 24px;
   border: 1px solid var(--black-100);
   border-radius: 4px;
   background-color: white;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  margin-top: 12px;
+
+  @media (max-width: 1265px) {
+    width: calc(100% - 318px);
+  }
 
   label {
     font-weight: 800;
@@ -105,11 +126,12 @@ export const TitleWrite = styled.div`
   p {
     font-size: var(--fs-normal);
     color: var(--black-700);
+    margin-top: 2px;
+    margin-bottom: 6px;
   }
 
   input {
     width: 100%;
-    height: 32.5px;
     padding: 7.8px 9.1px 7.8px 9.1px;
     border: 1px solid var(--black-200);
     border-radius: 4px;
@@ -119,29 +141,50 @@ export const TitleWrite = styled.div`
       color: var(--black-200);
     }
   }
+
+  textarea {
+    width: 100%;
+    height: 256px;
+    padding: 7.8px 9.1px 7.8px 9.1px;
+    border: 1px solid var(--black-200);
+    border-radius: 4px;
+    font-size: var(--fs-base);
+    color: var(--black-900);
+    resize: vertical;
+  }
+
+  @media (max-width: 1265px) {
+    width: calc(100% - 318px);
+  }
+
+  @media (max-width: 1100px) {
+    width: 100%;
+  }
 `;
 
 export const WriteGuide = styled.div`
-  width: 350px;
-  height: 150px;
+  width: 302px;
+  height: min-content;
   background-color: var(--white);
   border: 1px solid var(--black-200);
   border-radius: 4px;
   margin-left: 16px;
+  margin-top: 12px;
 
-  & > div:first-child {
+  h4 {
     width: 100%;
     height: 45px;
     padding: 12px;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
+    border-bottom: 1px solid var(--black-200);
     background-color: var(--black-025);
-    font-size: var(--fs-normal);
-    font-weight: 500;
     color: var(--black-800);
     display: flex;
     flex-direction: column;
     justify-content: center;
+    font-size: var(--fs-base);
+    font-weight: 500;
   }
 
   & > div:nth-child(2) {
@@ -151,18 +194,46 @@ export const WriteGuide = styled.div`
     img {
       width: 60px;
       height: 58px;
-      margin-left: 8px;
       margin-right: 8px;
     }
 
-    div {
+    span.link {
+      color: var(--blue-600);
+
+      &:hover {
+        color: var(--blue-500);
+      }
+    }
+
+    & > div {
       display: flex;
       flex-direction: column;
       font-size: var(--fs-small);
+      margin-top: 2px;
+      margin-bottom: 6px;
 
-      p {
+      p:not(:last-of-type) {
         margin-bottom: 12px;
       }
     }
+  }
+
+  @media (max-width: 1100px) {
+    width: 100%;
+    margin-left: 0;
+  }
+`;
+
+export const PostButton = styled.button`
+  margin-top: 10px;
+  margin-bottom: 15px;
+  width: 135px;
+  height: 38px;
+  border-radius: 6px;
+  background-color: var(--blue-500);
+  color: var(--white);
+
+  &:hover {
+    background-color: var(--blue-600);
   }
 `;
