@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const FooterBg = styled.footer`
-  z-index: 9999;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -30,5 +29,12 @@ export const FooterBg = styled.footer`
   .FootoerText {
     color: var(--black-400);
     font-size: 13px;
+  }
+
+  @media (max-width: 500px) {
+    flex-direction: column;
+    .FooterContent {
+      margin-bottom: 10px;
+    }
   }
 `;

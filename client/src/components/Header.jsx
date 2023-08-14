@@ -16,20 +16,29 @@ import {
   FcBiohazardOIcon,
   MdSourceIcon,
 } from "@/styles/IconStyle";
-import { BRANDLOGOIMG, USERPROFILEIMG } from "@/config/config";
+import { BRANDLOGOIMG, USERPROFILEIMG, LOGOIMG } from "@/config/config";
 import { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
+import { useRef } from "react";
 
 const Header = () => {
   const [logInOutWhether, setLogInOutWhether] = useState(false);
   const [ageVal, setAgeVal] = useState(0);
+  const [inputVisible, setInputVisible] = useState(false);
+  const inputFocus = useRef();
 
   const changeInOutWhether = () => {
     setLogInOutWhether(!logInOutWhether);
   };
   const change = () => {
     !ageVal ? setAgeVal(45) : setAgeVal(0);
+  };
+  const toggleInput = () => {
+    setInputVisible(!inputVisible);
+    setTimeout(() => {
+      inputFocus.current.focus();
+    }, 1);
   };
 
   return (
@@ -45,24 +54,32 @@ const Header = () => {
 
           <Link to={"/"}>
             <Logo>
-              <img src={BRANDLOGOIMG} />
+              <img className="brand" src={BRANDLOGOIMG} />
+              <img className="logo" src={LOGOIMG} />
             </Logo>
           </Link>
 
           <MenuUl>
-            <li>About</li>
+            <li className="hidden-element">About</li>
             <li>Products</li>
-            <li>For Teams</li>
+            <li className="hidden-element">For Teams</li>
           </MenuUl>
 
           <SearchDiv>
-            <SearchIcon />
+            <SearchIcon className="searchIcon" onClick={toggleInput} />
             <input
+              className={inputVisible ? "" : "visible"}
               type="text"
               role="combobox"
               placeholder="Search..."
               maxLength={240}
+              ref={inputFocus}
             />
+            {inputVisible && (
+              <button className="searchBtnVisible">
+                <SearchIcon />
+              </button>
+            )}
           </SearchDiv>
 
           <TopBtnDiv>
