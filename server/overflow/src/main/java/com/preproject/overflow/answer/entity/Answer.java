@@ -27,5 +27,5 @@ public class Answer extends Auditable {
     private Question question;
 
     @Column
-    String text;
+    private String text;
 }
