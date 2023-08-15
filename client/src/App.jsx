@@ -1,26 +1,28 @@
 import GlobalStyle from "@/styles/global";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import QuestionDetail from "@/pages/QuestionDetail";
 import LoginPage from "@/pages/Login";
 import SignUpPage from "@/pages/Signup";
 import Home from "@/pages/Home";
+import Root from "@/routers/Root";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
-  },
-  {
-    path: "QuestionDetail",
-    element: <QuestionDetail />,
-  },
-  {
-    path: "Login",
-    element: <LoginPage />,
-  },
-  {
-    path: "SignUp",
-    element: <SignUpPage />,
+    element: <Root />,
+    children: [
+      {
+        path: "Home",
+        element: <Home />,
+      },
+      {
+        path: "Login",
+        element: <LoginPage />,
+      },
+      {
+        path: "SignUp",
+        element: <SignUpPage />,
+      },
+    ],
   },
 ]);
 

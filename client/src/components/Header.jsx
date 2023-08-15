@@ -18,9 +18,10 @@ import {
 } from "@/styles/IconStyle";
 import { BRANDLOGOIMG, USERPROFILEIMG, LOGOIMG } from "@/config/config";
 import { useState } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import { useRef } from "react";
+import { useEffect } from "react";
 
 const Header = () => {
   const [logInOutWhether, setLogInOutWhether] = useState(false);
@@ -36,10 +37,11 @@ const Header = () => {
   };
   const toggleInput = () => {
     setInputVisible(!inputVisible);
-    setTimeout(() => {
-      inputFocus.current.focus();
-    }, 1);
   };
+
+  useEffect(() => {
+    inputVisible ? inputFocus.current.focus() : null;
+  }, [inputVisible]);
 
   return (
     <>
@@ -127,7 +129,6 @@ const Header = () => {
           </TopBtnDiv>
         </div>
       </Head>
-      <Outlet />
     </>
   );
 };

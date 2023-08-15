@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import { Outlet } from "react-router-dom";
 
-const Home = () => {
+const Root = () => {
   return (
     <>
       <Header />
@@ -10,4 +10,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Root;

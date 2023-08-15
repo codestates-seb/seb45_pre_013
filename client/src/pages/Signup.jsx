@@ -1,11 +1,9 @@
-import Header from "@/components/Header";
 import SignUpForm from "../components/SignupForm";
 import { PageContainer } from "../styles/Signup/SignupPageStyle";
 
 const SignUpPage = () => {
   return (
     <>
-      <Header />
       <PageContainer>
         <div className="itemcontainer">
           <div className="headline">Join the Stack Overflow community</div>
@@ -32,7 +30,6 @@ const SignUpPage = () => {
             <a href="">Get Stack Overflow for Teams free for up to 50 users.</a>
           </div>
         </div>
-
         <SignUpForm />
       </PageContainer>
     </>

@@ -1,6 +1,6 @@
 import { SidebarDiv } from "@/styles/SidebarStyle";
 import { useState } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   const [selectedPage, setSelectedPage] = useState("Home");
@@ -40,7 +40,6 @@ const Sidebar = () => {
           </Link>
         </ul>
       </div>
-      <Outlet />
     </SidebarDiv>
   );
 };
