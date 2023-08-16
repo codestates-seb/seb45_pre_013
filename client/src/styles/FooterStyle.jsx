@@ -1,13 +1,10 @@
 import styled from "styled-components";
 
-export const FooterBg = styled.div`
-  z-index: 9999;
+export const FooterBg = styled.footer`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  bottom: 0;
   padding: 32px 12px 12px;
   width: 100%;
   height: 322px;
@@ -32,5 +29,12 @@ export const FooterBg = styled.div`
   .FootoerText {
     color: var(--black-400);
     font-size: 13px;
+  }
+
+  @media (max-width: 500px) {
+    flex-direction: column;
+    .FooterContent {
+      margin-bottom: 10px;
+    }
   }
 `;

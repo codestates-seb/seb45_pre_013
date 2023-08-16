@@ -11,12 +11,24 @@ import {
   FlexMain,
   AnswerStart,
   More,
-} from "@/styles/QuestionStyle";
+} from "@/styles/QuestionDetail/QuestionStyle";
 import { Flex } from "@/styles/DivStyle";
+import {
+  ID,
+  TITLE,
+  TEXT,
+  USER_NAME,
+  USER_REPUTATION,
+  CREATED,
+  MODIFIED,
+  VOTE,
+  ANSWER,
+} from "@/config/config";
+import { RANDOM_AVATAR } from "@/config/config";
 
-const QuestionArticle = () => {
+const QuestionDetailLayout = ({ questionId }) => {
   const question = {
-    id: 0,
+    id: questionId,
     title: "How...",
     text: "How to how ?",
     userName: "bee",
@@ -27,54 +39,56 @@ const QuestionArticle = () => {
     answer: [{ article: "hi" }, { article: "good" }],
   }; //임시
 
-  const moreText =
-    "Not the answer you're looking for? Browse other questions or ask your own question.";
+  console.log(question[ID]);
 
   return (
     <Div>
-      <ArticleTitle title={question.title} />
+      <ArticleTitle title={question[TITLE]} />
       <ArticleMoreData>
         <div>
           <div>Asked</div>
-          <div>{question.created}</div>
+          <div>{question[CREATED]}</div>
         </div>
         <div>
           <div>Modified</div>
-          <div>{question.modified}</div>
+          <div>{question[MODIFIED]}</div>
         </div>
       </ArticleMoreData>
       <FlexMain>
         <Main>
           <Flex>
-            <Vote />
-            <article>{question.text}</article>
+            <Vote vote={question[VOTE]} />
+            <article>{question[TEXT]}</article>
           </Flex>
           <Flex>
             <Writer>
               <div>
                 <img
-                  alt={question.userName + "'s avatar"}
-                  src="https://xsgames.co/randomusers/avatar.php?g=pixel"
+                  alt={question[USER_NAME] + "'s avatar"}
+                  src={`${RANDOM_AVATAR}/${question[ID]}.jpg`}
                 />
                 <div>
-                  <p>{question.userName}</p>
-                  <p>{question.userReputation}</p>
+                  <p>{question[USER_NAME]}</p>
+                  <p>{question[USER_REPUTATION]}</p>
                 </div>
               </div>
             </Writer>
           </Flex>
           <AnswerStart>
-            <h2>{question.answer.length} Answer</h2>
+            <h2>{question[ANSWER].length} Answer</h2>
             <div>
               <p>sorted by:</p>
               <div>Highest score (default)</div>
             </div>
           </AnswerStart>
-          {question.answer.map((item, index) => {
+          {question[ANSWER].map((item, index) => {
             return <AnswerArticle key={index} answer={item} />;
           })}
           <AnswerForm />
-          <More>{moreText}</More>
+          <More>
+            Not the answer youre looking for? Browse other questions or{" "}
+            <span className="link">ask your own question.</span>
+          </More>
         </Main>
         <RightSidebar />
       </FlexMain>
@@ -82,4 +96,4 @@ const QuestionArticle = () => {
   );
 };
 
-export default QuestionArticle;
+export default QuestionDetailLayout;

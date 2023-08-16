@@ -22,6 +22,15 @@ export const MdSourceIcon = styled(MdSource)`
 
 export const SearchIcon = styled(AiOutlineSearch)`
   margin: 5px;
-  color: var(--black-400);
+  color: var(--black-500);
   font-size: 24px;
+
+  @media (max-width: 700px) {
+    cursor: pointer;
+    font-size: 30px;
+    &:hover {
+      background-color: var(--black-100);
+      border-radius: 5px;
+    }
+  }
 `;
