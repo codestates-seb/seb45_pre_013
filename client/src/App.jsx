@@ -1,4 +1,3 @@
-export default App;
 import GlobalStyle from "@/styles/global";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LoginPage from "@/pages/Login";
@@ -75,3 +74,5 @@ function App() {
     </>
   );
 }
+
+export default App;
