@@ -12,7 +12,13 @@ import {
   ListsContainer,
   EditProfileBtn,
   EditProfileText,
+  TwitterIcon,
+  GithubIcon,
+  WebLinkIcon,
+  LocationIcon,
+  EditIcon,
 } from "../../styles/MyPage/MyPagePreview";
+import { RANDOM_AVATAR } from "@/config/config";
 
 const MyPagePreview = () => {
   return (
@@ -21,7 +27,7 @@ const MyPagePreview = () => {
       <MyPageProfileContainer>
         <MyPageProfilelayout>
           <ProfileImageContainer>
-            <ProfileImage src="" alt="PROFILE IMAGE" />
+            <ProfileImage src={`${RANDOM_AVATAR}/23.jpg`} alt="PROFILE IMAGE" />
           </ProfileImageContainer>
           <StatusContainer>
             <DisplayName>DISPLAYNAME</DisplayName>
@@ -30,17 +36,17 @@ const MyPagePreview = () => {
               MEMBER SINCE {""}, LAST SEEN, CONSECUTIVE{""}{" "}
             </ListsContainer>
             <ListsContainer>
-              <img src="src/assets/image/MyPage/twitterlogo.svg"></img>
-              <img src="src/assets/image/MyPage/githublogo.svg"></img>
-              <img src="src/assets/image/MyPage/weblinklogo.svg"></img>
+              <TwitterIcon />
+              <GithubIcon />
+              <WebLinkIcon />
               <span>WEBSITENAME</span>
-              <img src="src/assets/image/MyPage/locationlogo.svg"></img>
+              <LocationIcon />
               <span>LOCATION</span>
             </ListsContainer>
           </StatusContainer>
           <Link to="/MyPage/EditProfile">
             <EditProfileBtn>
-              <img src="src/assets/image/MyPage/editlogo.svg"></img>
+              <EditIcon />
               <EditProfileText>Edit Profile</EditProfileText>{" "}
             </EditProfileBtn>
           </Link>
