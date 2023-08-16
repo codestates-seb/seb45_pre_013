@@ -16,14 +16,14 @@ export const PageContentContainerleft = styled.div`
 
 export const PageContentContainerRight = styled.div`
   display: block;
-  width: 783px;
+  width: calc(100% - 245px);
   height: 791px;
   /* border: 2px solid mediumseagreen; */
 `;
 
 export const PageContentGrid = styled.div`
   display: grid;
-  width: 783px;
+  width: calc(100% - 245px);
   height: 791px;
   /* border: 2px solid crimson; */
 `;
@@ -36,7 +36,7 @@ export const StatContent = styled.div`
 
 export const AboutMeBlock = styled.div`
   display: block;
-  width: 783px;
+  width: calc(100% - 245px);
   height: 87px;
   /* border: 2px solid crimson; */
 `;
@@ -47,13 +47,13 @@ export const HeadlineTxt = styled.div`
 `;
 
 export const BadgeBlock = styled.div`
-  width: 783px;
+  width: calc(100% - 245px);
   height: 223px;
   /* border: 2px solid blue; */
 `;
 
 export const PostsBlock = styled.div`
-  width: 783px;
+  width: calc(100% - 245px);
   height: 434px;
   /* border: 2px solid orange; */
 `;

@@ -4,7 +4,6 @@ export const MyPageProfileContainer = styled.div`
   position: static;
   display: relative;
   width: 100%;
-  max-width: 1037px;
   height: 144px;
 `;
 
@@ -13,7 +12,6 @@ export const MyPageProfilelayout = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
-  max-width: 1066px;
   height: 144px;
   margin-bottom: var(--su16) !important;
   /* border: 2px solid red; */
@@ -34,13 +32,11 @@ export const ProfileImage = styled.img`
 export const StatusContainer = styled.div`
   justify-content: left;
   display: block;
-  width: 480px;
+  width: calc(100% - 238px);
   height: 123px;
 `;
 
 export const EditProfileBtn = styled.div`
-  margin-left: auto;
-  margin-right: 10px;
   justify-content: center;
   align-items: center;
   display: flex;

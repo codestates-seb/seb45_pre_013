@@ -3,17 +3,16 @@ import { styled } from "styled-components";
 export const EditProfileContainer = styled.div`
   display: flex;
   flex-direction: row;
-  width: 100%;
+  width: calc(100vw - 40px);
   max-width: 1051px;
   height: 1359px;
   /* border: 2px solid red; */
-  padding: 24px;
 `;
 
 export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: calc(100% - 203px);
   max-width: 832px;
   height: 1358px;
   /* border:2px solid orange; */
@@ -22,8 +21,7 @@ export const FormContainer = styled.div`
 export const ProfileTitle = styled.div`
   justify-content: center;
   text-align: left;
-  width: 800px;
-
+  width: 100%;
   height: 48px;
   font-size: var(--fs-headline1);
   border-bottom: 1px solid var(--black-200);
