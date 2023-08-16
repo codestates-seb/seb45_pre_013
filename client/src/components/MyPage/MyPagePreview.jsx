@@ -1,4 +1,5 @@
-import { styled } from "styled-components";
+import { Link } from "react-router-dom";
+
 import GlobalStyle from "@/styles/global";
 import {
   MyPageProfileContainer,
@@ -37,10 +38,12 @@ const MyPagePreview = () => {
               <span>LOCATION</span>
             </ListsContainer>
           </StatusContainer>
-          <EditProfileBtn>
-            <img src="src/assets/image/MyPage/editlogo.svg"></img>
-            <EditProfileText>Edit Profile</EditProfileText>{" "}
-          </EditProfileBtn>
+          <Link to="/MyPage/EditProfile">
+            <EditProfileBtn>
+              <img src="src/assets/image/MyPage/editlogo.svg"></img>
+              <EditProfileText>Edit Profile</EditProfileText>{" "}
+            </EditProfileBtn>
+          </Link>
         </MyPageProfilelayout>
       </MyPageProfileContainer>
     </>
