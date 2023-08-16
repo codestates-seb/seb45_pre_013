@@ -1,6 +1,8 @@
 package com.preproject.overflow.member.service;
 
 import com.preproject.overflow.member.entity.Member;
+import com.preproject.overflow.member.exception.BusinessLogicException;
+import com.preproject.overflow.member.exception.ExceptionCode;
 import com.preproject.overflow.member.repository.MemberRepository;
 import com.preproject.overflow.member.utils.CustomAuthorityUtils;
 import org.springframework.data.domain.Page;
@@ -14,9 +16,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
-
-//TODO
-//ErrorException 구현해야함
 
 @Transactional
 @Service
@@ -87,13 +86,13 @@ public class MemberService {
                 memberRepository.findById(memberId);
         Member findMember =
                 optionalMember.orElseThrow(() ->
-                        new RuntimeException());
+                        new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND));
         return findMember;
     }
 
     private void verifyExistsEmail(String email) {
         Optional<Member> member = memberRepository.findByEmail(email);
         if (member.isPresent())
-            throw new RuntimeException();
+            throw new BusinessLogicException(ExceptionCode.MEMBER_IS_EXIST);
     }
 }
