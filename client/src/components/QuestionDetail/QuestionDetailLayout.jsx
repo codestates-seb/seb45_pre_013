@@ -24,6 +24,7 @@ import {
   VOTE,
   ANSWER,
 } from "@/config/config";
+import { RANDOM_AVATAR } from "@/config/config";
 
 const QuestionDetailLayout = ({ questionId }) => {
   const question = {
@@ -64,7 +65,7 @@ const QuestionDetailLayout = ({ questionId }) => {
               <div>
                 <img
                   alt={question[USER_NAME] + "'s avatar"}
-                  src="https://xsgames.co/randomusers/avatar.php?g=pixel"
+                  src={`${RANDOM_AVATAR}/${question[ID]}.jpg`}
                 />
                 <div>
                   <p>{question[USER_NAME]}</p>

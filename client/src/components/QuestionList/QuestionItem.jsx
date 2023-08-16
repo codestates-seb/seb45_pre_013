@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { ItemDiv } from "@/styles/QuestionList/LayoutStyle";
 import {
   ID,
   TITLE,
@@ -9,7 +10,7 @@ import {
   ANSWER,
   VIEW,
 } from "@/config/config";
-import { ItemDiv } from "@/styles/QuestionList/LayoutStyle";
+import { RANDOM_AVATAR } from "@/config/config";
 
 const QuestionItem = ({ item }) => {
   return (
@@ -25,8 +26,8 @@ const QuestionItem = ({ item }) => {
         </h3>
         <div>
           <img
-            alt={item[USER_NAME] + "'s avatar"}
-            src="https://xsgames.co/randomusers/avatar.php?g=pixel"
+            alt={`${item[USER_NAME]}'s avatar`}
+            src={`${RANDOM_AVATAR}/${item[ID]}.jpg`}
           />
           <p>{item[USER_NAME]}</p>
           <p>{item[MODIFIED] ? item[MODIFIED] : item[CREATED]}</p>
