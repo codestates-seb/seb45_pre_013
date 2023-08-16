@@ -5,6 +5,7 @@ import com.preproject.overflow.member.exception.BusinessLogicException;
 import com.preproject.overflow.member.exception.ExceptionCode;
 import com.preproject.overflow.member.repository.MemberRepository;
 import com.preproject.overflow.member.utils.CustomAuthorityUtils;
+import com.preproject.overflow.member.utils.RandomNumberGenerator;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -74,10 +75,15 @@ public class MemberService {
                 Sort.by("memberId").descending()));
     }
 
-    public void deleteMember(long memberId) {
-        Member findMember = findVerifiedMember(memberId);
+    public void deleteMember(Member member) {
 
-        memberRepository.delete(findMember);
+        String randomString = RandomNumberGenerator.generateRandomString(20);
+        member.setEmail(randomString);
+        member.setMemberStatus(Member.MemberStatus.MEMBER_QUIT);
+        member.setRoles(null);
+        member.setNickname(null);
+
+        memberRepository.save(member);
     }
 
     @Transactional(readOnly = true)
@@ -87,12 +93,18 @@ public class MemberService {
         Member findMember =
                 optionalMember.orElseThrow(() ->
                         new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND));
+
+        if(findMember.getMemberStatus().equals(Member.MemberStatus.MEMBER_QUIT))
+            throw new BusinessLogicException(ExceptionCode.MEMBER_STATUS_DELETE);
+
         return findMember;
     }
 
     private void verifyExistsEmail(String email) {
         Optional<Member> member = memberRepository.findByEmail(email);
-        if (member.isPresent())
+        if(member.isPresent()) {
             throw new BusinessLogicException(ExceptionCode.MEMBER_IS_EXIST);
+        }
+
     }
 }

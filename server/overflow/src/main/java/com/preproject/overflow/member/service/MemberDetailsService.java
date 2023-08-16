@@ -1,6 +1,8 @@
 package com.preproject.overflow.member.service;
 
 import com.preproject.overflow.member.entity.Member;
+import com.preproject.overflow.member.exception.BusinessLogicException;
+import com.preproject.overflow.member.exception.ExceptionCode;
 import com.preproject.overflow.member.repository.MemberRepository;
 import com.preproject.overflow.member.utils.CustomAuthorityUtils;
 import org.springframework.security.core.GrantedAuthority;
@@ -28,7 +30,7 @@ public class MemberDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<Member> optionalMember = memberRepository.findByEmail(username);
-        Member findMember = optionalMember.orElseThrow(() -> new RuntimeException());
+        Member findMember = optionalMember.orElseThrow(() -> new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND));
 
         return new MemberDetails(findMember);
     }
