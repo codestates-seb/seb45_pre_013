@@ -1,9 +1,10 @@
 import { SidebarDiv } from "@/styles/SidebarStyle";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Sidebar = () => {
-  const [selectedPage, setSelectedPage] = useState("Home");
+  const location = useLocation().pathname;
+  const [selectedPage, setSelectedPage] = useState(location);
 
   const selectPage = (e) => {
     const currentPage = e.target.innerHTML;
@@ -16,24 +17,26 @@ const Sidebar = () => {
         <ul>
           <Link to={"/"}>
             <li
-              className={selectedPage === "Home" ? "selectedPage" : ""}
-              onClick={(e) => selectPage(e)}
+              className={selectedPage === "/" ? "selectedPage" : ""}
+              onClick={selectPage}
             >
               Home
             </li>
           </Link>
-          <Link to={"/QuestionDetail"}>
+          <Link to={"/QuestionListLayout"}>
             <li
-              className={selectedPage === "Questions" ? "selectedPage" : ""}
-              onClick={(e) => selectPage(e)}
+              className={
+                selectedPage === "/QuestionListLayout" ? "selectedPage" : ""
+              }
+              onClick={selectPage}
             >
               Questions
             </li>
           </Link>
           <Link to={"/User"}>
             <li
-              className={selectedPage === "User" ? "selectedPage" : ""}
-              onClick={(e) => selectPage(e)}
+              className={selectedPage === "/User" ? "selectedPage" : ""}
+              onClick={selectPage}
             >
               User
             </li>
