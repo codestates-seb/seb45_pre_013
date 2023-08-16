@@ -1,5 +1,4 @@
 import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import { Contents } from "@/styles/Home/HomeStyle";
 
 const Home = () => {
@@ -16,7 +15,6 @@ const Home = () => {
           <div className="backEnd"></div>
         </article>
       </Contents>
-      <Footer />
     </>
   );
 };
