@@ -1,5 +1,3 @@
-import { styled } from "styled-components";
-import GlobalStyle from "@/styles/global";
 import {
   MyPageContentContainer,
   PageContentContainerRight,
@@ -15,7 +13,6 @@ import {
 const MyPageContent = () => {
   return (
     <>
-      <GlobalStyle />
       <MyPageContentContainer>
         <PageContentContainerleft>
           <StatContent>

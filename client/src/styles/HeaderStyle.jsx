@@ -51,7 +51,7 @@ export const MenuLine = styled.div`
   transition: 0.1s;
 `;
 
-export const Logo = styled.a`
+export const Logo = styled.div`
   display: flex;
   flex: 0.5;
   justify-content: center;

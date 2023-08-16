@@ -1,5 +1,3 @@
-
-import GlobalStyle from "../styles/global";
 import { SignUpContainer } from "../styles/Signup/SignupFormStyle";
 
 const SignUpForm = () => {
@@ -7,7 +5,6 @@ const SignUpForm = () => {
 
   return (
     <>
-      <GlobalStyle />
       <SignUpContainer>
         <div className="signup-displayname">
           <label htmlFor="displayname">Display name</label>

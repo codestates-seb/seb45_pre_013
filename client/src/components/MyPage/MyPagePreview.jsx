@@ -1,6 +1,4 @@
 import { Link } from "react-router-dom";
-
-import GlobalStyle from "@/styles/global";
 import {
   MyPageProfileContainer,
   MyPageProfilelayout,
@@ -23,7 +21,6 @@ import { RANDOM_AVATAR } from "@/config/config";
 const MyPagePreview = () => {
   return (
     <>
-      <GlobalStyle />
       <MyPageProfileContainer>
         <MyPageProfilelayout>
           <ProfileImageContainer>

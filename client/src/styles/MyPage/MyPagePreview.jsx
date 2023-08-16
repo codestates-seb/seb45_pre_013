@@ -47,7 +47,6 @@ export const EditProfileBtn = styled.div`
   width: 100px;
   height: 35px;
   border-radius: 5px;
-  font-size: var(--)
   cursor: pointer;
   border: 1px solid var(--black-500);
 `;
