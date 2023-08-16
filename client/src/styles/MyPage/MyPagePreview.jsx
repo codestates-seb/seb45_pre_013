@@ -85,3 +85,25 @@ export const EditProfileText = styled.span``;
 //   cursor: pointer
 //
 // `;
+
+const EditIcon = () => (
+  <img src="src/assets/image/MyPage/editlogo.svg" alt="Edit Logo" />
+);
+
+const TwitterIcon = () => (
+  <img src="src/assets/image/MyPage/twitterlogo.svg" alt="Twitter Logo" />
+);
+
+const GithubIcon = () => (
+  <img src="src/assets/image/MyPage/githublogo.svg" alt="GitHub Logo" />
+);
+
+const WebLinkIcon = () => (
+  <img src="src/assets/image/MyPage/weblinklogo.svg" alt="Web Link Logo" />
+);
+
+const LocationIcon = () => (
+  <img src="src/assets/image/MyPage/locationlogo.svg" alt="Location Logo" />
+);
+
+export { TwitterIcon, GithubIcon, WebLinkIcon, LocationIcon, EditIcon };

@@ -17,7 +17,6 @@ export const NormalBtn = styled.button`
   border-radius: 13px;
   color: var(--black);
   cursor: pointer;
-  z-index: 9999;
 
   &:hover {
     background-color: var(--black-200);
@@ -34,7 +33,7 @@ export const ActiveBtn = styled.button`
   border-radius: 13px;
   color: var(--white);
   cursor: pointer;
-  z-index: 9999;
+
   background-color: var(--orange);
   margin-right: 10px;
 
