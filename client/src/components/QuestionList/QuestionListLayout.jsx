@@ -7,6 +7,7 @@ import { FlexColumn } from "@/styles/DivStyle";
 const QuestionListLayout = () => {
   const questions = [
     {
+      id: 0,
       title:
         "C# MVC - Getting 404 for Controller/Method C# MVC - Getting 404 for Controller/Method C# MVC - Getting 404 for Controller/Method ",
       userName: "howuroll",
@@ -17,6 +18,7 @@ const QuestionListLayout = () => {
       view: 13,
     },
     {
+      id: 1,
       title: "Rmd knit is not generating pdf file",
       userName: "Phil",
       created: "asked 10 min ago",
@@ -33,9 +35,12 @@ const QuestionListLayout = () => {
         <FlexColumn>
           <ArticleTitle title="Top Questions" />
 
-          {questions.map((item, index) => (
-            <QuestionItem key={index} item={item} />
-          ))}
+          {questions
+            .slice(0)
+            .reverse()
+            .map((item, index) => (
+              <QuestionItem key={index} item={item} />
+            ))}
           <h2 className="more">
             Looking for more? Browse the{" "}
             <span className="link">complete list of questions</span>, or

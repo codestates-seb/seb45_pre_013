@@ -1,4 +1,6 @@
+import { Link } from "react-router-dom";
 import {
+  ID,
   TITLE,
   USER_NAME,
   CREATED,
@@ -18,7 +20,9 @@ const QuestionItem = ({ item }) => {
         <p>{item[VIEW]} views</p>
       </div>
       <div>
-        <h3>{item[TITLE]}</h3>
+        <h3>
+          <Link to={"/Questions/" + item[ID]}>{item[TITLE]}</Link>
+        </h3>
         <div>
           <img
             alt={item[USER_NAME] + "'s avatar"}

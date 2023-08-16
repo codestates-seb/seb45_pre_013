@@ -22,7 +22,7 @@ const Sidebar = () => {
               Home
             </li>
           </Link>
-          <Link to={"/QuestionDetail"}>
+          <Link to={"/Questions/List"}>
             <li
               className={selectedPage === "Questions" ? "selectedPage" : ""}
               onClick={(e) => selectPage(e)}
