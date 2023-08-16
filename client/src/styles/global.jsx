@@ -67,6 +67,7 @@ const GlobalStyle = createGlobalStyle`
     --fs-headline: 21px;
     --fs-headline1: 27px;
     --fs-headline2: 21px;
+    --fs-headline3: 17px;
   }
 
   * {
