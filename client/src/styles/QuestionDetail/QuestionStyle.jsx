@@ -2,8 +2,6 @@ import { styled } from "styled-components";
 
 export const Div = styled.div`
   width: 1051px;
-  padding-left: 16px;
-  padding-right: 16px;
 
   @media (max-width: 1265px) {
     width: calc(100vw - 214px);
@@ -113,4 +111,12 @@ export const AnswerStart = styled.div`
 
 export const More = styled.p`
   font-size: var(--fs-headline2);
+
+  span.link {
+    color: var(--blue-600);
+
+    &:hover {
+      color: var(--blue-500);
+    }
+  }
 `;

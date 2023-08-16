@@ -43,8 +43,8 @@ const QuestionListLayout = () => {
             ))}
           <h2 className="more">
             Looking for more? Browse the{" "}
-            <span className="link">complete list of questions</span>, or
-            <span className="link">popular tags</span>. Help us answer
+            <span className="link">complete list of questions</span>, or{" "}
+            <span className="link">popular tags</span>. Help us answer{" "}
             <span className="link">unanswered questions</span>.
           </h2>
         </FlexColumn>

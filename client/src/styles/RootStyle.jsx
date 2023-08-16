@@ -5,8 +5,11 @@ export const Div = styled.div`
   height: 100vh;
   overflow-y: auto;
   margin-top: 60px;
-  padding-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  & > div:first-child {
+    padding: 20px;
+  }
 `;

@@ -1,11 +1,8 @@
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import { Contents } from "@/styles/Home/HomeStyle";
 
 const Home = () => {
   return (
     <>
-      <Header />
       <Contents>
         <article>
           <h1>FRONTEND</h1>
@@ -16,7 +13,6 @@ const Home = () => {
           <div className="backEnd"></div>
         </article>
       </Contents>
-      <Footer />
     </>
   );
 };

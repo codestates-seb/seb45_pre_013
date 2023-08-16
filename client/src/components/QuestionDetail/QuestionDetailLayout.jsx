@@ -40,9 +40,6 @@ const QuestionDetailLayout = ({ questionId }) => {
 
   console.log(question[ID]);
 
-  const moreText =
-    "Not the answer you're looking for? Browse other questions or ask your own question.";
-
   return (
     <Div>
       <ArticleTitle title={question[TITLE]} />
@@ -87,7 +84,10 @@ const QuestionDetailLayout = ({ questionId }) => {
             return <AnswerArticle key={index} answer={item} />;
           })}
           <AnswerForm />
-          <More>{moreText}</More>
+          <More>
+            Not the answer youre looking for? Browse other questions or{" "}
+            <span className="link">ask your own question.</span>
+          </More>
         </Main>
         <RightSidebar />
       </FlexMain>
