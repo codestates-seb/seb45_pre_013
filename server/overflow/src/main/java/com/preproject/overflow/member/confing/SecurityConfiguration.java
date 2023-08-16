@@ -2,6 +2,8 @@ package com.preproject.overflow.member.confing;
 
 import com.preproject.overflow.member.auth.filter.JwtAuthenticationFilter;
 import com.preproject.overflow.member.auth.filter.JwtVerificationFilter;
+import com.preproject.overflow.member.auth.handler.MemberAccessDeniedHandler;
+import com.preproject.overflow.member.auth.handler.MemberAuthenticationEntryPoint;
 import com.preproject.overflow.member.auth.handler.MemberAuthenticationFailureHandler;
 import com.preproject.overflow.member.auth.handler.MemberAuthenticationSuccessHandler;
 import com.preproject.overflow.member.auth.jwt.JwtTokenizer;
@@ -50,6 +52,10 @@ public class SecurityConfiguration {
                 .and()
                 .formLogin().disable()
                 .httpBasic().disable()
+                .exceptionHandling()
+                .authenticationEntryPoint(new MemberAuthenticationEntryPoint())
+                .accessDeniedHandler(new MemberAccessDeniedHandler())
+                .and()
                 .apply(new CustomFilterConfigurer())
                 .and()
                 .authorizeHttpRequests(authorize -> authorize

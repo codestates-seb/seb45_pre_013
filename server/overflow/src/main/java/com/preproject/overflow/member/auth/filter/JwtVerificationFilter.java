@@ -4,6 +4,8 @@ import com.preproject.overflow.member.auth.jwt.JwtTokenizer;
 import com.preproject.overflow.member.entity.Member;
 import com.preproject.overflow.member.service.MemberService;
 import com.preproject.overflow.member.utils.CustomAuthorityUtils;
+import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.security.SignatureException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -37,10 +39,18 @@ public class JwtVerificationFilter extends OncePerRequestFilter {  // (1)
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        Map<String, Object> claims = verifyJws(request); // (3)
-        setAuthenticationToContext(claims);      // (4)
+        try {
+            Map<String, Object> claims = verifyJws(request);
+            setAuthenticationToContext(claims);
+        } catch (SignatureException se) {
+            request.setAttribute("exception", se);
+        } catch (ExpiredJwtException ee) {
+            request.setAttribute("exception", ee);
+        } catch (Exception e) {
+            request.setAttribute("exception", e);
+        }
 
-        filterChain.doFilter(request, response); // (5)
+        filterChain.doFilter(request, response);
     }
 
     // (6)
