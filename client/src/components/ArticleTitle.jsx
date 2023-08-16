@@ -1,4 +1,4 @@
-import { TitleDiv } from "styles/TitleStyle";
+import { TitleDiv } from "@/styles/TitleStyle";
 
 const ArticleTitle = ({ title }) => {
   return (
