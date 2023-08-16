@@ -3,7 +3,6 @@ import iconWrite from "@/assets/image/iconWrite.png";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import {
-  Div,
   HeadlineDiv,
   Notice,
   Write,
@@ -18,7 +17,7 @@ const WriteLayout = () => {
     <Background>
       <Header />
       <div>
-        <Div>
+        <div>
           <HeadlineDiv>
             <h1>Ask a public question</h1>
             <img src={background} />
@@ -99,7 +98,7 @@ const WriteLayout = () => {
             <textarea></textarea>
           </Write>
           <PostButton>Post your question</PostButton>
-        </Div>
+        </div>
         <Footer />
       </div>
     </Background>
