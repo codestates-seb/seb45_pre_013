@@ -4,6 +4,7 @@ import LoginPage from "@/pages/Login";
 import SignUpPage from "@/pages/Signup";
 import Home from "@/pages/Home";
 import Root from "@/routers/Root";
+import QuestionList from "@/pages/QuestionList";
 
 const router = createBrowserRouter([
   {
@@ -14,15 +15,20 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home />,
       },
+
       {
-        path: "Login",
-        element: <LoginPage />,
-      },
-      {
-        path: "SignUp",
-        element: <SignUpPage />,
+        path: "QuestionList",
+        element: <QuestionList />,
       },
     ],
+  },
+  {
+    path: "Login",
+    element: <LoginPage />,
+  },
+  {
+    path: "SignUp",
+    element: <SignUpPage />,
   },
 ]);
 

@@ -1,8 +1,10 @@
+import Header from "@/components/Header";
 import LoginForm from "../components/LoginForm";
 import { Icon, PageContainer } from "../styles/Login/LoginPageStyle";
 const LoginPage = () => {
   return (
     <>
+      <Header />
       <PageContainer>
         <Icon
           className="icon"

@@ -1,4 +1,5 @@
 import { SidebarDiv } from "@/styles/SidebarStyle";
+import { useEffect } from "react";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
@@ -6,38 +7,35 @@ const Sidebar = () => {
   const location = useLocation().pathname;
   const [selectedPage, setSelectedPage] = useState(location);
 
-  const selectPage = (e) => {
-    const currentPage = e.target.innerHTML;
-    setSelectedPage(currentPage);
-  };
+  useEffect(() => {
+    switch (selectedPage) {
+      case "/Login":
+        setSelectedPage("/User");
+        break;
+      case "/Signup":
+        setSelectedPage("/User");
+        break;
+      default:
+        setSelectedPage(location);
+    }
+  }, [location]);
 
   return (
     <SidebarDiv>
       <div className="SidebarContent">
         <ul>
           <Link to={"/"}>
-            <li
-              className={selectedPage === "/" ? "selectedPage" : ""}
-              onClick={selectPage}
-            >
-              Home
-            </li>
+            <li className={selectedPage === "/" ? "selectedPage" : ""}>Home</li>
           </Link>
-          <Link to={"/QuestionListLayout"}>
+          <Link to={"/QuestionList"}>
             <li
-              className={
-                selectedPage === "/QuestionListLayout" ? "selectedPage" : ""
-              }
-              onClick={selectPage}
+              className={selectedPage === "/QuestionList" ? "selectedPage" : ""}
             >
               Questions
             </li>
           </Link>
           <Link to={"/User"}>
-            <li
-              className={selectedPage === "/User" ? "selectedPage" : ""}
-              onClick={selectPage}
-            >
+            <li className={selectedPage === "/User" ? "selectedPage" : ""}>
               User
             </li>
           </Link>
