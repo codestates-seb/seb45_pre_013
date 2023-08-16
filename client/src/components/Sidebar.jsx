@@ -34,7 +34,7 @@ const Sidebar = () => {
               Questions
             </li>
           </Link>
-          <Link to={"/User"}>
+          <Link to={"/MyPage"}>
             <li className={selectedPage === "/User" ? "selectedPage" : ""}>
               User
             </li>

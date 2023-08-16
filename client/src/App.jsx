@@ -8,6 +8,8 @@ import QuestionWrite from "@/pages/QuestionWrite";
 import Home from "@/pages/Home";
 import Root from "@/routers/Root";
 import NotFound from "@/pages/NotFound";
+import MyPage from "@/pages/MyPage/MyPage";
+import EditProfilePage from "@/pages/EditProfile/EditProfile";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +28,14 @@ const router = createBrowserRouter([
       {
         path: "Questions/:questionId",
         element: <QuestionDetail />,
+      },
+      {
+        path: "/MyPage",
+        element: <MyPage />,
+      },
+      {
+        path: "/MyPage/EditProfile",
+        element: <EditProfilePage />,
       },
       {
         path: "*",
