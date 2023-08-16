@@ -1,5 +1,5 @@
 import Vote from "./Vote";
-import { Article } from "@/styles/AnswerStyle";
+import { Article } from "@/styles/QuestionDetail/AnswerStyle";
 
 const AnswerArticle = ({ answer }) => {
   return (

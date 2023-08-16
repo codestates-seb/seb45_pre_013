@@ -1,10 +1,10 @@
-import { VoteForm } from "@/styles/VoteStyle";
+import { VoteForm } from "@/styles/QuestionDetail/VoteStyle";
 
-const Vote = () => {
+const Vote = ({ vote }) => {
   return (
     <VoteForm>
       <button>▲</button>
-      <p>0</p>
+      <p>{vote}</p>
       <button>▼</button>
     </VoteForm>
   );

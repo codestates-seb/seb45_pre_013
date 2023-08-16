@@ -4,16 +4,27 @@ export const Head = styled.header`
   z-index: 9999;
   display: flex;
   position: fixed;
-  flex-wrap: wrap;
+  top: 0;
+  justify-content: center;
   align-items: center;
   background-color: var(--white);
   width: 100%;
-  height: 56px;
+  min-width: 700px;
   border-top: 3px solid var(--orange);
   border-bottom: 1px solid var(--black-200);
 
+  .contents {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 1264px;
+    height: 56px;
+  }
+
   .Menubtn {
     cursor: pointer;
+    position: relative;
     display: flex;
     flex: 0.2;
     align-items: center;
@@ -50,18 +61,32 @@ export const Logo = styled.a`
   &:hover {
     background-color: var(--black-100);
   }
-
   img {
     width: 150px;
+  }
+
+  .logo {
+    display: none;
+  }
+  @media (max-width: 600px) {
+    .brand {
+      display: none;
+    }
+    .logo {
+      display: block;
+      width: 30px;
+      height: 40px;
+    }
   }
 `;
 
 export const MenuUl = styled.ul`
   display: flex;
+  justify-content: center;
   flex: 1;
   list-style: none;
+  width: auto;
   padding: 2px;
-  min-width: 252px;
 
   li {
     cursor: pointer;
@@ -71,29 +96,71 @@ export const MenuUl = styled.ul`
       background-color: var(--black-100);
     }
   }
+
+  @media (max-width: 1200px) {
+    .hidden-element {
+      display: none;
+    }
+  }
 `;
 
 export const SearchDiv = styled.div`
   display: flex;
-  flex: 3;
-  margin-right: 5px;
   align-items: center;
+  flex: 2;
+  margin-right: 5px;
   border: 1px solid var(--black-200);
   border-radius: 5px;
   width: auto;
   height: 32.59px;
 
   input {
-    padding: 7.8px 9.2px 7.8px 10px;
+    padding: 7.8px 9.2px 7.8px 40px;
     font-size: 13px;
     width: 100%;
+    &:focus {
+      box-shadow: 0 0 10px var(--blue);
+    }
+  }
+
+  .searchIcon {
+    position: absolute;
+  }
+
+  .searchBtnVisible {
+    display: none;
+  }
+
+  @media (max-width: 700px) {
+    input {
+      position: absolute;
+      border: 1px solid var(--black-200);
+      border-radius: 5px;
+      top: 60px;
+      left: 0px;
+    }
+
+    .visible {
+      display: none;
+    }
+
+    .searchBtnVisible {
+      display: block;
+      position: absolute;
+      top: 56px;
+      left: 0px;
+    }
+
+    flex: 0.4;
+    justify-content: right;
+    border: none;
   }
 `;
 
 export const TopBtnDiv = styled.div`
-  min-width: 130px;
   display: flex;
   align-items: center;
+  justify-content: center;
   flex: 1;
   padding-right: 12px;
 `;

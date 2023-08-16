@@ -1,11 +1,11 @@
 import { FooterBg } from "@/styles/FooterStyle";
-import { logoImg } from "@/config/config";
+import { LOGOIMG } from "@/config/config";
 
 const Footer = () => {
   return (
     <FooterBg>
       <div className="FooterContent">
-        <img src={logoImg} />
+        <img src={LOGOIMG} />
       </div>
       <div className="FooterContent">
         <p className="FootoerTitle">Front End</p>

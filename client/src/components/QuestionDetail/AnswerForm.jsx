@@ -1,4 +1,4 @@
-import { FormHeadline, Form } from "@/styles/AnswerStyle";
+import { FormHeadline, Form } from "@/styles/QuestionDetail/AnswerStyle";
 
 const AnswerForm = () => {
   return (

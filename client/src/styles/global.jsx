@@ -67,6 +67,7 @@ const GlobalStyle = createGlobalStyle`
     --fs-headline: 21px;
     --fs-headline1: 27px;
     --fs-headline2: 21px;
+    --fs-headline3: 17px;
   }
 
   * {
@@ -89,9 +90,10 @@ const GlobalStyle = createGlobalStyle`
 
   #root {
     width: 100vw;
-    height: 100vh;
+    height : auto;
     position: relative;
     display: flex;
+    flex-direction : column;
     justify-content: center;
   }
 `;
