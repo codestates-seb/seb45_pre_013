@@ -13,6 +13,7 @@ export const VoteForm = styled.div`
     border-radius: 50%;
     border: 1px solid var(--black-100);
     color: var(--black-700);
+    cursor: pointer;
   }
 
   p {

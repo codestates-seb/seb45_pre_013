@@ -16,14 +16,6 @@ export const ListDiv = styled(Flex)`
     font-size: var(--fs-headline2);
     margin-top: 15px;
     margin-bottom: 17px;
-
-    span.link {
-      color: var(--blue-600);
-
-      &:hover {
-        color: var(--blue-500);
-      }
-    }
   }
 
   @media (max-width: 1265px) {

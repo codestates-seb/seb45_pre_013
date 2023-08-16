@@ -36,6 +36,7 @@ export const LoginContainer = styled.div`
       border-radius: 5px;
       background-color: var(--blue-500);
       color: var(--white);
+      cursor: pointer;
     }
   }
 

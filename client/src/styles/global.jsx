@@ -90,11 +90,20 @@ const GlobalStyle = createGlobalStyle`
 
   #root {
     width: 100vw;
-    height : auto;
+    height: 100vh;
     position: relative;
     display: flex;
     flex-direction : column;
     justify-content: center;
+  }
+
+  span.link {
+    color: var(--blue-600);
+      cursor: pointer;
+
+    &:hover {
+      color: var(--blue-500);
+    }
   }
 `;
 
