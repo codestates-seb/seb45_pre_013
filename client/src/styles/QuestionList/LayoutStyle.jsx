@@ -3,7 +3,6 @@ import { Flex } from "@/styles/DivStyle";
 
 export const ListDiv = styled(Flex)`
   width: 1051px;
-  padding: 24px;
 
   & > div:first-child {
     width: calc(100% - 324px);

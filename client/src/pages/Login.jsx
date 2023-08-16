@@ -12,7 +12,7 @@ const LoginPage = () => {
           alt="minilogo"
         />
         <LoginForm />
-        <p>Don't have an account?</p>
+        <p>Don{"'"}t have an account?</p>
         <p>Are you an employer?</p>
       </PageContainer>
     </>

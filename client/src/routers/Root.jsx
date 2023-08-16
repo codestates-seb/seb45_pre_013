@@ -1,13 +1,18 @@
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import { Outlet } from "react-router-dom";
+import Header from "@/components/Header";
+import { Div } from "@/styles/RootStyle";
+import Footer from "@/components/Footer";
 
 const Root = () => {
   return (
     <>
       <Header />
-      <Outlet />
-      <Footer />
+      <Div>
+        <div>
+          <Outlet />
+        </div>
+        <Footer />
+      </Div>
     </>
   );
 };

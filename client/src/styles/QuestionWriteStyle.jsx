@@ -4,9 +4,10 @@ export const Background = styled.div`
   background-color: var(--black-025);
   width: 100vw;
   height: 100vh;
-  display: flex;
-  justify-content: center;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const Div = styled.div`
@@ -16,6 +17,7 @@ export const Div = styled.div`
   justify-content: flex-end;
   width: 1216px;
   height: max-content;
+  margin-top: 60px;
   margin-bottom: 48px;
   padding: 0 24px 24px 24px;
 `;

@@ -1,5 +1,7 @@
 import background from "@/assets/image/backgroundQuestionWrite.svg";
 import iconWrite from "@/assets/image/iconWrite.png";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import {
   Background,
   Div,
@@ -14,6 +16,7 @@ import {
 const WriteLayout = () => {
   return (
     <Background>
+      <Header />
       <Div>
         <HeadlineDiv>
           <h1>Ask a public question</h1>
@@ -24,7 +27,7 @@ const WriteLayout = () => {
           <h2>Writing a good question</h2>
           <div>
             <p>
-              You’re ready to <span className="link">ask</span> a
+              You’re ready to <span className="link">ask</span> a{" "}
               <span className="link">programming-related question</span> and
               this form will help guide you through the process.
             </p>
@@ -128,6 +131,7 @@ const WriteLayout = () => {
         </Write>
         <PostButton>Post your question</PostButton>
       </Div>
+      <Footer />
     </Background>
   );
 };

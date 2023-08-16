@@ -2,9 +2,12 @@ import GlobalStyle from "@/styles/global";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LoginPage from "@/pages/Login";
 import SignUpPage from "@/pages/Signup";
+import QuestionList from "@/pages/QuestionList";
+import QuestionDetail from "@/pages/QuestionDetail";
+import QuestionWrite from "@/pages/QuestionWrite";
 import Home from "@/pages/Home";
 import Root from "@/routers/Root";
-import QuestionList from "@/pages/QuestionList";
+import NotFound from "@/pages/NotFound";
 
 const router = createBrowserRouter([
   {
@@ -17,8 +20,16 @@ const router = createBrowserRouter([
       },
 
       {
-        path: "QuestionList",
+        path: "Questions/List",
         element: <QuestionList />,
+      },
+      {
+        path: "Questions/:questionId",
+        element: <QuestionDetail />,
+      },
+      {
+        path: "*",
+        element: <NotFound />,
       },
     ],
   },
