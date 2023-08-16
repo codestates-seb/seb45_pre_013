@@ -8,6 +8,14 @@ export const Background = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  & > div {
+    display: flex;
+    width: 100%;
+    height: max-content;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export const Div = styled.div`
@@ -86,14 +94,6 @@ export const Notice = styled.div`
     font-size: var(--fs-normal);
     display: flex;
     flex-direction: column;
-  }
-
-  span.link {
-    color: var(--blue-600);
-
-    &:hover {
-      color: var(--blue-500);
-    }
   }
 
   @media (max-width: 1265px) {
@@ -199,14 +199,6 @@ export const WriteGuide = styled.div`
       margin-right: 8px;
     }
 
-    span.link {
-      color: var(--blue-600);
-
-      &:hover {
-        color: var(--blue-500);
-      }
-    }
-
     & > div {
       display: flex;
       flex-direction: column;
@@ -234,6 +226,7 @@ export const PostButton = styled.button`
   border-radius: 6px;
   background-color: var(--blue-500);
   color: var(--white);
+  cursor: pointer;
 
   &:hover {
     background-color: var(--blue-600);

@@ -18,5 +18,6 @@ export const TitleDiv = styled.div`
     border-radius: 6px;
     background-color: var(--blue-500);
     color: var(--white);
+    cursor: pointer;
   }
 `;

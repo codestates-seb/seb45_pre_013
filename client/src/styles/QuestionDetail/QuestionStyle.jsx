@@ -111,12 +111,4 @@ export const AnswerStart = styled.div`
 
 export const More = styled.p`
   font-size: var(--fs-headline2);
-
-  span.link {
-    color: var(--blue-600);
-
-    &:hover {
-      color: var(--blue-500);
-    }
-  }
 `;

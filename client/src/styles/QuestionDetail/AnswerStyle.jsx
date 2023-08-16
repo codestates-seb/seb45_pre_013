@@ -29,6 +29,7 @@ export const Form = styled.form`
     border-radius: 6px;
     background-color: var(--blue-500);
     color: var(--white);
+    cursor: pointer;
 
     &:hover {
       background-color: var(--blue-600);
