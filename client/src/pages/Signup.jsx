@@ -1,5 +1,3 @@
-import React from "react";
-import styled from "styled-components";
 import SignUpForm from "../components/SignupForm";
 import { PageContainer } from "../styles/Signup/SignupPageStyle";
 
@@ -32,7 +30,6 @@ const SignUpPage = () => {
             <a href="">Get Stack Overflow for Teams free for up to 50 users.</a>
           </div>
         </div>
-
         <SignUpForm />
       </PageContainer>
     </>

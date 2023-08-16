@@ -11,7 +11,7 @@ import {
   FlexMain,
   AnswerStart,
   More,
-} from "@/styles/QuestionStyle";
+} from "@/styles/QuestionDetail/QuestionStyle";
 import { Flex } from "@/styles/DivStyle";
 
 const QuestionArticle = () => {

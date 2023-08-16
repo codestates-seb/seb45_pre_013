@@ -1,4 +1,3 @@
-import { useState } from "react";
 import GlobalStyle from "../styles/global";
 import { LoginContainer } from "../styles/Login/LoginFormStyle";
 
