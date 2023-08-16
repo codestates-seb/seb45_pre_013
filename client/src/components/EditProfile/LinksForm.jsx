@@ -4,7 +4,7 @@ import {
   LinksFormInput,
   LinksItemContainer,
   FlexItemContainer,
-} from "../../styles/EditProfile/LinksFormStyle";
+} from "@/styles/EditProfile/LinksFormStyle";
 
 const LinksForm = () => {
   return (

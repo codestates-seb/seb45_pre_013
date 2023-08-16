@@ -6,7 +6,7 @@ import {
   AgreeFormContainer,
   CheckboxContainer,
   DeleteBtn,
-} from "../../styles/DeleteProfileStyle";
+} from "@/styles/DeleteProfileStyle";
 
 const DeleteProfileForm = () => {
   const [isChecked, setIsChecked] = useState(false);

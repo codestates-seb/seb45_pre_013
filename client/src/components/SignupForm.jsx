@@ -1,4 +1,4 @@
-import { SignUpContainer } from "../styles/Signup/SignupFormStyle";
+import { SignUpContainer } from "@/styles/Signup/SignupFormStyle";
 
 const SignUpForm = () => {
   // const [loginInfo, setLoginInfo] = useState({ email: "", password: "" });

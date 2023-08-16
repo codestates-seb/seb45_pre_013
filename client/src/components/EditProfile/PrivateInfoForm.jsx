@@ -5,7 +5,7 @@ import {
   PrivateTitleContainer,
   PrivateInformationForm,
   InformationTitle,
-} from "../../styles/EditProfile/PrivateInfoFormStyle";
+} from "@/styles/EditProfile/PrivateInfoFormStyle";
 
 const PrivateInfoForm = () => {
   return (

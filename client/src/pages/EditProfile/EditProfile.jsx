@@ -6,12 +6,12 @@ import {
   BtnContainer,
   SaveBtn,
   CancelBtn,
-} from "../../styles/EditProfile/EditProfilePageStyle";
+} from "@/styles/EditProfile/EditProfilePageStyle";
 
-import EditProfileNav from "../../components/EditProfile/EditProfileNav";
-import LinksForm from "../../components/EditProfile/LinksForm";
-import PrivateInfoForm from "../../components/EditProfile/PrivateInfoForm";
-import PublicInformation from "../../components/EditProfile/PublicInformation";
+import EditProfileNav from "@/components/EditProfile/EditProfileNav";
+import LinksForm from "@/components/EditProfile/LinksForm";
+import PrivateInfoForm from "@/components/EditProfile/PrivateInfoForm";
+import PublicInformation from "@/components/EditProfile/PublicInformation";
 
 const EditProfilePage = () => {
   return (

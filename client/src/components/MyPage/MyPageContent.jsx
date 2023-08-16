@@ -8,7 +8,7 @@ import {
   HeadlineTxt,
   AboutMeBlock,
   StatContent,
-} from "../../styles/MyPage/MyPageContent";
+} from "@/styles/MyPage/MyPageContent";
 
 const MyPageContent = () => {
   return (

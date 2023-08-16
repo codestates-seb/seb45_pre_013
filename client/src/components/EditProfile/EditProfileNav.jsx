@@ -2,7 +2,7 @@ import {
   ProfileNav,
   NavActiveBtn,
   NavNormalBtn,
-} from "../../styles/EditProfile/EditProfileNavStyle";
+} from "@/styles/EditProfile/EditProfileNavStyle";
 
 const EditProfileNav = () => {
   return (

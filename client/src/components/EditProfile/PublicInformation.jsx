@@ -7,7 +7,7 @@ import {
   EditInfoFormContainer,
   AboutMeContainer,
   AboutMeForm,
-} from "../../styles/EditProfile/PublicInformationStyle";
+} from "@/styles/EditProfile/PublicInformationStyle";
 
 const PublicInformation = () => {
   return (

@@ -1,4 +1,3 @@
-import GlobalStyle from "../styles/global";
 import { LoginContainer } from "../styles/Login/LoginFormStyle";
 
 const LoginForm = () => {
@@ -6,7 +5,6 @@ const LoginForm = () => {
 
   return (
     <>
-      <GlobalStyle />
       <LoginContainer className="login-container">
         <div className="login-email">
           <label htmlFor="email">Email</label>
