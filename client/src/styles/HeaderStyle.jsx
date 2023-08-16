@@ -41,13 +41,13 @@ export const Head = styled.header`
 `;
 
 export const MenuLine = styled.div`
-  display: ${(props) => props.dp};
+  display: ${(props) => props.$dp};
   margin: 2px;
   width: 20px;
   height: 3px;
   background-color: var(--black-300);
-  transform: rotate(${(props) => props.age}deg)
-    translate(0, ${(props) => props.y / 10}px);
+  transform: rotate(${(props) => props.$age}deg)
+    translate(0, ${(props) => props.$y / 10}px);
   transition: 0.1s;
 `;
 
@@ -173,10 +173,10 @@ export const TopBtn = styled.button`
   width: auto;
   min-width: 72px;
   height: 33px;
-  color: ${(props) => `var(${props.color})` || "var(--black)"};
-  background-color: ${(props) => `var(${props.bgColor})` || "var(--black)"};
+  color: ${(props) => `var(${props.$color})` || "var(--black)"};
+  background-color: ${(props) => `var(${props.$bgColor})` || "var(--black)"};
   &:hover {
-    background-color: ${(props) => `var(${props.hover})`};
+    background-color: ${(props) => `var(${props.$hover})`};
   }
 `;
 
