@@ -1,3 +1,6 @@
+import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
+import { useCookies } from "react-cookie";
 import {
   Head,
   MenuLine,
@@ -17,13 +20,10 @@ import {
   MdSourceIcon,
 } from "@/styles/IconStyle";
 import { BRANDLOGOIMG, USERPROFILEIMG, LOGOIMG } from "@/config/config";
-import { useState } from "react";
-import { Link } from "react-router-dom";
 import Sidebar from "./Sidebar";
-import { useRef } from "react";
-import { useEffect } from "react";
 
 const Header = ({ smallSidebar = "" }) => {
+  const [cookies] = useCookies();
   const [logInOutWhether, setLogInOutWhether] = useState(false);
   const [ageVal, setAgeVal] = useState(0);
   const [inputVisible, setInputVisible] = useState(false);
@@ -87,7 +87,7 @@ const Header = ({ smallSidebar = "" }) => {
           </SearchDiv>
 
           <TopBtnDiv>
-            {logInOutWhether ? (
+            {cookies.user ? (
               <>
                 <IconDiv>
                   <UserImg src={USERPROFILEIMG} />
