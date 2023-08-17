@@ -2,6 +2,7 @@ import background from "@/assets/image/backgroundQuestionWrite.svg";
 import iconWrite from "@/assets/image/iconWrite.png";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Modal from "@/components/Modal";
 import {
   HeadlineDiv,
   Notice,
@@ -11,8 +12,11 @@ import {
   Null,
 } from "@/styles/QuestionWriteStyle";
 import { Background } from "@/styles/RootStyle";
+import { useState } from "react";
 
 const WriteLayout = () => {
+  const [isModal, setIsModal] = useState(false);
+
   return (
     <Background>
       <Header />
@@ -98,6 +102,7 @@ const WriteLayout = () => {
             <textarea></textarea>
           </Write>
           <PostButton>Post your question</PostButton>
+          <Modal></Modal>
         </div>
         <Footer />
       </div>
