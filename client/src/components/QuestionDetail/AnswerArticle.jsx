@@ -5,7 +5,7 @@ const AnswerArticle = ({ answer }) => {
   return (
     <Article>
       <Vote />
-      <div>{answer.article}</div>
+      <div>{answer.content}</div>
     </Article>
   );
 };
