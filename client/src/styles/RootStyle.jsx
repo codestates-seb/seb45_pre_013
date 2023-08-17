@@ -15,8 +15,10 @@ export const Div = styled.div`
     align-items: center;
 
     & > div:first-child {
-      padding: 20px;
-      min-height: calc(100vh - 382px);
+      & > div:nth-child(2) {
+        padding: 20px;
+        min-height: calc(100vh - 382px);
+      }
     }
   }
 `;
@@ -38,7 +40,6 @@ export const Background = styled.div`
     align-items: center;
 
     & > div:first-child {
-      padding: 20px;
       display: flex;
       flex-wrap: wrap;
       flex-direction: row-reverse;

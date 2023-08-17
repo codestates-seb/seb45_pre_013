@@ -4,7 +4,7 @@ import { Icon, PageContainer } from "@/styles/Login/LoginPageStyle";
 const LoginPage = () => {
   return (
     <>
-      <Header />
+      <Header smallSidebar="small" />
       <PageContainer>
         <Icon
           className="icon"
