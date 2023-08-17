@@ -23,7 +23,7 @@ import Sidebar from "./Sidebar";
 import { useRef } from "react";
 import { useEffect } from "react";
 
-const Header = () => {
+const Header = ({ smallSidebar = "" }) => {
   const [logInOutWhether, setLogInOutWhether] = useState(false);
   const [ageVal, setAgeVal] = useState(0);
   const [inputVisible, setInputVisible] = useState(false);
@@ -47,12 +47,14 @@ const Header = () => {
     <>
       <Head>
         <div className="contents">
-          <div className="Menubtn" onClick={change}>
-            <MenuLine $age={-ageVal} $y={ageVal} />
-            <MenuLine $dp={ageVal && "none"} />
-            <MenuLine $age={ageVal} $y={-ageVal} />
-            {ageVal ? <Sidebar /> : null}
-          </div>
+          {smallSidebar ? (
+            <div className="Menubtn" onClick={change}>
+              <MenuLine $age={-ageVal} $y={ageVal} />
+              <MenuLine $dp={ageVal && "none"} />
+              <MenuLine $age={ageVal} $y={-ageVal} />
+              {ageVal ? <Sidebar smallSidebar={smallSidebar} /> : null}
+            </div>
+          ) : null}
 
           <Link to={"/"}>
             <Logo>

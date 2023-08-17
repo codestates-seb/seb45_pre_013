@@ -1,13 +1,23 @@
 import styled from "styled-components";
 
 export const SidebarDiv = styled.div`
-  position: absolute;
-  top: 56px;
-  padding-top: 24px;
-  left: 0px;
-  width: 240px;
-  background-color: var(--white);
-  box-shadow: 0px 0px 10px var(--black-100);
+  padding: 24px 0 0 0;
+  ${(props) => {
+    return props.$small
+      ? `
+        position: absolute;
+        top: 56px;
+        left: 0px;
+        width: 240px;
+        background-color: var(--white);
+        box-shadow: 0px 0px 10px var(--black-100);
+      `
+      : `
+        width: 164px;
+        background-color: transparent;
+        border-right: 1px solid var(--black-100);
+      `;
+  }}
 
   .SidebarContent {
     height: 300px;
@@ -15,7 +25,7 @@ export const SidebarDiv = styled.div`
 
   li {
     list-style-type: none;
-    width: 240px;
+    width: 100%;
     font-size: var(--fs-base);
     padding: 4px 4px 4px 30px;
     color: var(--black-300);

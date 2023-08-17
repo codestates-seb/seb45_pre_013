@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-const Sidebar = () => {
+const Sidebar = ({ smallSidebar }) => {
   const location = useLocation().pathname;
   const [selectedPage, setSelectedPage] = useState(location);
 
@@ -21,7 +21,7 @@ const Sidebar = () => {
   }, [location]);
 
   return (
-    <SidebarDiv>
+    <SidebarDiv $small={smallSidebar}>
       <div className="SidebarContent">
         <ul>
           <Link to={"/"}>
@@ -29,13 +29,19 @@ const Sidebar = () => {
           </Link>
           <Link to={"/Questions/List"}>
             <li
-              className={selectedPage === "/QuestionList" ? "selectedPage" : ""}
+              className={
+                selectedPage === "/Questions/List" ? "selectedPage" : ""
+              }
             >
               Questions
             </li>
           </Link>
           <Link to={"/MyPage"}>
-            <li className={selectedPage === "/User" ? "selectedPage" : ""}>
+            <li
+              className={
+                selectedPage.slice(0, 7) === "/MyPage" ? "selectedPage" : ""
+              }
+            >
               User
             </li>
           </Link>
