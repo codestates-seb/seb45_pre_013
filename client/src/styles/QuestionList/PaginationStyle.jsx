@@ -55,3 +55,9 @@ export const PageButton = styled.button`
     transform: revert;
   }
 `;
+
+export const PageEllipsis = styled.p`
+  &[disabled] {
+    display: none;
+  }
+`;

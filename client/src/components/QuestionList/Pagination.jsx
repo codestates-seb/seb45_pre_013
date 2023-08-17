@@ -1,4 +1,8 @@
-import { PageButton, Nav } from "@/styles/QuestionList/PaginationStyle";
+import {
+  PageButton,
+  Nav,
+  PageEllipsis,
+} from "@/styles/QuestionList/PaginationStyle";
 import { useState } from "react";
 
 function Pagination({ total, limit, page, setPage, setLimit }) {
@@ -18,6 +22,10 @@ function Pagination({ total, limit, page, setPage, setLimit }) {
           <PageButton onClick={() => setPage(page - 1)} disabled={page === 1}>
             Prev
           </PageButton>
+          <PageButton onClick={() => setPage(1)} disabled={page === 1}>
+            {1}
+          </PageButton>
+          <PageEllipsis disabled={page === 1}>...</PageEllipsis>
           {Array(numPages)
             .fill()
             .map((_, i) => (
@@ -29,6 +37,13 @@ function Pagination({ total, limit, page, setPage, setLimit }) {
                 {i + 1}
               </PageButton>
             ))}
+          <PageEllipsis disabled={page === numPages}>...</PageEllipsis>
+          <PageButton
+            onClick={() => setPage(numPages)}
+            disabled={page === numPages}
+          >
+            {numPages}
+          </PageButton>
           <PageButton
             onClick={() => setPage(page + 1)}
             disabled={page === numPages}
