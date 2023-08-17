@@ -15,6 +15,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
+    errorElement: <NotFound />,
   },
   {
     path: "Questions/Ask/",
@@ -31,10 +32,6 @@ const router = createBrowserRouter([
       {
         path: ":questionId/",
         element: <QuestionDetail />,
-      },
-      {
-        path: "*",
-        element: <NotFound />,
       },
     ],
   },
@@ -59,10 +56,6 @@ const router = createBrowserRouter([
   {
     path: "SignUp/",
     element: <SignUpPage />,
-  },
-  {
-    path: "*",
-    element: <NotFound />,
   },
 ]);
 
