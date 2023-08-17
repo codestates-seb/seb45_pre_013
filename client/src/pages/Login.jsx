@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
-import LoginForm from "../components/LoginForm";
-import { Icon, PageContainer } from "../styles/Login/LoginPageStyle";
+import LoginForm from "@/components/LoginForm";
+import { Icon, PageContainer } from "@/styles/Login/LoginPageStyle";
 const LoginPage = () => {
   return (
     <>

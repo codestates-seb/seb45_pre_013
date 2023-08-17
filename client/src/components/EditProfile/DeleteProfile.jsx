@@ -6,7 +6,7 @@ import {
   AgreeFormContainer,
   CheckboxContainer,
   DeleteBtn,
-} from "../../styles/DeleteProfileStyle";
+} from "@/styles/DeleteProfileStyle";
 
 const DeleteProfileForm = () => {
   const [isChecked, setIsChecked] = useState(false);
@@ -23,7 +23,7 @@ const DeleteProfileForm = () => {
       <DeleteContainer>
         <DeleteTxtContainer>
           <p>
-            Before confirming that you would like your profile deleted, we'd
+            Before confirming that you would like your profile deleted, we{"'"}d
             like to take a moment to explain the implications of deletion:{" "}
           </p>
           <ul>
@@ -43,8 +43,8 @@ const DeleteProfileForm = () => {
           <p>
             Confirming deletion will only delete your profile on Stack Overflow
             - it will not affect any of your other profiles on the Stack
-            Exchange network. If you want to delete multiple profiles, you'll
-            need to visit each site separately and request deletion of those
+            Exchange network. If you want to delete multiple profiles, you{"'"}
+            ll need to visit each site separately and request deletion of those
             individual profiles.{" "}
           </p>
           <AgreeFormContainer>

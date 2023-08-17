@@ -1,11 +1,11 @@
-import MyPageTap from "../../components/MyPage/MyPageTap";
+import MyPageTap from "@/components/MyPage/MyPageTap";
+import MyPageContent from "@/components/MyPage/MyPageContent";
+import MyPagePreview from "@/components/MyPage/MyPagePreview";
 import { styled } from "styled-components";
-import MyPageContent from "../../components/MyPage/MyPageContent";
-import MyPagePreview from "../../components/MyPage/MyPagePreview";
 const MyPagePageContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: calc(100vw - 40px);
   max-width: 1051px;
   height: 982px;
   /* border: 2px solid red; */

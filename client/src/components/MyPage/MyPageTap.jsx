@@ -1,9 +1,8 @@
-import { styled } from "styled-components";
 import {
   MyPageTapContainer,
   ActiveBtn,
   NormalBtn,
-} from "../../styles/MyPage/MyPageTapStyle";
+} from "@/styles/MyPage/MyPageTapStyle";
 
 const MyPageTap = () => {
   return (

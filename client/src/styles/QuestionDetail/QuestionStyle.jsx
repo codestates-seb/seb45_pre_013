@@ -6,6 +6,10 @@ export const Div = styled.div`
   @media (max-width: 1265px) {
     width: calc(100vw - 214px);
   }
+
+  @media (max-width: 640px) {
+    width: 100%;
+  }
 `;
 
 export const ArticleMoreData = styled.div`

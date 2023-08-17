@@ -8,14 +8,14 @@ export const InformationTitle = styled.div`
 `;
 
 export const PrivateInfoContainer = styled.div`
-display:flex;
-align-items:center;
-width:100%
-max-width:843px;
-height:107px;
-border: 1px solid var(--black-200);
-border-radius:10px;
-margin-bottom:60px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 843px;
+  height: 107px;
+  border: 1px solid var(--black-200);
+  border-radius: 10px;
+  margin-bottom: 60px;
 `;
 
 export const PrivateInfoFormContainer = styled.div`

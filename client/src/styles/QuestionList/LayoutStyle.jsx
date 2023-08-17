@@ -23,7 +23,7 @@ export const ListDiv = styled(Flex)`
   }
 
   @media (max-width: 980px) {
-    width: calc(100vw);
+    width: 100%;
     flex-direction: column;
   }
 `;
@@ -59,7 +59,7 @@ export const ItemDiv = styled(Flex)`
     }
 
     @media (max-width: 980px) {
-      width: calc(100% - 16px);
+      width: calc(100% - 40px);
       flex-direction: row;
       justify-content: left;
     }

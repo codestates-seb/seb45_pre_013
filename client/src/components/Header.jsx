@@ -48,9 +48,9 @@ const Header = () => {
       <Head>
         <div className="contents">
           <div className="Menubtn" onClick={change}>
-            <MenuLine age={-ageVal} y={ageVal} />
-            <MenuLine dp={ageVal && "none"} />
-            <MenuLine age={ageVal} y={-ageVal} />
+            <MenuLine $age={-ageVal} $y={ageVal} />
+            <MenuLine $dp={ageVal && "none"} />
+            <MenuLine $age={ageVal} $y={-ageVal} />
             {ageVal ? <Sidebar /> : null}
           </div>
 
@@ -108,18 +108,18 @@ const Header = () => {
                 <Link to={"/Login"}>
                   <TopBtn
                     onClick={changeInOutWhether}
-                    color="--powder-700"
-                    bgColor="--powder-100"
-                    hover="--powder-400"
+                    $color="--powder-700"
+                    $bgColor="--powder-100"
+                    $hover="--powder-400"
                   >
                     Log in
                   </TopBtn>
                 </Link>
                 <Link to={"/Signup"}>
                   <TopBtn
-                    color="--white"
-                    bgColor="--blue-500"
-                    hover="--blue-700"
+                    $color="--white"
+                    $bgColor="--blue-500"
+                    $hover="--blue-700"
                   >
                     Sign up
                   </TopBtn>

@@ -3,8 +3,6 @@ import iconWrite from "@/assets/image/iconWrite.png";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import {
-  Background,
-  Div,
   HeadlineDiv,
   Notice,
   Write,
@@ -12,13 +10,14 @@ import {
   PostButton,
   Null,
 } from "@/styles/QuestionWriteStyle";
+import { Background } from "@/styles/RootStyle";
 
 const WriteLayout = () => {
   return (
     <Background>
       <Header />
       <div>
-        <Div>
+        <div>
           <HeadlineDiv>
             <h1>Ask a public question</h1>
             <img src={background} />
@@ -98,42 +97,8 @@ const WriteLayout = () => {
             </div>
             <textarea></textarea>
           </Write>
-          <WriteGuide>
-            <h4>Expand on the problem</h4>
-            <div>
-              <img src={iconWrite} />
-              <div>
-                <p>
-                  Show what you’ve tried, tell us what happened, and why it
-                  didn’t meet your needs.
-                </p>
-                <p>
-                  Not all questions benefit from including code, but if your
-                  problem is better understood with code you’ve written, you
-                  should include a{" "}
-                  <span className="link">minimal, reproducible example.</span>
-                </p>
-                <p>
-                  Please make sure to post code and errors as text directly to
-                  the question (and <span className="link">not as images</span>
-                  ), and{" "}
-                  <span className="link">format them appropriately.</span>
-                </p>
-              </div>
-            </div>
-          </WriteGuide>
-          <Write>
-            <label>What did you try and what were you expecting?</label>
-            <div>
-              <p>
-                Describe what you tried, what you expected to happen, and what
-                actually resulted. Minimum 20 characters.
-              </p>
-            </div>
-            <textarea></textarea>
-          </Write>
           <PostButton>Post your question</PostButton>
-        </Div>
+        </div>
         <Footer />
       </div>
     </Background>

@@ -14,28 +14,23 @@ import EditProfilePage from "@/pages/EditProfile/EditProfile";
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <Home />,
+  },
+  {
+    path: "Questions/Ask/",
+    element: <QuestionWrite />,
+  },
+  {
+    path: "Questions/",
     element: <Root />,
     children: [
       {
-        path: "/",
-        element: <Home />,
-      },
-
-      {
-        path: "Questions/List",
+        path: "List/",
         element: <QuestionList />,
       },
       {
-        path: "Questions/:questionId",
+        path: ":questionId/",
         element: <QuestionDetail />,
-      },
-      {
-        path: "/MyPage",
-        element: <MyPage />,
-      },
-      {
-        path: "/MyPage/EditProfile",
-        element: <EditProfilePage />,
       },
       {
         path: "*",
@@ -44,16 +39,30 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "Questions/Ask",
-    element: <QuestionWrite />,
+    path: "MyPage/",
+    element: <Root />,
+    children: [
+      {
+        path: "",
+        element: <MyPage />,
+      },
+      {
+        path: "EditProfile/",
+        element: <EditProfilePage />,
+      },
+    ],
   },
   {
-    path: "Login",
+    path: "Login/",
     element: <LoginPage />,
   },
   {
-    path: "SignUp",
+    path: "SignUp/",
     element: <SignUpPage />,
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ]);
 
