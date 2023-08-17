@@ -1,5 +1,24 @@
 import styled from "styled-components";
 
+export const IsModalBtn = styled.button`
+  cursor: pointer;
+  margin: 10px 10px;
+  padding: 5px;
+  height: 38px;
+  border-radius: 5px;
+  border: 3px solid transparent;
+  color: var(--red);
+  box-sizing: border-box;
+
+  &:hover {
+    background-color: #b40000;
+    color: var(--white);
+  }
+  &:active {
+    border: 3px solid #a0a0a064;
+  }
+`;
+
 export const ModalOverlay = styled.div`
   display: flex;
   justify-content: center;
@@ -10,21 +29,20 @@ export const ModalOverlay = styled.div`
   background-color: #1400006c;
   width: 100%;
   height: 100%;
-
-  &.hidden {
-    display: none;
-  }
+  display: ${(props) => (props.isModal ? "" : "none")};
 `;
 
 export const ModalContent = styled.div`
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 30%;
   padding: 20px;
   border-radius: 15px;
-  width: 35%;
-  height: 20%;
+  width: 450px;
+  height: 150px;
   background-color: var(--white);
   box-shadow: 0 0 10px var(--black-500);
-
+  display: ${(props) => (props.isModal ? "" : "none")};
   h1 {
     margin-bottom: 10px;
     font-size: var(--fs-headline1);
@@ -35,6 +53,11 @@ export const ModalContent = styled.div`
     margin-bottom: 10px;
     font-size: var(--fs-small);
   }
+
+  button {
+    cursor: pointer;
+  }
+
   .close {
     position: absolute;
     display: flex;
@@ -53,9 +76,13 @@ export const ModalContent = styled.div`
     border: 3px solid transparent;
     background-color: var(--red);
     color: var(--white);
+    box-sizing: border-box;
 
     &:hover {
       background-color: #b40000;
+    }
+    &:active {
+      border: 3px solid #a0a0a064;
     }
   }
   .cancel {

@@ -12,11 +12,8 @@ import {
   Null,
 } from "@/styles/QuestionWriteStyle";
 import { Background } from "@/styles/RootStyle";
-import { useState } from "react";
 
 const WriteLayout = () => {
-  const [isModal, setIsModal] = useState(false);
-
   return (
     <Background>
       <Header />
@@ -101,8 +98,8 @@ const WriteLayout = () => {
             </div>
             <textarea></textarea>
           </Write>
+          <Modal />
           <PostButton>Post your question</PostButton>
-          <Modal></Modal>
         </div>
         <Footer />
       </div>
