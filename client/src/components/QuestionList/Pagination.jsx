@@ -15,6 +15,18 @@ function Pagination({ total, limit, page, setPage, setLimit }) {
     setCurrentPagecount(Number(newLimit));
   };
 
+  const getPageNumbers = () => {
+    const pageNumbers = [];
+    const minPage = Math.max(1, page - 2);
+    const maxPage = Math.min(numPages, minPage + 4);
+
+    for (let i = minPage; i <= maxPage; i++) {
+      pageNumbers.push(i);
+    }
+
+    return pageNumbers;
+  };
+
   return (
     <>
       <Nav>
@@ -22,25 +34,23 @@ function Pagination({ total, limit, page, setPage, setLimit }) {
           <PageButton onClick={() => setPage(page - 1)} disabled={page === 1}>
             Prev
           </PageButton>
-          <PageButton onClick={() => setPage(1)} disabled={page === 1}>
+          <PageButton onClick={() => setPage(1)} disabled={page <= 3}>
             {1}
           </PageButton>
-          <PageEllipsis disabled={page === 1}>...</PageEllipsis>
-          {Array(numPages)
-            .fill()
-            .map((_, i) => (
-              <PageButton
-                key={i + 1}
-                onClick={() => setPage(i + 1)}
-                aria-current={page === i + 1 ? "page" : null}
-              >
-                {i + 1}
-              </PageButton>
-            ))}
-          <PageEllipsis disabled={page === numPages}>...</PageEllipsis>
+          <PageEllipsis disabled={page <= 3}>...</PageEllipsis>
+          {getPageNumbers().map((pageNum) => (
+            <PageButton
+              key={pageNum}
+              onClick={() => setPage(pageNum)}
+              aria-current={page === pageNum ? "page" : null}
+            >
+              {pageNum}
+            </PageButton>
+          ))}
+          <PageEllipsis disabled={page >= numPages - 2}>...</PageEllipsis>
           <PageButton
             onClick={() => setPage(numPages)}
-            disabled={page === numPages}
+            disabled={page >= numPages - 2}
           >
             {numPages}
           </PageButton>
