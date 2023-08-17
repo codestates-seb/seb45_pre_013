@@ -24,6 +24,6 @@ public class QuestionResponseDto {
 
     public void setMember(MemberDto.Response memberToMemberResponseDto) {
         this.name = memberToMemberResponseDto.getName();
-        this.memberId = memberToMemberResponseDto.getUserId();
+        this.memberId = memberToMemberResponseDto.getMemberId();
     }
 }

@@ -1,7 +1,7 @@
 package com.preproject.overflow.question.controller;
 
-import com.preproject.overflow.dto.MultiResponseDto;
-import com.preproject.overflow.dto.SingleResponseDto;
+import com.preproject.overflow.question.dto.MultiResponseDto;
+import com.preproject.overflow.question.dto.SingleResponseDto;
 import com.preproject.overflow.question.dto.QuestionPatchDto;
 import com.preproject.overflow.question.dto.QuestionPostDto;
 import com.preproject.overflow.question.dto.QuestionResponseDto;
@@ -10,8 +10,8 @@ import com.preproject.overflow.question.entity.Question;
 import com.preproject.overflow.question.mapper.QuestionMapper;
 import com.preproject.overflow.question.service.QuestionService;
 import com.preproject.overflow.question.service.QuestionTagService;
-import com.preproject.overflow.user.mapper.UserMapper;
-import com.preproject.overflow.user.service.UserService;
+import com.preproject.overflow.member.mapper.MemberMapper;
+import com.preproject.overflow.member.service.MemberService;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -47,9 +47,9 @@ public class QuestionController {
     @PostMapping
     public ResponseEntity postQuestion(@Valid @RequestBody QuestionPostDto questionPostDto) {
 
-        Question question = questionService.createQuestion(mapper.questionPostToQuestion(userService, questionPostDto));
+        Question question = questionService.createQuestion(mapper.questionPostToQuestion(memberService, questionPostDto));
         return new ResponseEntity<>(
-                new SingleResponseDto<>(mapper.questionToQuestionResponse(userMapper, question))
+                new SingleResponseDto<>(mapper.questionToQuestionResponse(memberMapper, question))
                 , HttpStatus.CREATED);
     }
 
@@ -77,7 +77,7 @@ public class QuestionController {
         Question question = questionService.voteQuestion(mapper.questionVoteToQuestion(questionVoteDto),
                 vote);
         return new ResponseEntity<>(
-                new SingleResponseDto<>(mapper.questionToQuestionResponse(userMapper, question))
+                new SingleResponseDto<>(mapper.questionToQuestionResponse(memberMapper, question))
                 , HttpStatus.OK);
     }
 
@@ -87,7 +87,7 @@ public class QuestionController {
 
         Question question = questionService.findGetQuestion(questionId);
         return new ResponseEntity<>(
-                new SingleResponseDto<>(mapper.questionToQuestionResponse(userMapper, question)),
+                new SingleResponseDto<>(mapper.questionToQuestionResponse(memberMapper, question)),
                 HttpStatus.OK);
     }
 
@@ -100,7 +100,7 @@ public class QuestionController {
         List<Question> questions = pageQuestions.getContent();
         List<QuestionResponseDto> response =
                 questions.stream()
-                        .map(question -> mapper.questionToQuestionResponse(userMapper, question))
+                        .map(question -> mapper.questionToQuestionResponse(memberMapper, question))
                         .collect(Collectors.toList());
 
         return new ResponseEntity<>(

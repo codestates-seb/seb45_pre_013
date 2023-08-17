@@ -7,7 +7,7 @@ import com.preproject.overflow.tag.entity.Tag;
 import com.preproject.overflow.member.dto.MemberDto;
 import com.preproject.overflow.member.entity.Member;
 import com.preproject.overflow.member.mapper.MemberMapper;
-import com.preproject.overflow.member.service.UserService;
+import com.preproject.overflow.member.service.MemberService;
 import org.mapstruct.Mapper;
 
 import java.time.LocalDateTime;
@@ -20,14 +20,14 @@ public interface QuestionMapper {
     List<QuestionResponseDto> questionsToQuestionResponses(List<Question> questions);
     List<QuestionResponseDto> questionsToQuestionResponseDtos(List<Question> questions);
 
-    default Question questionPostToQuestion(UserService userService, QuestionPostDto questionPostDto) {
+    default Question questionPostToQuestion(MemberService memberService, QuestionPostDto questionPostDto) {
         if ( questionPostDto == null ) {
             return null;
         }
 
         Question question = new Question();
-        User user = new User();
-        user.setUserId(questionPostDto.getUserId());
+        Member member = new Member();
+        member.setMemberId(questionPostDto.getMemberId());
 
         List<QuestionTag> list = questionPostDto.getQuestionTagList().stream()
                 .map(questionTagDto -> {
@@ -43,7 +43,7 @@ public interface QuestionMapper {
         }
         question.setTitle( questionPostDto.getTitle() );
         question.setQuestionBody( questionPostDto.getQuestionBody() );
-        question.setUser(userService.findUser(user.getUserId()));
+        question.setMember(memberService.findMember(member.getMemberId()));
         question.setQuestionTagList(list);
         question.setCreatedAt(LocalDateTime.now());
 
@@ -73,7 +73,7 @@ public interface QuestionMapper {
     }
 
 
-    default QuestionResponseDto questionToQuestionResponse(UserMapper userMapper, Question question) {
+    default QuestionResponseDto questionToQuestionResponse(MemberMapper memberMapper, Question question) {
         if ( question == null ) {
             return null;
         }

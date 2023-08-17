@@ -104,14 +104,14 @@ public class QuestionService {
         Member member = memberService.findMember(question.getMember().getMemberId());
         member.setQuestionCount(member.getQuestionCount() + 1);
 
-        userService.updateMember(member);
+        memberService.updateMember(member);
     }
 
     private void downQuestionCount(Question question) {
         Member member = memberService.findMember(question.getMember().getMemberId());
         member.setQuestionCount(member.getQuestionCount() - 1);
 
-        userService.updateMember(member);
+        memberService.updateMember(member);
     }
 
     public Page<Question> findAnsweredQuestions(int page, int size) {

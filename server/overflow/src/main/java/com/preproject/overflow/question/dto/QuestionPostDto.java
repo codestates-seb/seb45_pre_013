@@ -1,6 +1,6 @@
 package com.preproject.overflow.question.dto;
 
-package com.preproject.overflow.user.entity.User;
+package com.preproject.overflow.member.entity.Member;
 import lombok.Getter;
 
 import javax.validation.Valid;
