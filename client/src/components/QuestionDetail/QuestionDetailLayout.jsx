@@ -25,21 +25,39 @@ import {
   ANSWER,
 } from "@/config/config";
 import { RANDOM_AVATAR } from "@/config/config";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setQuestion, addAnswer } from "@/store/store";
 
-const QuestionDetailLayout = ({ questionId }) => {
-  const question = {
-    id: questionId,
-    title: "How...",
-    text: "How to how ?",
-    userName: "bee",
-    userReputation: 0,
-    created: "today",
-    modified: "today",
-    vote: 10,
-    answer: [{ article: "hi" }, { article: "good" }],
-  }; //임시
+const QuestionDetailLayout = () => {
+  const dispatch = useDispatch();
+  const question = useSelector((state) => state.question);
+  const postanswer = useSelector((state) => state.answers);
 
-  console.log(question[ID]);
+  useEffect(() => {
+    const fetchedQuestion = {
+      id: 1,
+      title: "How to...",
+      text: "How to do something?",
+      userName: "bee",
+      userReputation: 0,
+      created: "today",
+      modified: "today",
+      vote: 10,
+      answer: [{ content: "hi" }, { content: "good" }],
+    };
+    dispatch(setQuestion(fetchedQuestion));
+  }, [dispatch]);
+
+  const handleAddAnswer = (newAnswer) => {
+    const updatedAnswers = [...question.answer, newAnswer];
+    const updatedQuestion = {
+      ...question,
+      answer: updatedAnswers,
+    };
+    dispatch(addAnswer(newAnswer));
+    dispatch(setQuestion(updatedQuestion));
+  };
 
   return (
     <Div>
@@ -81,10 +99,10 @@ const QuestionDetailLayout = ({ questionId }) => {
               <div>Highest score (default)</div>
             </div>
           </AnswerStart>
-          {question[ANSWER].map((item, index) => {
+          {[...question[ANSWER]].map((item, index) => {
             return <AnswerArticle key={index} answer={item} />;
           })}
-          <AnswerForm />
+          <AnswerForm handleAddAnswer={handleAddAnswer} />
           <More>
             Not the answer youre looking for? Browse other questions or{" "}
             <span className="link">ask your own question.</span>
