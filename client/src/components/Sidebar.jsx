@@ -8,12 +8,15 @@ const Sidebar = ({ smallSidebar }) => {
   const [selectedPage, setSelectedPage] = useState(location);
 
   useEffect(() => {
-    switch (selectedPage) {
+    switch (selectedPage.slice(0, 10)) {
       case "/Login":
         setSelectedPage("/User");
         break;
       case "/Signup":
         setSelectedPage("/User");
+        break;
+      case "/Questions":
+        setSelectedPage("/Questions");
         break;
       default:
         setSelectedPage(location);
@@ -28,11 +31,7 @@ const Sidebar = ({ smallSidebar }) => {
             <li className={selectedPage === "/" ? "selectedPage" : ""}>Home</li>
           </Link>
           <Link to={"/Questions/List"}>
-            <li
-              className={
-                selectedPage === "/Questions/List" ? "selectedPage" : ""
-              }
-            >
+            <li className={selectedPage === "/Questions" ? "selectedPage" : ""}>
               Questions
             </li>
           </Link>
