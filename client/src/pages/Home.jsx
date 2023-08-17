@@ -9,7 +9,7 @@ import { Background } from "@/styles/RootStyle";
 const Home = () => {
   return (
     <>
-      <Header />
+      <Header smallSidebar="small" />
       <Background>
         <div>
           <div>

@@ -5,7 +5,7 @@ import { PageContainer } from "@/styles/Signup/SignupPageStyle";
 const SignUpPage = () => {
   return (
     <>
-      <Header />
+      <Header smallSidebar="small" />
       <PageContainer>
         <div className="itemcontainer">
           <div className="headline">Join the Stack Overflow community</div>
