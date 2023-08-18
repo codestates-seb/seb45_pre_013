@@ -1,6 +1,6 @@
 package com.preproject.overflow.question.dto;
 
-package com.preproject.overflow.member.entity.Member;
+import com.preproject.overflow.member.entity.Member;
 import lombok.Getter;
 
 import javax.validation.Valid;
@@ -19,7 +19,7 @@ public class QuestionPostDto {
     private String title;
     @NotBlank(message = "질문을 작성해 주세요.")
 
-    private String questionBody;
+    private String text;
     @Valid @NotNull(message = "태그를 작성해 주세요")
     private List<QuestionTagDto> questionTagList;
 

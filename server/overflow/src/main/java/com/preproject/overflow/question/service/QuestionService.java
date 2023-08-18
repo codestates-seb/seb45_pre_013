@@ -1,5 +1,7 @@
 package com.preproject.overflow.question.service;
 
+import com.preproject.overflow.question.exception.ExceptionCode;
+import com.preproject.overflow.question.exception.BusinessLogicException;
 import com.preproject.overflow.question.entity.Question;
 import com.preproject.overflow.question.entity.QuestionTag;
 import com.preproject.overflow.question.repository.QuestionRepository;
@@ -45,7 +47,7 @@ public class QuestionService {
         Member member = memberRepository.findByMemberId(question.getMember().getMemberId());
         question.setMember(member);
         createTag(question);
-        upQuestionCount(question);
+        //upQuestionCount(question);
         return questionRepository.save(question);
     }
 
@@ -53,8 +55,8 @@ public class QuestionService {
     public Question updateQuestion(Question question) {
         Question findQuestion = questionRepository.findByQuestionId(question.getQuestionId());
 
-        Optional.ofNullable(question.getQuestionBody())
-                .ifPresent(questionBody -> findQuestion.setQuestionBody(questionBody));
+        Optional.ofNullable(question.getText())
+                .ifPresent(text -> findQuestion.setText(text));
 
         return questionRepository.save(findQuestion);
     }
@@ -86,7 +88,7 @@ public class QuestionService {
     }
 
     @Transactional(readOnly = true)
-    private Question findVerifyQuestion(Long questionId) {
+    public Question findVerifyQuestion(Long questionId) {
         Optional<Question> optionalQuestion = questionRepository.findById(questionId);
         Question question = optionalQuestion.orElseThrow(() ->
                 new BusinessLogicException(ExceptionCode.QUESTION_NOT_FOUND));
@@ -100,19 +102,6 @@ public class QuestionService {
         return findQuestion;
     }
 
-    private void upQuestionCount(Question question) {
-        Member member = memberService.findMember(question.getMember().getMemberId());
-        member.setQuestionCount(member.getQuestionCount() + 1);
-
-        memberService.updateMember(member);
-    }
-
-    private void downQuestionCount(Question question) {
-        Member member = memberService.findMember(question.getMember().getMemberId());
-        member.setQuestionCount(member.getQuestionCount() - 1);
-
-        memberService.updateMember(member);
-    }
 
     public Page<Question> findAnsweredQuestions(int page, int size) {
         List<Question> list = questionRepository.findByAnswerCountGreaterThan(0)
@@ -139,7 +128,7 @@ public class QuestionService {
     public void deleteQuestion(Long questionId) {
         Question question = findVerifyQuestion(questionId);
         deleteTag(question);
-        downQuestionCount(question);
+        //downQuestionCount(question);
         questionRepository.delete(question);
 
     }

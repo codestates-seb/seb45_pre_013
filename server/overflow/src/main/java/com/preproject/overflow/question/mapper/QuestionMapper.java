@@ -2,9 +2,9 @@ package com.preproject.overflow.question.mapper;
 
 import com.preproject.overflow.question.dto.*;
 import com.preproject.overflow.question.entity.Question;
-import com.preproject.overflow.question.QuestionTag;
+import com.preproject.overflow.question.entity.QuestionTag;
 import com.preproject.overflow.tag.entity.Tag;
-import com.preproject.overflow.member.dto.MemberDto;
+import com.preproject.overflow.member.dto.MemberResponseDto;
 import com.preproject.overflow.member.entity.Member;
 import com.preproject.overflow.member.mapper.MemberMapper;
 import com.preproject.overflow.member.service.MemberService;
@@ -42,7 +42,7 @@ public interface QuestionMapper {
             question.setQuestionTagList( new ArrayList<QuestionTag>( list ) );
         }
         question.setTitle( questionPostDto.getTitle() );
-        question.setQuestionBody( questionPostDto.getQuestionBody() );
+        question.setText( questionPostDto.getText() );
         question.setMember(memberService.findMember(member.getMemberId()));
         question.setQuestionTagList(list);
         question.setCreatedAt(LocalDateTime.now());
@@ -56,7 +56,7 @@ public interface QuestionMapper {
         question.setQuestionId(requestBody.getQuestionId());
 //        question.setVoteCount(requestBody.getVoteCount());
         question.setTitle(requestBody.getTitle());
-        question.setQuestionBody(requestBody.getQuestionBody());
+        question.setText(requestBody.getText());
 
         return question;
     }
@@ -84,7 +84,7 @@ public interface QuestionMapper {
 
         questionResponseDto.setQuestionId( question.getQuestionId() );
         questionResponseDto.setTitle( question.getTitle() );
-        questionResponseDto.setQuestionBody( question.getQuestionBody() );
+        questionResponseDto.setText( question.getText() );
         questionResponseDto.setQuestionTagList(questionTagListToQuestionTagResponseDtoList(question.getQuestionTagList()));
         questionResponseDto.setVoteCount( question.getVoteCount() );
         questionResponseDto.setAnswerCount( question.getAnswerCount() );
@@ -92,7 +92,7 @@ public interface QuestionMapper {
         questionResponseDto.setCreatedAt(question.getCreatedAt());
 
         Member member = question.getMember();
-        questionResponseDto.setMember(memberMapper.membertoMemberResponseDto(member));
+        questionResponseDto.setMember(memberMapper.memberToMemberResponseDto(member));
         questionResponseDto.setQuestionTagList(questionTagListToQuestionTagResponseDtoList(
                 question.getQuestionTagList()
         ));
@@ -112,18 +112,17 @@ public interface QuestionMapper {
                 .collect(Collectors.toList());
     }
 
-    default MemberDto.Response memberToResponse(Member member) {
+    default MemberResponseDto memberToResponse(Member member) {
         if ( member == null ) {
             return null;
         }
 
-        MemberDto.Response response = new MemberDto.Response();
+        MemberResponseDto response = new MemberResponseDto();
 
         response.setMemberId( member.getMemberId() );
         response.setEmail( member.getEmail() );
-        response.setName( member.getName() );
-        response.setPassword( member.getPassword() );
-        response.setQuestionCount( member.getQuestionCount() );
+        response.setNickname( member.getNickname() );
+        //response.setQuestionCount( member.getQuestionCount() );
 
         return response;
     }
@@ -138,7 +137,7 @@ public interface QuestionMapper {
         questionResponseDto.setMember( memberToResponse( question.getMember() ) );
         questionResponseDto.setQuestionId( question.getQuestionId() );
         questionResponseDto.setTitle( question.getTitle() );
-        questionResponseDto.setText( question.getQuestionBody() );
+        questionResponseDto.setText( question.getText() );
         questionResponseDto.setQuestionTagList( questionTagListToQuestionTagResponseDtoList( question.getQuestionTagList() ) );
         questionResponseDto.setVoteCount( question.getVoteCount() );
         questionResponseDto.setAnswerCount( question.getAnswerCount() );

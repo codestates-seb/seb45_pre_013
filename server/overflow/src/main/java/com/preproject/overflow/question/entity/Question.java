@@ -4,12 +4,12 @@ import com.preproject.overflow.audit.Auditable;
 import com.preproject.overflow.member.entity.Member;
 import lombok.NoArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Arraylist;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -41,8 +41,6 @@ public class Question extends Auditable {
 
     private LocalDateTime createdAt;
 
-    @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
-    private List<Answer> answerList = new ArrayList<>();
 
     @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
     private List<QuestionTag> questionTagList = new ArrayList<>();
@@ -56,13 +54,6 @@ public class Question extends Auditable {
         this.questionTagList.add(questionTag);
         if(questionTag.getQuestion() != this){
             questionTag.addQuestion(this);
-        }
-    }
-
-    public void addAnswer(Answer answer) {
-        this.answerList.add(answer);
-        if(answer.getQuestion() != this){
-            answer.setQuestion(this);
         }
     }
 

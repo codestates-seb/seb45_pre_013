@@ -1,7 +1,7 @@
 package com.preproject.overflow.tag.mapper;
 
-import com.codestates.preproject.tag.dto.TagDto;
-import com.codestates.preproject.tag.entity.Tag;
+import com.preproject.overflow.tag.dto.TagDto;
+import com.preproject.overflow.tag.entity.Tag;
 import org.mapstruct.Mapper;
 
 import java.util.List;

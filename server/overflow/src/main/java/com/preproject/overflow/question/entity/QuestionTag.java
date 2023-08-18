@@ -1,6 +1,6 @@
 package com.preproject.overflow.question.entity;
 
-import com.codestates.preproject.tag.entity.Tag;
+import com.preproject.overflow.tag.entity.Tag;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

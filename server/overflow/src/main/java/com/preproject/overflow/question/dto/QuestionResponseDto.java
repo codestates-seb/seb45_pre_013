@@ -1,6 +1,6 @@
 package com.preproject.overflow.question.dto;
 
-import com.preproject.overflow.member.dto.MemberDto;
+import com.preproject.overflow.member.dto.MemberResponseDto;
 import com.preproject.overflow.member.entity.Member;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,8 +22,8 @@ public class QuestionResponseDto {
     private int viewCount;
     private LocalDateTime createdAt;
 
-    public void setMember(MemberDto.Response memberToMemberResponseDto) {
-        this.name = memberToMemberResponseDto.getName();
+    public void setMember(MemberResponseDto memberToMemberResponseDto) {
+        this.name = memberToMemberResponseDto.getNickname();
         this.memberId = memberToMemberResponseDto.getMemberId();
     }
 }
