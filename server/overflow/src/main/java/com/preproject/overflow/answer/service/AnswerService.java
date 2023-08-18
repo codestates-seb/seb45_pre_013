@@ -63,13 +63,12 @@ public class AnswerService {
         return answerRepository.findAll();
     }
     // 답변 삭제 service
-    public void deleteAnswer(long answerId) {
-        Answer answer = new Answer();
-        answer.setAnswerId(answerId);
+    public void deleteAnswer(long answerId, Member member) {
+        Answer answer = findVerifiedAnswer(answerId);
 
-//        if(!(answer.getMember().getMemberId() == memberId)) {
-//            throw new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND);
-//        }
+        if(member.getMemberId() != answer.getMember().getMemberId()){
+            throw new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND);
+        }
 
         answerRepository.delete(answer);
     }

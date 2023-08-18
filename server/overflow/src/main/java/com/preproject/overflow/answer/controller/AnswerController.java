@@ -7,8 +7,10 @@ import com.preproject.overflow.answer.dto.AnswerVotePatchDto;
 import com.preproject.overflow.answer.entity.Answer;
 import com.preproject.overflow.answer.mapper.AnswerMapper;
 import com.preproject.overflow.answer.service.AnswerService;
+import com.preproject.overflow.member.entity.Member;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.web.bind.annotation.AuthenticationPrincipal;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -66,9 +68,10 @@ public class AnswerController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
     @DeleteMapping("/{answerId}")
-    public ResponseEntity deleteAnswer(@PathVariable("answerId") @Positive long answerId) {
+    public ResponseEntity deleteAnswer(@PathVariable("answerId") @Positive long answerId,
+                                       @AuthenticationPrincipal Member user) {
 
-        answerService.deleteAnswer(answerId);
+        answerService.deleteAnswer(answerId, user);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
