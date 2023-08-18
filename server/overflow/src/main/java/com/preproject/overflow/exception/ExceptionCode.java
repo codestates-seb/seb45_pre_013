@@ -1,4 +1,4 @@
-package com.preproject.overflow.member.exception;
+package com.preproject.overflow.exception;
 
 import lombok.Getter;
 
