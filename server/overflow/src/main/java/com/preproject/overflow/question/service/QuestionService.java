@@ -1,7 +1,7 @@
 package com.preproject.overflow.question.service;
 
-import com.preproject.overflow.question.exception.ExceptionCode;
-import com.preproject.overflow.question.exception.BusinessLogicException;
+import com.preproject.overflow.exception.ExceptionCode;
+import com.preproject.overflow.exception.BusinessLogicException;
 import com.preproject.overflow.question.entity.Question;
 import com.preproject.overflow.question.entity.QuestionTag;
 import com.preproject.overflow.question.repository.QuestionRepository;
@@ -52,15 +52,19 @@ public class QuestionService {
     }
 
     // 게시글 내용 수정
-    public Question updateQuestion(Question question) {
+    public Question updateQuestion(Question question, Member loggedInMember) {
         Question findQuestion = questionRepository.findByQuestionId(question.getQuestionId());
 
-        Optional.ofNullable(question.getText())
-                .ifPresent(text -> findQuestion.setText(text));
+        // Check if the logged-in user's memberId matches the author's memberId
+        if (findQuestion.getMember().getMemberId().equals(loggedInMember.getMemberId())) {
+            Optional.ofNullable(question.getText())
+                    .ifPresent(text -> findQuestion.setText(text));
 
-        return questionRepository.save(findQuestion);
+            return questionRepository.save(findQuestion);
+        } else {
+            throw new BusinessLogicException(ExceptionCode.MEMBER_PERMISSION_DENIED);
+        }
     }
-
     public Question voteQuestion(Question question, Boolean vote) {
         Question findQuestion = questionRepository.findByQuestionId(question.getQuestionId());
         if (vote.equals(true)) {

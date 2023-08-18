@@ -1,5 +1,6 @@
 package com.preproject.overflow.question.controller;
 
+import com.preproject.overflow.member.entity.Member;
 import com.preproject.overflow.question.dto.MultiResponseDto;
 import com.preproject.overflow.question.dto.SingleResponseDto;
 import com.preproject.overflow.question.dto.QuestionPatchDto;
@@ -15,6 +16,7 @@ import com.preproject.overflow.member.service.MemberService;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -56,11 +58,12 @@ public class QuestionController {
     // 질문 수정
     @PatchMapping("/{question-id}")
     public ResponseEntity patchQuestion(@PathVariable("question-id") @Positive long questionId,
-                                        @Valid @RequestBody QuestionPatchDto requestBody) {
+                                        @Valid @RequestBody QuestionPatchDto requestBody,
+                                        @AuthenticationPrincipal Member member) {
         requestBody.setQuestionId(questionId);
 
-        Question question =
-                questionService.updateQuestion(mapper.questionPatchDtoToQuestion(requestBody));
+        Question question = questionService.updateQuestion(
+                mapper.questionPatchDtoToQuestion(requestBody), member);
 
         return new ResponseEntity<>(
                 new SingleResponseDto<>(mapper.questionToQuestionResponseDto(question)),
