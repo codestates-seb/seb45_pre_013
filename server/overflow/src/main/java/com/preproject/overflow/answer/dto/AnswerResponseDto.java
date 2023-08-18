@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 public class AnswerResponseDto {
     private long answerId;
     private long memberId;
+    private String nickname;
     private long questionId;
     private String text;
     private int answerVote;

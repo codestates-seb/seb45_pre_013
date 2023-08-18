@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/answer")
+@RequestMapping("/answers")
 @Validated
 public class AnswerController {
 
@@ -34,6 +34,7 @@ public class AnswerController {
         Answer answer = mapper.answerPostDtoToAnswer(answerPostDto);
 
         answer.setAnswerVote(0);
+        answer.setNickname(answer.getMember().getNickname());
 
         Answer response = answerService.createAnswer(answer);
 
@@ -73,11 +74,14 @@ public class AnswerController {
     }
 
     @PatchMapping("/voteUp/{answerId}")
-    public ResponseEntity voteUp(@PathVariable("answerId") @Positive long answerId,
-                                 @RequestBody AnswerVotePatchDto answerVotePatchDto) {
-        //answerVotePatchDto.setAnswerId(answerId);
-        Answer answer = answerService.updateAnswerVoteUp(mapper.answerVotePatchDtoToAnswer(answerVotePatchDto));
-        return new ResponseEntity<>(mapper.AnswerToAnswerResponseDto(answer), HttpStatus.OK);
+    public ResponseEntity voteUp(@PathVariable("answerId") @Positive long answerId
+                                 /*@RequestBody AnswerVotePatchDto answerVotePatchDto*/) {
+        //Answer answer = answerService.updateAnswerVoteUp(mapper.answerVotePatchDtoToAnswer(answerVotePatchDto));
+        Answer answer = answerService.findAnswer(answerId);
+
+        Answer response = answerService.updateAnswerVoteUp(answer);
+
+        return new ResponseEntity<>(mapper.AnswerToAnswerResponseDto(response), HttpStatus.OK);
     }
 
     @PatchMapping("/voteDown/{answerId}")

@@ -32,6 +32,9 @@ public class Answer extends Auditable {
     @Column
     private Integer answerVote;
 
+    @Column
+    private String nickname;
+
     public long getMemberId() {
         return member.getMemberId();
     }
