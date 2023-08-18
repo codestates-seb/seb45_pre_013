@@ -11,7 +11,6 @@ import javax.validation.constraints.Positive;
 public class AnswerPostDto {
     @NotBlank(message = "공백이 아니어야 합니다.")
     private String text;
-    private Long memberId;
     private Long questionId;
 
     public String getText() {
@@ -22,25 +21,12 @@ public class AnswerPostDto {
         this.text = text;
     }
 
-    public long getMemberId() {
-        return memberId;
-    }
-
-    public void setMemberId(long memberId) {
-        this.memberId = memberId;
-    }
-
     public long getQuestionId() {
         return questionId;
     }
 
     public void setQuestionId(long questionId) {
         this.questionId = questionId;
-    }
-    public Member getMember() {
-        Member member = new Member();
-        member.setMemberId(memberId);
-        return member;
     }
 
     public Question getQuestion() {

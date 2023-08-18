@@ -7,7 +7,6 @@ import javax.validation.constraints.NotBlank;
 @AllArgsConstructor
 public class AnswerPatchDto {
     private long answerId;
-    private long memberId;
     @NotBlank(message = "공백이 아니어야 합니다.")
     private String text;
 
@@ -25,13 +24,5 @@ public class AnswerPatchDto {
 
     public void setText(String text) {
         this.text = text;
-    }
-
-    public long getMemberId() {
-        return memberId;
-    }
-
-    public void setMemberId(long memberId) {
-        this.memberId = memberId;
     }
 }
