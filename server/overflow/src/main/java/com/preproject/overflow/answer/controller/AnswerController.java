@@ -34,7 +34,6 @@ public class AnswerController {
         Answer answer = mapper.answerPostDtoToAnswer(answerPostDto);
 
         answer.setAnswerVote(0);
-        answer.setNickname(answer.getMember().getNickname());
 
         Answer response = answerService.createAnswer(answer);
 
