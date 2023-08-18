@@ -14,6 +14,13 @@ import {
 import { Background } from "@/styles/RootStyle";
 
 const WriteLayout = () => {
+  const submitHandle = (e) => {
+    e.preventDefault();
+
+    const title = e.target.title.value;
+    const content = e.target.content.value;
+  };
+
   return (
     <Background>
       <Header />
@@ -63,43 +70,46 @@ const WriteLayout = () => {
               </div>
             </div>
           </WriteGuide>
-          <Write>
-            <label>Tltle</label>
-            <p>
-              Be specific and imagine you’re asking a question to another
-              person.
-            </p>
-            <input
-              type="text"
-              maxLength="300"
-              placeholder="e.g. Is there an R function for finding the index of an element in a vector?"
-            />
-          </Write>
-          <WriteGuide>
-            <h4>Introduce the problem</h4>
-            <div>
-              <img src={iconWrite} />
+          <form onSubmit={submitHandle}>
+            <Write>
+              <label>Tltle</label>
+              <p>
+                Be specific and imagine you’re asking a question to another
+                person.
+              </p>
+              <input
+                name="title"
+                type="text"
+                maxLength="300"
+                placeholder="e.g. Is there an R function for finding the index of an element in a vector?"
+              />
+            </Write>
+            <WriteGuide>
+              <h4>Introduce the problem</h4>
+              <div>
+                <img src={iconWrite} />
+                <div>
+                  <p>
+                    Explain how you encountered the problem you’re trying to
+                    solve, and any difficulties that have prevented you from
+                    solving it yourself.
+                  </p>
+                </div>
+              </div>
+            </WriteGuide>
+            <Write>
+              <label>What are the details of your problem?</label>
               <div>
                 <p>
-                  Explain how you encountered the problem you’re trying to
-                  solve, and any difficulties that have prevented you from
-                  solving it yourself.
+                  Introduce the problem and expand on what you put in the title.
+                  Minimum 20 characters.
                 </p>
               </div>
-            </div>
-          </WriteGuide>
-          <Write>
-            <label>What are the details of your problem?</label>
-            <div>
-              <p>
-                Introduce the problem and expand on what you put in the title.
-                Minimum 20 characters.
-              </p>
-            </div>
-            <textarea></textarea>
-          </Write>
-          <Modal />
-          <PostButton>Post your question</PostButton>
+              <textarea name="content"></textarea>
+            </Write>
+            <PostButton type="submit">Post your question</PostButton>
+            <Modal />
+          </form>
         </div>
         <Footer />
       </div>
