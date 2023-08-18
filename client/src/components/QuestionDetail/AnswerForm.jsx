@@ -24,7 +24,7 @@ const AnswerForm = ({ handleAddAnswer }) => {
       content,
       userId: Math.floor(Math.random() * 50) + 1,
       id: Math.floor(Math.random() * 50) + 1,
-      userName: "",
+      userName: `userName ${Math.floor(Math.random() * 50) + 1}`,
       createdAt: new Date().toLocaleString("ko-KR", timeoptions),
       modifiedAt: new Date().toISOString(),
       vote: 0,
@@ -41,8 +41,6 @@ const AnswerForm = ({ handleAddAnswer }) => {
         <textarea
           value={content}
           onChange={(e) => setContent(e.target.value)}
-
-          // onChange={(e) => setContent(e.target.value)}
         ></textarea>
         <button onClick={handleCreate}>Post Your Answer</button>
       </Form>
