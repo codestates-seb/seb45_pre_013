@@ -1,7 +1,7 @@
 package com.preproject.overflow.member.utils;
 
 import com.google.gson.Gson;
-import com.preproject.overflow.member.exception.response.ErrorResponse;
+import com.preproject.overflow.exception.response.ErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 

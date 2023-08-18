@@ -2,8 +2,8 @@ package com.preproject.overflow.answer.service;
 
 import com.preproject.overflow.answer.entity.Answer;
 import com.preproject.overflow.answer.repository.AnswerRepository;
-import com.preproject.overflow.member.exception.BusinessLogicException;
-import com.preproject.overflow.member.exception.ExceptionCode;
+import com.preproject.overflow.exception.BusinessLogicException;
+import com.preproject.overflow.exception.ExceptionCode;
 import com.preproject.overflow.member.entity.Member;
 import com.preproject.overflow.member.service.MemberService;
 import com.preproject.overflow.question.entity.Question;

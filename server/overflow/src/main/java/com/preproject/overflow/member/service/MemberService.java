@@ -1,8 +1,8 @@
 package com.preproject.overflow.member.service;
 
 import com.preproject.overflow.member.entity.Member;
-import com.preproject.overflow.member.exception.BusinessLogicException;
-import com.preproject.overflow.member.exception.ExceptionCode;
+import com.preproject.overflow.exception.BusinessLogicException;
+import com.preproject.overflow.exception.ExceptionCode;
 import com.preproject.overflow.member.repository.MemberRepository;
 import com.preproject.overflow.member.utils.CustomAuthorityUtils;
 import com.preproject.overflow.member.utils.RandomNumberGenerator;
