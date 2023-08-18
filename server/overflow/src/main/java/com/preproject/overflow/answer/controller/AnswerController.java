@@ -3,7 +3,6 @@ package com.preproject.overflow.answer.controller;
 import com.preproject.overflow.answer.dto.AnswerPatchDto;
 import com.preproject.overflow.answer.dto.AnswerPostDto;
 import com.preproject.overflow.answer.dto.AnswerResponseDto;
-import com.preproject.overflow.answer.dto.AnswerVotePatchDto;
 import com.preproject.overflow.answer.entity.Answer;
 import com.preproject.overflow.answer.mapper.AnswerMapper;
 import com.preproject.overflow.answer.service.AnswerService;
@@ -32,12 +31,13 @@ public class AnswerController {
         this.mapper = mapper;
     }
     @PostMapping
-    public ResponseEntity postAnswer(@Valid @RequestBody AnswerPostDto answerPostDto) {
+    public ResponseEntity postAnswer(@Valid @RequestBody AnswerPostDto answerPostDto,
+                                     @AuthenticationPrincipal Member user) {
         Answer answer = mapper.answerPostDtoToAnswer(answerPostDto);
 
         answer.setAnswerVote(0);
 
-        Answer response = answerService.createAnswer(answer);
+        Answer response = answerService.createAnswer(answer, user);
 
         return new ResponseEntity<>(mapper.AnswerToAnswerResponseDto(response), HttpStatus.CREATED);
     }

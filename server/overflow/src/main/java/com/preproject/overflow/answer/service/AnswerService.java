@@ -25,13 +25,12 @@ public class AnswerService {
         this.questionService = questionService;
     }
     // 답변 생성 service
-    public Answer createAnswer(Answer answer) {
+    public Answer createAnswer(Answer answer, Member member) {
 
         // Question question = answer.getQuestion();
         // Member member = answer.getMember();
         // 위에를 아래처럼 수정, 위는 아이디만 넣는 것 같고 아래는 아이디값을 가지고 존재하는지 확인 후 객체를 넣는다.
         Question question = questionService.findVerifyQuestion(answer.getQuestionId());
-        Member member = memberService.findVerifiedMember(answer.getMemberId());
 
         answer.setQuestion(question);
         answer.setMember(member);
@@ -45,11 +44,8 @@ public class AnswerService {
         Answer findAnswer = findVerifiedAnswer(answer.getAnswerId());
         // 답변을 작성한 사람과 수정하려는 사람이 일치하는지 확인
         if(member.getMemberId() != findAnswer.getMember().getMemberId()){
-            throw new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND);
+            throw new BusinessLogicException(ExceptionCode.MEMBER_PERMISSION_DENIED);
         }
-//        if(!(findAnswer.getMember().getMemberId() == memberId)) {
-//            throw new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND);
-//        }
 
         Optional.ofNullable(answer.getText())
                 .ifPresent(text -> findAnswer.setText(text));
@@ -70,7 +66,7 @@ public class AnswerService {
         Answer answer = findVerifiedAnswer(answerId);
 
         if(member.getMemberId() != answer.getMember().getMemberId()){
-            throw new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND);
+            throw new BusinessLogicException(ExceptionCode.MEMBER_PERMISSION_DENIED);
         }
 
         answerRepository.delete(answer);
