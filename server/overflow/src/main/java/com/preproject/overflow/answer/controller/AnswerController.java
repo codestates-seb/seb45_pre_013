@@ -10,7 +10,7 @@ import com.preproject.overflow.answer.service.AnswerService;
 import com.preproject.overflow.member.entity.Member;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.web.bind.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,9 +43,10 @@ public class AnswerController {
     }
     @PatchMapping("/{answerId}")
     public ResponseEntity patchAnswer(@PathVariable("answerId") @Positive long answerId,
-                                      @Valid @RequestBody AnswerPatchDto answerPatchDto) {
+                                      @Valid @RequestBody AnswerPatchDto answerPatchDto,
+                                      @AuthenticationPrincipal Member user) {
         answerPatchDto.setAnswerId(answerId);
-        Answer answer = answerService.updateAnswer(mapper.answerPatchDtoToAnswer(answerPatchDto), answerPatchDto.getMemberId());
+        Answer answer = answerService.updateAnswer(mapper.answerPatchDtoToAnswer(answerPatchDto), user);
 
         return new ResponseEntity<>(mapper.AnswerToAnswerResponseDto(answer), HttpStatus.OK);
     }
@@ -76,9 +77,7 @@ public class AnswerController {
     }
 
     @PatchMapping("/voteUp/{answerId}")
-    public ResponseEntity voteUp(@PathVariable("answerId") @Positive long answerId
-                                 /*@RequestBody AnswerVotePatchDto answerVotePatchDto*/) {
-        //Answer answer = answerService.updateAnswerVoteUp(mapper.answerVotePatchDtoToAnswer(answerVotePatchDto));
+    public ResponseEntity voteUp(@PathVariable("answerId") @Positive long answerId) {
         Answer answer = answerService.findAnswer(answerId);
 
         Answer response = answerService.updateAnswerVoteUp(answer);
