@@ -1,5 +1,6 @@
 package com.preproject.overflow.question.entity;
 
+import com.preproject.overflow.answer.entity.Answer;
 import com.preproject.overflow.audit.Auditable;
 import com.preproject.overflow.member.entity.Member;
 import lombok.NoArgsConstructor;
@@ -44,6 +45,9 @@ public class Question extends Auditable {
 
     @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
     private List<QuestionTag> questionTagList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
+    private List<Answer> answers = new ArrayList<>();
 
     // 연관 관계 메서드
     public void setMember(Member member) {

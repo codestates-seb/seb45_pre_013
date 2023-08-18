@@ -1,5 +1,6 @@
 package com.preproject.overflow.question.mapper;
 
+import com.preproject.overflow.answer.mapper.AnswerMapper;
 import com.preproject.overflow.question.dto.*;
 import com.preproject.overflow.question.entity.Question;
 import com.preproject.overflow.question.entity.QuestionTag;
@@ -73,7 +74,7 @@ public interface QuestionMapper {
     }
 
 
-    default QuestionResponseDto questionToQuestionResponse(MemberMapper memberMapper, Question question) {
+    default QuestionResponseDto questionToQuestionResponse(MemberMapper memberMapper, Question question, AnswerMapper answerMapper) {
         if ( question == null ) {
             return null;
         }
@@ -86,6 +87,8 @@ public interface QuestionMapper {
         questionResponseDto.setTitle( question.getTitle() );
         questionResponseDto.setText( question.getText() );
         questionResponseDto.setQuestionTagList(questionTagListToQuestionTagResponseDtoList(question.getQuestionTagList()));
+        questionResponseDto.setAnswers(question.getAnswers().stream()
+                .map(answer -> answerMapper.AnswerToAnswerResponseDto(answer)).collect(Collectors.toList()));
         questionResponseDto.setVoteCount( question.getVoteCount() );
         questionResponseDto.setAnswerCount( question.getAnswerCount() );
         questionResponseDto.setViewCount(question.getViewCount());

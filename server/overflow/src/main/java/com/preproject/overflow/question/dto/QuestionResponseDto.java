@@ -1,5 +1,6 @@
 package com.preproject.overflow.question.dto;
 
+import com.preproject.overflow.answer.dto.AnswerResponseDto;
 import com.preproject.overflow.member.dto.MemberResponseDto;
 import com.preproject.overflow.member.entity.Member;
 import lombok.Getter;
@@ -14,6 +15,7 @@ public class QuestionResponseDto {
     private String title;
     private String text;
     private List<QuestionTagResponseDto> questionTagList;
+    private List<AnswerResponseDto> answers;
 
     private Long memberId;
     private String name;
