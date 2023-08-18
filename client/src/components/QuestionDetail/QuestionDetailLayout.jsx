@@ -46,8 +46,19 @@ const QuestionDetailLayout = () => {
       modified: "today",
       vote: 10,
       answer: [
-        { id: Math.floor(Math.random() * 50) + 1, content: "hi", vote: 35 },
-        { id: Math.floor(Math.random() * 50) + 1, content: "good", vote: 23 },
+        //TEMP
+        {
+          userId: Math.floor(Math.random() * 50) + 1,
+          userName: `userName ${Math.floor(Math.random() * 50) + 1}`,
+          content: "hi",
+          vote: 35,
+        },
+        {
+          userId: Math.floor(Math.random() * 50) + 1,
+          userName: `userName ${Math.floor(Math.random() * 50) + 1}`,
+          content: "good",
+          vote: 23,
+        },
       ],
     };
     dispatch(setQuestion(fetchedQuestion));

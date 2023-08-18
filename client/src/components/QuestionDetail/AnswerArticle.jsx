@@ -65,8 +65,9 @@ const AnswerArticle = ({ answer, onDelete, onEdit }) => {
           <div>
             <InfoImageContainer>
               <AnswerProfile
-                alt={answer.userName + "'s avatar"} //TEMP
-                src={`${RANDOM_AVATAR}/${answer.userId}.jpg`} //TEMP
+                //TEMP
+                alt={answer.userName + "'s avatar"}
+                src={`${RANDOM_AVATAR}/${answer.userId}.jpg`}
               />
               <p>{answer.userName}</p>
             </InfoImageContainer>
