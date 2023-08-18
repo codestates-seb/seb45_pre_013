@@ -1,7 +1,7 @@
-package com.preproject.overflow.member.exception.advice;
+package com.preproject.overflow.exception.advice;
 
-import com.preproject.overflow.member.exception.BusinessLogicException;
-import com.preproject.overflow.member.exception.response.ErrorResponse;
+import com.preproject.overflow.exception.response.ErrorResponse;
+import com.preproject.overflow.exception.BusinessLogicException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;

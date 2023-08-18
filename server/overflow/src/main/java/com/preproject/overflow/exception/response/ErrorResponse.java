@@ -1,6 +1,6 @@
-package com.preproject.overflow.member.exception.response;
+package com.preproject.overflow.exception.response;
 
-import com.preproject.overflow.member.exception.ExceptionCode;
+import com.preproject.overflow.exception.ExceptionCode;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;

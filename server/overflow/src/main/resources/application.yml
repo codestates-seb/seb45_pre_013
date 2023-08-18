@@ -14,5 +14,5 @@ spring:
         format_sql: true
 jwt:
   key: "stackoverflowpreprojectseb45013013013013013013"
-  access-token-expiration-minutes: 30
-  refresh-token-expiration-minutes: 420
+  access-token-expiration-minutes: 60
+  refresh-token-expiration-minutes: 360
