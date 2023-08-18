@@ -20,29 +20,24 @@ export const IsModalBtn = styled.button`
 `;
 
 export const ModalOverlay = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: absolute;
-  position: fixed;
+  top: 0;
   left: 0;
   background-color: #1400006c;
   width: 100%;
   height: 100%;
-  display: ${(props) => (props.isModal ? "" : "none")};
 `;
 
 export const ModalContent = styled.div`
   position: absolute;
-  top: 50%;
-  left: 30%;
+  top: 35%;
+  left: 35%;
   padding: 20px;
   border-radius: 15px;
   width: 450px;
   height: 150px;
   background-color: var(--white);
   box-shadow: 0 0 10px var(--black-500);
-  display: ${(props) => (props.isModal ? "" : "none")};
   h1 {
     margin-bottom: 10px;
     font-size: var(--fs-headline1);

@@ -17,8 +17,8 @@ const WriteLayout = () => {
   const submitHandle = (e) => {
     e.preventDefault();
 
-    const title = e.target.title.value;
-    const content = e.target.content.value;
+    // const title = e.target.title.value;
+    // const content = e.target.content.value;
   };
 
   return (
