@@ -6,7 +6,8 @@ public enum ExceptionCode {
     MEMBER_NOT_FOUND(404, "Member Not Found"),
     MEMBER_IS_EXIST(409, "Mebmer Is Exist"),
     MEMBER_STATUS_DELETE(409, "Member Status Delete"),
-    MEMBER_PERMISSION_DENIED(402, "Permission denied");
+    MEMBER_PERMISSION_DENIED(402, "Permission denied"),
+    ANSWER_NOT_FOUND(404, "Answer Not Found");
 
     @Getter
     private int status;

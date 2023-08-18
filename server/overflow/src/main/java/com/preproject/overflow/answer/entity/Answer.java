@@ -28,4 +28,18 @@ public class Answer extends Auditable {
 
     @Column
     private String text;
+
+    @Column
+    private Integer answerVote;
+
+    @Column
+    private String nickname;
+
+    public long getMemberId() {
+        return member.getMemberId();
+    }
+
+    public long getQuestionId() {
+        return question.getQuestionId();
+    }
 }
