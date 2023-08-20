@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/question")
+@RequestMapping("/questions")
 @Validated
 public class QuestionController {
 
@@ -103,7 +103,7 @@ public class QuestionController {
     @GetMapping  // page = 1, size = 10으로 설정해 주세요!
     public ResponseEntity getQuestions(@Positive @RequestParam int page,
                                        @Positive @RequestParam int size) {
-        Page<Question> pageQuestions = questionService.findQuestions(page-1, size);
+        Page<Question> pageQuestions = questionService.findQuestions(page - 1, size);
         List<Question> questions = pageQuestions.getContent();
         List<QuestionResponseDto> response =
                 questions.stream()
@@ -111,7 +111,7 @@ public class QuestionController {
                         .collect(Collectors.toList());
 
         return new ResponseEntity<>(
-                new MultiResponseDto<>(mapper.questionsToQuestionResponses(questions),pageQuestions),
+                new MultiResponseDto<>(response, pageQuestions),
                 HttpStatus.OK);
     }
 
@@ -141,8 +141,9 @@ public class QuestionController {
 
     // 게시글 삭제
     @DeleteMapping("/{question-id}")
-    public ResponseEntity deleteQuestion(@PathVariable("question-id") @Positive Long questionId) {
-        questionService.deleteQuestion(questionId);
+    public ResponseEntity deleteQuestion(@PathVariable("question-id") @Positive Long questionId,
+                                         @AuthenticationPrincipal Member member) {
+        questionService.deleteQuestion(questionId, member);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
