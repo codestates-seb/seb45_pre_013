@@ -71,6 +71,9 @@ public class AnswerService {
             throw new BusinessLogicException(ExceptionCode.MEMBER_PERMISSION_DENIED);
         }
 
+        int answerCount = answer.getQuestion().getAnswerCount();
+        answer.getQuestion().setAnswerCount(answerCount - 1);
+
         answerRepository.delete(answer);
     }
 
