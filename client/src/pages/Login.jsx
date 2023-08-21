@@ -8,7 +8,7 @@ const LoginPage = () => {
       <PageContainer>
         <Icon
           className="icon"
-          src="src/assets/image/minilogo.svg"
+          src="/assets/image/minilogo.svg"
           alt="minilogo"
         />
         <LoginForm />

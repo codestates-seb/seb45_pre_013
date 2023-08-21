@@ -1,6 +1,7 @@
 {
   "name": "client",
   "private": true,
+  "homepage": "http://127.0.0.1:5500/study/codestates/TeamProject/502/client/dist/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
