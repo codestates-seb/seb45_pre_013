@@ -22,11 +22,15 @@ import { BRANDLOGOIMG, USERPROFILEIMG, LOGOIMG } from "@/config/config";
 import Sidebar from "./Sidebar";
 
 const Header = ({ smallSidebar = "" }) => {
-  const Authorization = localStorage.getItem("Authorization");
+  let Authorization = localStorage.getItem("Authorization");
   const [logInOutWhether, setLogInOutWhether] = useState(false);
   const [ageVal, setAgeVal] = useState(0);
   const [inputVisible, setInputVisible] = useState(false);
   const inputFocus = useRef();
+
+  const ProfileImageOnClickHandler = () => {
+    Authorization = localStorage.setItem("Authorization", "");
+  };
 
   const changeInOutWhether = () => {
     setLogInOutWhether(!logInOutWhether);
@@ -89,7 +93,10 @@ const Header = ({ smallSidebar = "" }) => {
             {Authorization ? (
               <>
                 <IconDiv>
-                  <UserImg src={USERPROFILEIMG} />
+                  <UserImg
+                    src={USERPROFILEIMG}
+                    onClick={ProfileImageOnClickHandler}
+                  />
                 </IconDiv>
                 <IconDiv>
                   <HiInboxIcon />
