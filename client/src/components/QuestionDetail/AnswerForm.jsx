@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { FormHeadline, Form } from "@/styles/QuestionDetail/AnswerStyle";
 
+const apiUrl = import.meta.env.VITE_API_URL;
 const AnswerForm = ({ handleAddAnswer }) => {
-  // const dispatch = useDispatch();
-  // const [editingAnswerId, setEditingAnswerId] = useState(null);
   const [content, setContent] = useState("");
 
-  const handleCreate = (e) => {
+  const handleCreate = async (e) => {
     e.preventDefault();
 
     const timeoptions = {
@@ -20,18 +19,35 @@ const AnswerForm = ({ handleAddAnswer }) => {
     };
 
     const newAnswer = {
-      //TEMP
-      content,
-      userId: Math.floor(Math.random() * 50) + 1,
-      id: Math.floor(Math.random() * 50) + 1,
-      userName: `userName ${Math.floor(Math.random() * 50) + 1}`,
+      answerId: 0,
+      memberId: 0,
+      nickname: "",
+      questionId: 0,
+      text: content,
+      answerVote: 0,
       createdAt: new Date().toLocaleString("ko-KR", timeoptions),
-      modifiedAt: new Date().toISOString(),
-      vote: 0,
-      reputation: 0,
+      modifiedAt: new Date().toISOString("ko-KR", timeoptions),
     };
+
     handleAddAnswer(newAnswer);
+    console.log(newAnswer);
     setContent("");
+
+    try {
+      const response = await fetch(`${apiUrl}/answers/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newAnswer),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to create answer");
+      }
+    } catch (error) {
+      console.error("Error", error);
+    }
   };
 
   return (

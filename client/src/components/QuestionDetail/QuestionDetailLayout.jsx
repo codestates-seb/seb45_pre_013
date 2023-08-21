@@ -32,12 +32,13 @@ import {
   addAnswer,
   deleteAnswer,
   fetchedAnswer,
-} from "@/store/store";
+} from "../../store/slice/slice.js";
+
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const QuestionDetailLayout = () => {
   const dispatch = useDispatch();
   const question = useSelector((state) => state.question);
-  // const postanswer = useSelector((state) => state.answers);
 
   useEffect(() => {
     const fetchedQuestion = {
@@ -51,18 +52,15 @@ const QuestionDetailLayout = () => {
       modified: "today",
       vote: 10,
       answer: [
-        //TEMP
         {
-          userId: Math.floor(Math.random() * 50) + 1,
-          userName: `userName ${Math.floor(Math.random() * 50) + 1}`,
-          content: "hi",
-          vote: 35,
-        },
-        {
-          userId: Math.floor(Math.random() * 50) + 1,
-          userName: `userName ${Math.floor(Math.random() * 50) + 1}`,
-          content: "good",
-          vote: 23,
+          answerId: 0,
+          memberId: 0,
+          nickname: "",
+          questionId: 0,
+          text: "",
+          vote: 0,
+          createdAt: null,
+          modifiedAt: null,
         },
       ],
     };
@@ -76,22 +74,39 @@ const QuestionDetailLayout = () => {
       ...question,
       answer: updatedAnswers,
     };
-    console.log(...question.answer);
+    console.log(...question.answer); //TEMP
     dispatch(addAnswer(newAnswer));
     dispatch(setQuestion(updatedQuestion));
   };
 
-  const handleDeleteAnswer = (answerId) => {
-    dispatch(deleteAnswer(answerId));
-    const updatedAnswers = question.answer.filter(
-      (answer) => answer.id !== answerId
-    );
-    const updatedQuestion = {
-      ...question,
-      answer: updatedAnswers,
-    };
-    dispatch(setQuestion(updatedQuestion));
-    console.log(...question.answer);
+  const handleDeleteAnswer = async (answerId) => {
+    try {
+      const response = await fetch(
+        `http://ec2-3-34-185-189.ap-northeast-2.compute.amazonaws.com:8080/answers/${answerId}`,
+        {
+          method: "DELETE",
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to delete answer");
+      }
+
+      dispatch(deleteAnswer(answerId));
+
+      const updatedAnswers = question.answer.filter(
+        (answer) => answer.answerId !== answerId
+      );
+      const updatedQuestion = {
+        ...question,
+        answer: updatedAnswers,
+      };
+      dispatch(setQuestion(updatedQuestion));
+
+      console.log(...question.answer); //TEMP
+    } catch (error) {
+      console.error("error delete answer:", error);
+    }
   };
 
   return (

@@ -9,24 +9,56 @@ import {
   InfoImageContainer,
   UtilContainer,
 } from "@/styles/QuestionDetail/AnswerStyle";
-import { Writer } from "@/styles/QuestionDetail/QuestionStyle";
-import { RANDOM_AVATAR, USER_NAME, USER_REPUTATION, ID } from "@/config/config";
+// import { Writer } from "@/styles/QuestionDetail/QuestionStyle";
+// import { RANDOM_AVATAR, USER_NAME, USER_REPUTATION, ID } from "@/config/config";
 import { useDispatch } from "react-redux";
-import { deleteAnswer, updateAnswer } from "@/store/store";
+import { updateAnswer } from "@/store/slice/slice.js";
 import { useState } from "react";
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const AnswerArticle = ({ answer, onDelete, onEdit }) => {
   const dispatch = useDispatch();
   const [isEditing, setIsEditing] = useState(false);
-  const [editedContent, setEditedContent] = useState(answer.content);
-
+  const [editedContent, setEditedContent] = useState(answer.text);
+  const timeoptions = {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  };
   const handleEdit = () => {
     setIsEditing(true);
   };
 
-  const handleSaveEdit = () => {
-    dispatch(updateAnswer({ id: answer.id, content: editedContent }));
-    setIsEditing(false);
+  const handleSaveEdit = async () => {
+    const updatedAnswer = {
+      ...answer,
+      text: editedContent,
+      modifiedAt: new Date().toLocaleString("ko-KR", timeoptions),
+    };
+
+    try {
+      const response = await fetch(`${apiUrl}/answers/)`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedAnswer),
+      });
+
+      if (!response.ok) {
+        throw new Error("error update answer");
+      }
+      const updatedResponse = await fetch(`${apiUrl}/${answer.answerId}`);
+      const updatedData = await updatedResponse.json();
+      dispatch(updateAnswer(updatedData));
+
+      setIsEditing(false);
+    } catch (error) {
+      console.error("error update answer:", error);
+    }
   };
 
   return (
@@ -39,7 +71,7 @@ const AnswerArticle = ({ answer, onDelete, onEdit }) => {
             onChange={(e) => setEditedContent(e.target.value)}
           />
         ) : (
-          answer.content
+          answer.text
         )}
         <br />
       </AnswerContent>
@@ -64,11 +96,11 @@ const AnswerArticle = ({ answer, onDelete, onEdit }) => {
           <div>
             <InfoImageContainer>
               <AnswerProfile
-                //TEMP
-                alt={answer.userName + "'s avatar"}
-                src={`${RANDOM_AVATAR}/${answer.userId}.jpg`}
+              //TEMP
+              // alt={answer.nickname + "'s avatar"}
+              // src={`${RANDOM_AVATAR}/${answer.memberd}.jpg`}
               />
-              <p>{answer.userName}</p>
+              <p>{answer.nickname}</p>
             </InfoImageContainer>
           </div>
         </div>
