@@ -24,7 +24,6 @@ const LoginForm = () => {
       .then((res) => {
         const jwtToken = res.headers.get("Authorization");
         localStorage.setItem("Authorization", jwtToken);
-        return res.json();
       })
       .then(() => {
         navigate("/");
