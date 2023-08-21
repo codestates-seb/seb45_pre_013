@@ -1,4 +1,34 @@
-import { createSlice, configureStore } from "@reduxjs/toolkit";
+import {
+  createSlice,
+  configureStore,
+  createAsyncThunk,
+} from "@reduxjs/toolkit";
+
+// export const postAnswer = createAsyncThunk(
+//   "question/postAnswer",
+//   async (newAnswer) => {
+//     // Perform API call
+//     const response = await fetch("/api/answers", {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify(),
+//     });
+//     const data = await response.json();
+
+//     return data;
+//   }
+// );
+
+export const fetchedAnswer = createAsyncThunk(
+  "question/fetchAnswer",
+  async () => {
+    const response = await fetch();
+    const data = await response.json();
+    return data;
+  }
+);
 
 const questionSlice = createSlice({
   name: "question",
@@ -17,6 +47,7 @@ const questionSlice = createSlice({
     setQuestion: (state, action) => {
       return action.payload;
     },
+
     updateAnswer: (state, action) => {
       const { id, content } = action.payload;
       const answerToUpdate = state.answer.find((answer) => answer.id === id);
@@ -31,14 +62,20 @@ const questionSlice = createSlice({
       );
     },
   },
+
+  extraReducers: (builder) => {
+    builder.addCase(fetchedAnswer.fulfilled, (state, action) => {
+      state.answer = action.payload;
+    });
+  },
 });
 
 export const { setQuestion, deleteAnswer, updateAnswer } =
   questionSlice.actions;
 
 const answerSlice = createSlice({
-  name: "answers",
-  initialState: [{ Id: Math.floor(Math.random() * 50) + 1 }],
+  name: "newAnswers",
+  initialState: [{ Id: Math.floor(Math.random() * 50) + 1 }], //TEMP
   reducers: {
     addAnswer: (state, action) => {
       state.push(action.payload);

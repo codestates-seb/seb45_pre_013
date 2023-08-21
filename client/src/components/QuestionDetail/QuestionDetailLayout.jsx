@@ -27,7 +27,12 @@ import {
 import { RANDOM_AVATAR } from "@/config/config";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setQuestion, addAnswer, deleteAnswer } from "@/store/store";
+import {
+  setQuestion,
+  addAnswer,
+  deleteAnswer,
+  fetchedAnswer,
+} from "@/store/store";
 
 const QuestionDetailLayout = () => {
   const dispatch = useDispatch();
@@ -62,6 +67,7 @@ const QuestionDetailLayout = () => {
       ],
     };
     dispatch(setQuestion(fetchedQuestion));
+    dispatch(fetchedAnswer());
   }, [dispatch]);
 
   const handleAddAnswer = (newAnswer) => {
