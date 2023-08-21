@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { useCookies } from "react-cookie";
 import {
   Head,
   MenuLine,
@@ -23,7 +22,7 @@ import { BRANDLOGOIMG, USERPROFILEIMG, LOGOIMG } from "@/config/config";
 import Sidebar from "./Sidebar";
 
 const Header = ({ smallSidebar = "" }) => {
-  const [cookies] = useCookies();
+  const Authorization = localStorage.getItem("Authorization");
   const [logInOutWhether, setLogInOutWhether] = useState(false);
   const [ageVal, setAgeVal] = useState(0);
   const [inputVisible, setInputVisible] = useState(false);
@@ -87,7 +86,7 @@ const Header = ({ smallSidebar = "" }) => {
           </SearchDiv>
 
           <TopBtnDiv>
-            {cookies.user ? (
+            {Authorization ? (
               <>
                 <IconDiv>
                   <UserImg src={USERPROFILEIMG} />

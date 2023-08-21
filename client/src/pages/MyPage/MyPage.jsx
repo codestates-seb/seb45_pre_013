@@ -4,6 +4,7 @@ import { useCookies } from "react-cookie";
 import MyPageTap from "@/components/MyPage/MyPageTap";
 import MyPageContent from "@/components/MyPage/MyPageContent";
 import MyPagePreview from "@/components/MyPage/MyPagePreview";
+import { useEffect } from "react";
 const MyPagePageContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -15,10 +16,12 @@ const MyPagePageContainer = styled.div`
 
 const MyPage = () => {
   const navigate = useNavigate();
-  const [cookies] = useCookies();
-  if (!cookies.user) {
-    navigate("/Login/");
-  }
+  const Authorization = localStorage.getItem("Authorization");
+  useEffect(() => {
+    if (!Authorization) {
+      navigate("/Login/");
+    }
+  }, [Authorization]);
 
   return (
     <>
