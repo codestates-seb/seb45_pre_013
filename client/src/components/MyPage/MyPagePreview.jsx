@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   MyPageProfileContainer,
@@ -17,8 +18,34 @@ import {
   EditIcon,
 } from "@/styles/MyPage/MyPagePreview";
 import { RANDOM_AVATAR } from "@/config/config";
+import { API_URL } from "@/config/config";
 
 const MyPagePreview = () => {
+  const [user, setUser] = useState();
+
+  const fetchUser = async () => {
+    fetch(`${API_URL}/members`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data);
+        setUser(data);
+      })
+      .catch();
+  };
+
+  useEffect(() => {
+    if (!user) {
+      fetchUser();
+    }
+  }, [user]);
+
   return (
     <>
       <MyPageProfileContainer>
