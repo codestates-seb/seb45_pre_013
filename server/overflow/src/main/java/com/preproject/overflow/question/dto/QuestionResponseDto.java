@@ -18,14 +18,14 @@ public class QuestionResponseDto {
     private List<AnswerResponseDto> answers;
 
     private Long memberId;
-    private String name;
+    private String nickName;
     private int voteCount;
     private int answerCount;
     private int viewCount;
     private LocalDateTime createdAt;
 
     public void setMember(MemberResponseDto memberToMemberResponseDto) {
-        this.name = memberToMemberResponseDto.getNickname();
+        this.nickName = memberToMemberResponseDto.getNickname();
         this.memberId = memberToMemberResponseDto.getMemberId();
     }
 }

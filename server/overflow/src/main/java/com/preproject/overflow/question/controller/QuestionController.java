@@ -1,5 +1,6 @@
 package com.preproject.overflow.question.controller;
 
+import com.preproject.overflow.member.entity.Member;
 import com.preproject.overflow.answer.mapper.AnswerMapper;
 import com.preproject.overflow.question.dto.MultiResponseDto;
 import com.preproject.overflow.question.dto.SingleResponseDto;
@@ -16,6 +17,7 @@ import com.preproject.overflow.member.service.MemberService;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,7 +28,7 @@ import java.util.stream.Collectors;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/question")
+@RequestMapping("/questions")
 @Validated
 public class QuestionController {
 
@@ -60,11 +62,12 @@ public class QuestionController {
     // 질문 수정
     @PatchMapping("/{question-id}")
     public ResponseEntity patchQuestion(@PathVariable("question-id") @Positive long questionId,
-                                        @Valid @RequestBody QuestionPatchDto requestBody) {
+                                        @Valid @RequestBody QuestionPatchDto requestBody,
+                                        @AuthenticationPrincipal Member member) {
         requestBody.setQuestionId(questionId);
 
-        Question question =
-                questionService.updateQuestion(mapper.questionPatchDtoToQuestion(requestBody));
+        Question question = questionService.updateQuestion(
+                mapper.questionPatchDtoToQuestion(requestBody), member);
 
         return new ResponseEntity<>(
                 new SingleResponseDto<>(mapper.questionToQuestionResponseDto(question)),
@@ -100,7 +103,7 @@ public class QuestionController {
     @GetMapping  // page = 1, size = 10으로 설정해 주세요!
     public ResponseEntity getQuestions(@Positive @RequestParam int page,
                                        @Positive @RequestParam int size) {
-        Page<Question> pageQuestions = questionService.findQuestions(page-1, size);
+        Page<Question> pageQuestions = questionService.findQuestions(page - 1, size);
         List<Question> questions = pageQuestions.getContent();
         List<QuestionResponseDto> response =
                 questions.stream()
@@ -108,7 +111,7 @@ public class QuestionController {
                         .collect(Collectors.toList());
 
         return new ResponseEntity<>(
-                new MultiResponseDto<>(mapper.questionsToQuestionResponses(questions),pageQuestions),
+                new MultiResponseDto<>(response, pageQuestions),
                 HttpStatus.OK);
     }
 
@@ -138,8 +141,9 @@ public class QuestionController {
 
     // 게시글 삭제
     @DeleteMapping("/{question-id}")
-    public ResponseEntity deleteQuestion(@PathVariable("question-id") @Positive Long questionId) {
-        questionService.deleteQuestion(questionId);
+    public ResponseEntity deleteQuestion(@PathVariable("question-id") @Positive Long questionId,
+                                         @AuthenticationPrincipal Member member) {
+        questionService.deleteQuestion(questionId, member);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
