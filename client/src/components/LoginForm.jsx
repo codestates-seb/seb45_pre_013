@@ -23,7 +23,7 @@ const LoginForm = () => {
     })
       .then((res) => {
         const jwtToken = res.headers.get("Authorization");
-        localStorage.setItem("user", jwtToken);
+        localStorage.setItem("Authorization", jwtToken);
         return res.json();
       })
       .then(() => {
