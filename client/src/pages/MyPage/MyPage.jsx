@@ -1,7 +1,9 @@
+import { styled } from "styled-components";
+import { useNavigate } from "react-router";
+import { useCookies } from "react-cookie";
 import MyPageTap from "@/components/MyPage/MyPageTap";
 import MyPageContent from "@/components/MyPage/MyPageContent";
 import MyPagePreview from "@/components/MyPage/MyPagePreview";
-import { styled } from "styled-components";
 const MyPagePageContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -12,6 +14,12 @@ const MyPagePageContainer = styled.div`
 `;
 
 const MyPage = () => {
+  const navigate = useNavigate();
+  const [cookies] = useCookies();
+  if (!cookies.user) {
+    navigate("/Login/");
+  }
+
   return (
     <>
       <MyPagePageContainer>

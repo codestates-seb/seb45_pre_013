@@ -23,19 +23,21 @@ const SignUpForm = () => {
         isDot !== 0 &&
         isSpare !== 0;
       if (validEmail) {
-        console.log("hi");
         const validPassword =
           /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%#?&])[A-Za-z\d@$!%#?&]{8,}$/.test(
             password
           );
         if (validPassword) {
           setValidationError("");
-          fetch(`${API_URL}`, {
+          fetch(`${API_URL}/members`, {
             method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
             body: JSON.stringify({
-              name: name,
               email: email,
               password: password,
+              nickname: name,
             }),
           })
             .then((response) => response.json())

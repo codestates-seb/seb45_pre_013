@@ -11,10 +11,13 @@ const LoginForm = () => {
   const navigate = useNavigate();
 
   const onClickLoginHandler = () => {
-    fetch(`${API_URL}`, {
+    fetch(`${API_URL}/auth/login`, {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
-        email: email.value,
+        username: email.value,
         password: password.value,
       }),
     })

@@ -5,7 +5,8 @@ export const USERPROFILEIMG =
 export const RANDOM_AVATAR =
   "https://xsgames.co/randomusers/assets/avatars/pixel";
 
-export const API_URL = "";
+export const API_URL =
+  "http://ec2-3-34-185-189.ap-northeast-2.compute.amazonaws.com:8080";
 
 export const ID = "id";
 export const TITLE = "title";
