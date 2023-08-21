@@ -8,14 +8,14 @@ const Sidebar = ({ smallSidebar }) => {
   const [selectedPage, setSelectedPage] = useState(location);
 
   useEffect(() => {
-    switch (selectedPage.slice(0, 10)) {
-      case "/Login":
-        setSelectedPage("/User");
+    switch (selectedPage.slice(0, 2)) {
+      case "/L":
+        setSelectedPage("/MyPage");
         break;
-      case "/Signup":
-        setSelectedPage("/User");
+      case "/S":
+        setSelectedPage("/MyPage");
         break;
-      case "/Questions":
+      case "/Q":
         setSelectedPage("/Questions");
         break;
       default:
