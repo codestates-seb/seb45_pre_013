@@ -1,6 +1,5 @@
 import { styled } from "styled-components";
 import { useNavigate } from "react-router";
-import { useCookies } from "react-cookie";
 import MyPageTap from "@/components/MyPage/MyPageTap";
 import MyPageContent from "@/components/MyPage/MyPageContent";
 import MyPagePreview from "@/components/MyPage/MyPagePreview";

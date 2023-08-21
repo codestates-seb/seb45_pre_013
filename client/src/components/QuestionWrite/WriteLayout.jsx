@@ -1,5 +1,5 @@
-import background from "@/assets/image/backgroundQuestionWrite.svg";
-import iconWrite from "@/assets/image/iconWrite.png";
+import background from "/assets/image/backgroundQuestionWrite.svg";
+import iconWrite from "/assets/image/iconWrite.png";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Modal from "@/components/Modal";
