@@ -21,9 +21,12 @@ const LoginForm = () => {
         password: password.value,
       }),
     })
-      .then((res) => res.json())
+      .then((res) => {
+        const jwtToken = res.headers.get("Authorization");
+        localStorage.setItem("user", jwtToken);
+        return res.json();
+      })
       .then((data) => {
-        setCookie("user", data.access_token);
         navigate("/");
       })
       .catch();
