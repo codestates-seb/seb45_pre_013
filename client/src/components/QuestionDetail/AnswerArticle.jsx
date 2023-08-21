@@ -11,7 +11,6 @@ import {
 } from "@/styles/QuestionDetail/AnswerStyle";
 import { Writer } from "@/styles/QuestionDetail/QuestionStyle";
 import { RANDOM_AVATAR, USER_NAME, USER_REPUTATION, ID } from "@/config/config";
-import { styled } from "styled-components";
 import { useDispatch } from "react-redux";
 import { deleteAnswer, updateAnswer } from "@/store/store";
 import { useState } from "react";
