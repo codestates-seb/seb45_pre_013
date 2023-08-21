@@ -36,3 +36,64 @@ export const Form = styled.form`
     }
   }
 `;
+
+export const AnswerInfoContainer = styled.div`
+  width: 250px;
+  margin-left: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: right;
+  /* text-align: top; */
+
+  & > div {
+    width: 100%;
+  }
+`;
+
+export const AnswerContent = styled.div`
+  width: 100%;
+  height: auto;
+
+  & > textarea {
+    padding-right: 20px;
+    width: 95%;
+    height: 100%;
+    border: 1px solid var(--black-200);
+    border-radius: 5px;
+  }
+`;
+
+export const AnswerInfo = styled.p`
+  font-size: 10px;
+  color: var(--black-200);
+  margin-right: 5px;
+`;
+
+export const EditDelete = styled.p`
+  font-size: 10px;
+  color: var(--black-200);
+  margin-right: 5px;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--black-500);
+    text-decoration: underline;
+  }
+`;
+
+export const AnswerProfile = styled.img`
+  width: 32px;
+  height: 32px;
+`;
+
+export const InfoImageContainer = styled.div`
+  width: 250px;
+  display: flex;
+  flex-direction: row;
+`;
+
+export const UtilContainer = styled.div`
+  display: flex;
+
+  flex-direction: row;
+`;

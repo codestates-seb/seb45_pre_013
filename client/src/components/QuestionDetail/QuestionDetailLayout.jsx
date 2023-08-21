@@ -27,16 +27,22 @@ import {
 import { RANDOM_AVATAR } from "@/config/config";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setQuestion, addAnswer } from "@/store/store";
+import {
+  setQuestion,
+  addAnswer,
+  deleteAnswer,
+  fetchedAnswer,
+} from "@/store/store";
 
 const QuestionDetailLayout = () => {
   const dispatch = useDispatch();
   const question = useSelector((state) => state.question);
-  const postanswer = useSelector((state) => state.answers);
+  // const postanswer = useSelector((state) => state.answers);
 
   useEffect(() => {
     const fetchedQuestion = {
-      id: 1,
+      //TEMP
+      id: Math.floor(Math.random() * 50) + 1,
       title: "How to...",
       text: "How to do something?",
       userName: "bee",
@@ -44,9 +50,24 @@ const QuestionDetailLayout = () => {
       created: "today",
       modified: "today",
       vote: 10,
-      answer: [{ content: "hi" }, { content: "good" }],
+      answer: [
+        //TEMP
+        {
+          userId: Math.floor(Math.random() * 50) + 1,
+          userName: `userName ${Math.floor(Math.random() * 50) + 1}`,
+          content: "hi",
+          vote: 35,
+        },
+        {
+          userId: Math.floor(Math.random() * 50) + 1,
+          userName: `userName ${Math.floor(Math.random() * 50) + 1}`,
+          content: "good",
+          vote: 23,
+        },
+      ],
     };
     dispatch(setQuestion(fetchedQuestion));
+    dispatch(fetchedAnswer());
   }, [dispatch]);
 
   const handleAddAnswer = (newAnswer) => {
@@ -55,8 +76,22 @@ const QuestionDetailLayout = () => {
       ...question,
       answer: updatedAnswers,
     };
+    console.log(...question.answer);
     dispatch(addAnswer(newAnswer));
     dispatch(setQuestion(updatedQuestion));
+  };
+
+  const handleDeleteAnswer = (answerId) => {
+    dispatch(deleteAnswer(answerId));
+    const updatedAnswers = question.answer.filter(
+      (answer) => answer.id !== answerId
+    );
+    const updatedQuestion = {
+      ...question,
+      answer: updatedAnswers,
+    };
+    dispatch(setQuestion(updatedQuestion));
+    console.log(...question.answer);
   };
 
   return (
@@ -100,9 +135,16 @@ const QuestionDetailLayout = () => {
             </div>
           </AnswerStart>
           {[...question[ANSWER]].map((item, index) => {
-            return <AnswerArticle key={index} answer={item} />;
+            return (
+              <AnswerArticle
+                key={index}
+                answer={item}
+                onDelete={() => handleDeleteAnswer(item.id)}
+              />
+            );
           })}
           <AnswerForm handleAddAnswer={handleAddAnswer} />
+
           <More>
             Not the answer youre looking for? Browse other questions or{" "}
             <span className="link">ask your own question.</span>
