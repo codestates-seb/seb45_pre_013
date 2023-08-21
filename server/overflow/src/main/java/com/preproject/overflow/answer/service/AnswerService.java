@@ -35,6 +35,8 @@ public class AnswerService {
         answer.setQuestion(question);
         answer.setMember(member);
         answer.setNickname(member.getNickname());
+        int answerCount = answer.getQuestion().getAnswerCount();
+        answer.getQuestion().setAnswerCount(answerCount + 1);
 
         return answerRepository.save(answer);
     }
