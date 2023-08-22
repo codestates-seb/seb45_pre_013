@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Head,
   MenuLine,
@@ -27,6 +27,7 @@ const Header = ({ smallSidebar = "" }) => {
   const [ageVal, setAgeVal] = useState(0);
   const [inputVisible, setInputVisible] = useState(false);
   const inputFocus = useRef();
+  const navigate = useNavigate();
 
   const changeInOutWhether = () => {
     setLogInOutWhether(!logInOutWhether);
@@ -36,6 +37,11 @@ const Header = ({ smallSidebar = "" }) => {
   };
   const toggleInput = () => {
     setInputVisible(!inputVisible);
+  };
+
+  const onClickLogOutHandler = () => {
+    localStorage.setItem("Authorization", "");
+    navigate("/");
   };
 
   useEffect(() => {
@@ -89,7 +95,10 @@ const Header = ({ smallSidebar = "" }) => {
             {Authorization ? (
               <>
                 <IconDiv>
-                  <UserImg src={USERPROFILEIMG} />
+                  <UserImg
+                    src={USERPROFILEIMG}
+                    onClick={onClickLogOutHandler}
+                  />
                 </IconDiv>
                 <IconDiv>
                   <HiInboxIcon />
