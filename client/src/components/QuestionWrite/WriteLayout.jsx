@@ -12,13 +12,27 @@ import {
   Null,
 } from "@/styles/QuestionWriteStyle";
 import { Background } from "@/styles/RootStyle";
+import { useDispatch } from "react-redux";
+import { addQuestionFetch } from "@/store/slice/questionSlice";
 
 const WriteLayout = () => {
+  const dispatch = useDispatch();
   const submitHandle = (e) => {
     e.preventDefault();
-
-    // const title = e.target.title.value;
-    // const content = e.target.content.value;
+    const title = e.target.title.value;
+    const text = e.target.content.value;
+    // const questionTagList = [
+    //   {
+    //     Long: "san",
+    //     tagName: "san",
+    //   },
+    // ];
+    const addQuestion = {
+      Long: "san",
+      title,
+      text,
+    };
+    dispatch(addQuestionFetch(addQuestion));
   };
 
   return (

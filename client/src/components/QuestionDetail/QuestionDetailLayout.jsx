@@ -25,74 +25,29 @@ import {
   ANSWER,
 } from "@/config/config";
 import { RANDOM_AVATAR } from "@/config/config";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  setQuestion,
-  addAnswer,
-  deleteAnswer,
-  fetchedAnswer,
-} from "@/store/store";
+import { useLocation } from "react-router-dom";
+import { getDetailFetch } from "@/store/slice/detailSlice";
+import { useState } from "react";
 
 const QuestionDetailLayout = () => {
+  const location = useLocation().pathname.slice(11);
   const dispatch = useDispatch();
-  const question = useSelector((state) => state.question);
-  // const postanswer = useSelector((state) => state.answers);
+  const questionDetail = useSelector((state) => state.SquestionDetail);
+  const [question, setQuestions] = useState([]);
 
   useEffect(() => {
-    const fetchedQuestion = {
-      //TEMP
-      id: Math.floor(Math.random() * 50) + 1,
-      title: "How to...",
-      text: "How to do something?",
-      userName: "bee",
-      userReputation: 0,
-      created: "today",
-      modified: "today",
-      vote: 10,
-      answer: [
-        //TEMP
-        {
-          userId: Math.floor(Math.random() * 50) + 1,
-          userName: `userName ${Math.floor(Math.random() * 50) + 1}`,
-          content: "hi",
-          vote: 35,
-        },
-        {
-          userId: Math.floor(Math.random() * 50) + 1,
-          userName: `userName ${Math.floor(Math.random() * 50) + 1}`,
-          content: "good",
-          vote: 23,
-        },
-      ],
-    };
-    dispatch(setQuestion(fetchedQuestion));
-    dispatch(fetchedAnswer());
-  }, [dispatch]);
+    dispatch(getDetailFetch(location));
+  }, [dispatch, location]);
 
-  const handleAddAnswer = (newAnswer) => {
-    const updatedAnswers = [...question.answer, newAnswer];
-    const updatedQuestion = {
-      ...question,
-      answer: updatedAnswers,
-    };
-    console.log(...question.answer);
-    dispatch(addAnswer(newAnswer));
-    dispatch(setQuestion(updatedQuestion));
-  };
+  useEffect(() => {
+    if (questionDetail.status === "fulfilled") {
+      setQuestions(questionDetail.data.data);
+    }
+  }, [questionDetail]);
 
-  const handleDeleteAnswer = (answerId) => {
-    dispatch(deleteAnswer(answerId));
-    const updatedAnswers = question.answer.filter(
-      (answer) => answer.id !== answerId
-    );
-    const updatedQuestion = {
-      ...question,
-      answer: updatedAnswers,
-    };
-    dispatch(setQuestion(updatedQuestion));
-    console.log(...question.answer);
-  };
+  const handleAddAnswer = () => {};
 
   return (
     <Div>
@@ -128,20 +83,14 @@ const QuestionDetailLayout = () => {
             </Writer>
           </Flex>
           <AnswerStart>
-            <h2>{question[ANSWER].length} Answer</h2>
+            <h2>{question[ANSWER]?.length} Answer</h2>
             <div>
               <p>sorted by:</p>
               <div>Highest score (default)</div>
             </div>
           </AnswerStart>
-          {[...question[ANSWER]].map((item, index) => {
-            return (
-              <AnswerArticle
-                key={index}
-                answer={item}
-                onDelete={() => handleDeleteAnswer(item.id)}
-              />
-            );
+          {question[ANSWER]?.map((item, index) => {
+            return <AnswerArticle key={index} answer={item} />;
           })}
           <AnswerForm handleAddAnswer={handleAddAnswer} />
 
