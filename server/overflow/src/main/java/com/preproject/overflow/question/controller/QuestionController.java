@@ -11,7 +11,7 @@ import com.preproject.overflow.question.dto.QuestionVoteDto;
 import com.preproject.overflow.question.entity.Question;
 import com.preproject.overflow.question.mapper.QuestionMapper;
 import com.preproject.overflow.question.service.QuestionService;
-import com.preproject.overflow.question.service.QuestionTagService;
+//import com.preproject.overflow.question.service.QuestionTagService;
 import com.preproject.overflow.member.mapper.MemberMapper;
 import com.preproject.overflow.member.service.MemberService;
 import org.springframework.data.domain.Page;
@@ -36,16 +36,16 @@ public class QuestionController {
     private final QuestionMapper mapper;
     private final MemberService memberService;
     private final MemberMapper memberMapper;
-    private final QuestionTagService questionTagService;
+    //private final QuestionTagService questionTagService;
 
     private final AnswerMapper answerMapper;
 
-    public QuestionController(QuestionService questionService, QuestionMapper mapper, MemberService memberService, MemberMapper memberMapper, QuestionTagService questionTagService, AnswerMapper answerMapper) {
+    public QuestionController(QuestionService questionService, QuestionMapper mapper, MemberService memberService, MemberMapper memberMapper, /*QuestionTagService questionTagService,*/ AnswerMapper answerMapper) {
         this.questionService = questionService;
         this.mapper = mapper;
         this.memberService = memberService;
         this.memberMapper = memberMapper;
-        this.questionTagService = questionTagService;
+        //this.questionTagService = questionTagService;
         this.answerMapper = answerMapper;
     }
 

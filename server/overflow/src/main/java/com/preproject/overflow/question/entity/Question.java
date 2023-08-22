@@ -43,8 +43,8 @@ public class Question extends Auditable {
     private LocalDateTime createdAt;
 
 
-    @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
-    private List<QuestionTag> questionTagList = new ArrayList<>();
+    /*@OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
+    private List<QuestionTag> questionTagList = new ArrayList<>();*/
 
     @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
     private List<Answer> answers = new ArrayList<>();
@@ -54,11 +54,11 @@ public class Question extends Auditable {
         this.member = member;
     }
 
-    public void addQuestionTag(QuestionTag questionTag) {
+    /*public void addQuestionTag(QuestionTag questionTag) {
         this.questionTagList.add(questionTag);
         if(questionTag.getQuestion() != this){
             questionTag.addQuestion(this);
         }
-    }
+    }*/
 
 }

@@ -20,8 +20,8 @@ public class QuestionPostDto {
     @NotBlank(message = "질문을 작성해 주세요.")
 
     private String text;
-    @Valid @NotNull(message = "태그를 작성해 주세요")
-    private List<QuestionTagDto> questionTagList;
+    //@Valid @NotNull(message = "태그를 작성해 주세요")
+    //private List<QuestionTagDto> questionTagList;
 
     public Long getMemberId() {
         return memberId;
@@ -35,9 +35,9 @@ public class QuestionPostDto {
         return text;
     }
 
-    public List<QuestionTagDto> getQuestionTagList() {
+    /*public List<QuestionTagDto> getQuestionTagList() {
         return questionTagList;
-    }
+    }*/
 
     public Member getMember(){
         Member member = new Member();

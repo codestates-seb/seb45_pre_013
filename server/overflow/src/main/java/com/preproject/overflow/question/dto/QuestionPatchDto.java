@@ -10,5 +10,5 @@ public class QuestionPatchDto {
     private Long questionId;
     private String title;
     private String text;
-    private List<QuestionTagDto> questionTagList;
+    //private List<QuestionTagDto> questionTagList;
 }
