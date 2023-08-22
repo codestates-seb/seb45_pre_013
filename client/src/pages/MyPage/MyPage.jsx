@@ -1,9 +1,10 @@
+import { useEffect, useState } from "react";
 import { styled } from "styled-components";
 import { useNavigate } from "react-router";
 import MyPageTap from "@/components/MyPage/MyPageTap";
 import MyPageContent from "@/components/MyPage/MyPageContent";
 import MyPagePreview from "@/components/MyPage/MyPagePreview";
-import { useEffect } from "react";
+import { API_URL } from "@/config/config";
 const MyPagePageContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -15,22 +16,38 @@ const MyPagePageContainer = styled.div`
 
 const MyPage = () => {
   const navigate = useNavigate();
+  const jwtToken = localStorage.getItem("Authorization");
   const Authorization = localStorage.getItem("Authorization");
+  const [user, setUser] = useState();
+
   useEffect(() => {
     if (!Authorization) {
       navigate("/Login/");
+    } else {
+      fetch(`${API_URL}/members`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: jwtToken,
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          setUser(data);
+        });
     }
   }, [Authorization]);
 
-  return (
+  return user ? (
     <>
       <MyPagePageContainer>
-        <MyPagePreview />
+        <MyPagePreview nickname={user.nickname} title={user.title} />
         <MyPageTap />
         <MyPageContent></MyPageContent>
       </MyPagePageContainer>
     </>
-  );
+  ) : null;
 };
 
 export default MyPage;

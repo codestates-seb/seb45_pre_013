@@ -1,11 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit";
+import { answerSlice, questionSlice, updateAnswer } from "./slice/slice";
+import { Squestion } from "./slice/questionSlice";
+import { SquestionDetail } from "./slice/detailSlice";
 
-import { questionSlice, updateAnswer } from "./slice/slice";
 
-const apiUrl = import.meta.env.VITE_API_URL;
 const store = configureStore({
   reducer: {
     question: questionSlice.reducer,
+    newAnswers: answerSlice.reducer,
+    Squestion: Squestion.reducer,
+    SquestionDetail: SquestionDetail.reducer,
+
   },
 });
 

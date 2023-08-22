@@ -1,7 +1,26 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-const apiUrl = import.meta.env.VITE_API_URL;
+
+const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 const jwtToken = localStorage.getItem("Authorization");
+
+export const fetchedAnswer = createAsyncThunk(
+  "question/fetchAnswer",
+  async () => {
+    try {
+      const response = await fetch(`${apiUrl}/answers/`);
+      if (!response.ok) {
+        throw new Error("Error in fetch");
+      }
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error("Error in fetch", error);
+      throw error;
+    }
+  }
+);
+
 
 export const questionSlice = createSlice({
   name: "question",

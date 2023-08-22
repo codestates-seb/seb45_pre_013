@@ -25,89 +25,31 @@ import {
   ANSWER,
 } from "@/config/config";
 import { RANDOM_AVATAR } from "@/config/config";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  setQuestion,
-  deleteAnswer,
-  fetchedAnswer,
-  addAnswer,
-} from "../../store/slice/slice.js";
+import { useLocation } from "react-router-dom";
+import { getDetailFetch } from "@/store/slice/detailSlice";
+import { useState } from "react";
 
-const apiUrl = import.meta.env.VITE_API_URL;
 
 const QuestionDetailLayout = () => {
+  const location = useLocation().pathname.slice(11);
   const dispatch = useDispatch();
-  const question = useSelector((state) => state.question);
+  const questionDetail = useSelector((state) => state.SquestionDetail);
+  const [question, setQuestions] = useState([]);
 
   useEffect(() => {
-    const fetchedQuestion = {
-      // id: 0,
-      // title: "",
-      // text: "",
-      // userName: "",
-      // userReputation: 0,
-      // created: "",
-      // modified: "",
-      // vote: 0,
-      answer: [
-        {
-          answerId: 0,
-          memberId: 0,
-          nickname: "",
-          questionId: 0,
-          text: "",
-          answerVote: 0,
-          createdAt: null,
-          modifiedAt: null,
-        },
-      ],
-    };
-    dispatch(setQuestion(fetchedQuestion));
-    dispatch(fetchedAnswer());
-  }, [dispatch]);
+    dispatch(getDetailFetch(location));
+  }, [dispatch, location]);
 
-  const handleAddAnswer = (newAnswer) => {
-    const updatedAnswers = [...question.answer, newAnswer];
-    const updatedQuestion = {
-      ...question,
-      answer: updatedAnswers,
-    };
-    console.log(...question.answer); //TEMP
-    dispatch(addAnswer(newAnswer));
-    dispatch(setQuestion(updatedQuestion));
-  };
+  useEffect(() => {
+    if (questionDetail.status === "fulfilled") {
+      setQuestions(questionDetail.data.data);
+    }
+  }, [questionDetail]);
 
-  // const handleDeleteAnswer = async (answerId) => {
-  //   try {
-  //     const jwtToken = localStorage.getItem("Authorization");
-  //     const response = await fetch(`${apiUrl}/answers/${answerId}`, {
-  //       method: "DELETE",
-  //       headers: {
-  //         Authorization: `Bearer ${jwtToken}`,
-  //       },
-  //     });
+  const handleAddAnswer = () => {};
 
-  //     if (!response.ok) {
-  //       alert("Failed to delete answer");
-  //     }
-
-  //     dispatch(deleteAnswer(answerId));
-
-  //     const updatedAnswers = question.answer.filter(
-  //       (answer) => answer.answerId !== answerId
-  //     );
-  //     const updatedQuestion = {
-  //       ...question,
-  //       answer: updatedAnswers,
-  //     };
-  //     dispatch(setQuestion(updatedQuestion));
-
-  //     console(...question.answer); //TEMP
-  //   } catch (error) {
-  //     alert("error delete answer");
-  //   }
-  // };
 
   return (
     <Div>
@@ -143,20 +85,22 @@ const QuestionDetailLayout = () => {
             </Writer>
           </Flex>
           <AnswerStart>
-            <h2>{question[ANSWER].length} Answer</h2>
+            <h2>{question[ANSWER]?.length} Answer</h2>
             <div>
               <p>sorted by:</p>
               <div>Highest score (default)</div>
             </div>
           </AnswerStart>
-          {[...question[ANSWER]].map((item, index) => {
+          
+          {question[ANSWER].map((item, index) => {
             return (
               <AnswerArticle
                 key={index}
-                answer={item}
-                // onDelete={() => handleDeleteAnswer(item.answerId)}
+                answer={item}}
               />
             );
+          {question[ANSWER]?.map((item, index) => {
+            return <AnswerArticle key={index} answer={item} />;
           })}
           <AnswerForm
             questionId={question.questionId}

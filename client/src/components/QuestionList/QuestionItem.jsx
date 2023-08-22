@@ -3,12 +3,14 @@ import { ItemDiv } from "@/styles/QuestionList/LayoutStyle";
 import {
   ID,
   TITLE,
+  TEXT,
   USER_NAME,
   CREATED,
   MODIFIED,
   VOTE,
   ANSWER,
   VIEW,
+  QUESTIONID,
 } from "@/config/config";
 import { RANDOM_AVATAR } from "@/config/config";
 
@@ -22,8 +24,9 @@ const QuestionItem = ({ item }) => {
       </div>
       <div>
         <h3>
-          <Link to={"/Questions/" + item[ID]}>{item[TITLE]}</Link>
+          <Link to={"/Questions/" + item[QUESTIONID]}>{item[TITLE]}</Link>
         </h3>
+        <h2>{item[TEXT]}</h2>
         <div>
           <img
             alt={`${item[USER_NAME]}'s avatar`}
