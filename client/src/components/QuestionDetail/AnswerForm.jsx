@@ -1,52 +1,59 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 import { FormHeadline, Form } from "@/styles/QuestionDetail/AnswerStyle";
 
+// import { addAnswer } from "../../store/slice/slice";
+
 const apiUrl = import.meta.env.VITE_API_URL;
-const AnswerForm = ({ handleAddAnswer }) => {
+const jwtToken = localStorage.getItem("Authorization");
+const AnswerForm = ({ handleAddAnswer, questionId }) => {
   const [content, setContent] = useState("");
+  // const dispatch = useDispatch();
 
   const handleCreate = async (e) => {
     e.preventDefault();
 
-    const timeoptions = {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit",
-    };
+    // const timeoptions = {
+    //   year: "numeric",
+    //   month: "short",
+    //   day: "numeric",
+    //   hour: "2-digit",
+    //   minute: "2-digit",
+    //   second: "2-digit",
+    // };
 
     const newAnswer = {
-      answerId: 0,
-      memberId: 0,
-      nickname: "",
-      questionId: 0,
-      text: content,
-      answerVote: 0,
-      createdAt: new Date().toLocaleString("ko-KR", timeoptions),
-      modifiedAt: new Date().toISOString("ko-KR", timeoptions),
+      // answerId: 0,
+      // memberId: 0,
+      // nickname: "",
+      questionId: 1,
+      text: content, //FIX
+      // answerVote: 0,
     };
 
-    handleAddAnswer(newAnswer);
-    console.log(newAnswer);
-    setContent("");
-
     try {
-      const response = await fetch(`${apiUrl}/answers/`, {
+      handleAddAnswer(newAnswer);
+      // dispatch(addAnswer(newAnswer));
+      setContent("");
+
+      const response = await fetch(`${apiUrl}/answers`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${jwtToken}`,
         },
         body: JSON.stringify(newAnswer),
       });
 
-      if (!response.ok) {
-        throw new Error("Failed to create answer");
-      }
+      const data = await response.json();
+      console.log(jwtToken, data);
+      return data;
+
+      // if (!response.ok) {
+      //   alert(response.statusText);
+      // }
     } catch (error) {
-      console.error("Error", error);
+      alert(error.message);
     }
   };
 

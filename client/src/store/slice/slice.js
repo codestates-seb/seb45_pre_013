@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
+
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 const jwtToken = localStorage.getItem("Authorization");
 
@@ -20,17 +21,19 @@ export const fetchedAnswer = createAsyncThunk(
   }
 );
 
+
 export const questionSlice = createSlice({
   name: "question",
   initialState: {
-    id: 0,
-    title: "",
-    text: "",
-    userName: "",
-    userReputation: 0,
-    created: "",
-    modified: "",
-    vote: 0,
+    // questionId: 1,
+    // id: 0,
+    // title: "",
+    // text: "",
+    // userName: "",
+    // userReputation: 0,
+    // created: "",
+    // modified: "",
+    // vote: 0,
     answer: [],
   },
   reducers: {
@@ -55,10 +58,40 @@ export const questionSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(fetchedAnswer.fulfilled, (state, action) => {
-      state.answer = action.payload;
+      state.answer = action.payload.map((item) => ({
+        // answerId: item.answerId,
+        // memberId: item.memberId,
+        // nickname: item.nickname,
+        questionId: item.questionId,
+        text: item.text,
+        // vote: item.answerVote,
+        // createdAt: item.createdAt,
+        // modifiedAt: item.modifiedAt,
+      }));
     });
   },
 });
+
+export const fetchedAnswer = createAsyncThunk(
+  "question/fetchAnswer",
+  async () => {
+    try {
+      const response = await fetch(`${apiUrl}/answers/`, {
+        headers: {
+          Authorization: `Bearer ${jwtToken}`,
+        },
+      });
+      if (!response.ok) {
+        throw new alert("Error in fetch");
+      }
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      alert("Error in answeredfetch", error);
+      throw error;
+    }
+  }
+);
 
 export const answerSlice = createSlice({
   name: "newAnswers",
@@ -81,6 +114,6 @@ export const answerSlice = createSlice({
   },
 });
 
+export const { addAnswer } = answerSlice.actions;
 export const { setQuestion, deleteAnswer, updateAnswer } =
   questionSlice.actions;
-export const { addAnswer } = answerSlice.actions;

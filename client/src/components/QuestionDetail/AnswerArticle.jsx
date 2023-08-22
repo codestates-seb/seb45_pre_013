@@ -12,11 +12,13 @@ import {
 // import { Writer } from "@/styles/QuestionDetail/QuestionStyle";
 // import { RANDOM_AVATAR, USER_NAME, USER_REPUTATION, ID } from "@/config/config";
 import { useDispatch } from "react-redux";
-import { updateAnswer } from "@/store/slice/slice.js";
+import { updateAnswer, deleteAnswer } from "@/store/slice/slice.js";
 import { useState } from "react";
+import { RANDOM_AVATAR } from "@/config/config";
 const apiUrl = import.meta.env.VITE_API_URL;
+const jwtToken = localStorage.getItem("Authorization");
 
-const AnswerArticle = ({ answer, onDelete, onEdit }) => {
+const AnswerArticle = ({ answer, onDelete, questionId }) => {
   const dispatch = useDispatch();
   const [isEditing, setIsEditing] = useState(false);
   const [editedContent, setEditedContent] = useState(answer.text);
@@ -34,30 +36,48 @@ const AnswerArticle = ({ answer, onDelete, onEdit }) => {
 
   const handleSaveEdit = async () => {
     const updatedAnswer = {
-      ...answer,
       text: editedContent,
-      modifiedAt: new Date().toLocaleString("ko-KR", timeoptions),
     };
 
     try {
-      const response = await fetch(`${apiUrl}/answers/)`, {
+      const response = await fetch(`${apiUrl}/answers/${questionId}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${jwtToken}`,
         },
         body: JSON.stringify(updatedAnswer),
       });
 
       if (!response.ok) {
-        throw new Error("error update answer");
+        throw new alert("error update answer");
       }
-      const updatedResponse = await fetch(`${apiUrl}/${answer.answerId}`);
+      const updatedResponse = await fetch(`${apiUrl}/answers/1`);
       const updatedData = await updatedResponse.json();
       dispatch(updateAnswer(updatedData));
-
       setIsEditing(false);
     } catch (error) {
       console.error("error update answer:", error);
+    }
+  };
+
+  const handleDelete = async () => {
+    try {
+      const response = await fetch(`${apiUrl}/answers/1`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${jwtToken}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to delete answer");
+      }
+
+      dispatch(deleteAnswer(answer.answerId));
+      onDelete();
+    } catch (error) {
+      console.error("error delete answer:", error);
     }
   };
 
@@ -89,16 +109,16 @@ const AnswerArticle = ({ answer, onDelete, onEdit }) => {
             ) : (
               <>
                 <EditDelete onClick={handleEdit}>Edit</EditDelete>
-                <EditDelete onClick={onDelete}>delete</EditDelete>
+                <EditDelete onClick={handleDelete}>delete</EditDelete>
               </>
             )}
           </UtilContainer>
           <div>
             <InfoImageContainer>
               <AnswerProfile
-              //TEMP
-              // alt={answer.nickname + "'s avatar"}
-              // src={`${RANDOM_AVATAR}/${answer.memberd}.jpg`}
+                //TEMP
+                alt={answer.nickname + "'s avatar"}
+                src={`${RANDOM_AVATAR}/${answer.memberd}.jpg`}
               />
               <p>{answer.nickname}</p>
             </InfoImageContainer>
