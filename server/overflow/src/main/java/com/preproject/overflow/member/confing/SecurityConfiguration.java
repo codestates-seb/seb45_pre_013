@@ -47,8 +47,9 @@ public class SecurityConfiguration {
         http
                 .headers().frameOptions().sameOrigin()
                 .and()
+                .cors().configurationSource(corsConfigurationSource())
+                .and()
                 .csrf().disable()
-                .cors(withDefaults())
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .formLogin().disable()
@@ -85,8 +86,11 @@ public class SecurityConfiguration {
         CorsConfiguration configuration = new CorsConfiguration();
 
         configuration.setAllowCredentials(true);
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:8080", "http://testsan1.s3-website.ap-northeast-2.amazonaws.com", "http://testsan1.s3-website.ap-northeast-2.amazonaws.com:8080"));
-        configuration.setAllowedMethods(Arrays.asList("GET","POST", "PATCH", "DELETE"));
+        configuration.setAllowedOrigins(List.of(
+                "http://testsan2.s3-website.ap-northeast-2.amazonaws.com",
+                "http://localhost:5173"
+        ));
+        configuration.setAllowedMethods(List.of("GET","POST", "PATCH", "DELETE"));
         configuration.setAllowedHeaders(List.of("*"));
         configuration.setExposedHeaders(List.of("*"));
 
