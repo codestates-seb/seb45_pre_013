@@ -9,12 +9,15 @@ export const API_URL =
   "http://ec2-3-34-185-189.ap-northeast-2.compute.amazonaws.com:8080";
 
 export const ID = "id";
+export const MEMBERID = "memberId";
 export const TITLE = "title";
 export const TEXT = "text";
-export const USER_NAME = "userName";
+export const USER_NAME = "nickName";
 export const USER_REPUTATION = "userReputation";
 export const CREATED = "created";
 export const MODIFIED = "modified";
-export const VOTE = "vote";
-export const ANSWER = "answer";
-export const VIEW = "view";
+export const VOTE = "voteCount";
+export const ANSWER = "answers";
+export const VIEW = "viewCount";
+export const QUESTIONID = "questionId";
+export const QUESTIONTAGLIST = "questionTagList";

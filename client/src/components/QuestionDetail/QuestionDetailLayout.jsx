@@ -25,89 +25,29 @@ import {
   ANSWER,
 } from "@/config/config";
 import { RANDOM_AVATAR } from "@/config/config";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  setQuestion,
-  addAnswer,
-  deleteAnswer,
-  fetchedAnswer,
-} from "../../store/slice/slice.js";
-
-const apiUrl = import.meta.env.VITE_API_URL;
+import { useLocation } from "react-router-dom";
+import { getDetailFetch } from "@/store/slice/detailSlice";
+import { useState } from "react";
 
 const QuestionDetailLayout = () => {
+  const location = useLocation().pathname.slice(11);
   const dispatch = useDispatch();
-  const question = useSelector((state) => state.question);
+  const questionDetail = useSelector((state) => state.SquestionDetail);
+  const [question, setQuestions] = useState([]);
 
   useEffect(() => {
-    const fetchedQuestion = {
-      //TEMP
-      id: Math.floor(Math.random() * 50) + 1,
-      title: "How to...",
-      text: "How to do something?",
-      userName: "bee",
-      userReputation: 0,
-      created: "today",
-      modified: "today",
-      vote: 10,
-      answer: [
-        {
-          answerId: 0,
-          memberId: 0,
-          nickname: "",
-          questionId: 0,
-          text: "",
-          vote: 0,
-          createdAt: null,
-          modifiedAt: null,
-        },
-      ],
-    };
-    dispatch(setQuestion(fetchedQuestion));
-    dispatch(fetchedAnswer());
-  }, [dispatch]);
+    dispatch(getDetailFetch(location));
+  }, [dispatch, location]);
 
-  const handleAddAnswer = (newAnswer) => {
-    const updatedAnswers = [...question.answer, newAnswer];
-    const updatedQuestion = {
-      ...question,
-      answer: updatedAnswers,
-    };
-    console.log(...question.answer); //TEMP
-    dispatch(addAnswer(newAnswer));
-    dispatch(setQuestion(updatedQuestion));
-  };
-
-  const handleDeleteAnswer = async (answerId) => {
-    try {
-      const response = await fetch(
-        `http://ec2-3-34-185-189.ap-northeast-2.compute.amazonaws.com:8080/answers/${answerId}`,
-        {
-          method: "DELETE",
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error("Failed to delete answer");
-      }
-
-      dispatch(deleteAnswer(answerId));
-
-      const updatedAnswers = question.answer.filter(
-        (answer) => answer.answerId !== answerId
-      );
-      const updatedQuestion = {
-        ...question,
-        answer: updatedAnswers,
-      };
-      dispatch(setQuestion(updatedQuestion));
-
-      console.log(...question.answer); //TEMP
-    } catch (error) {
-      console.error("error delete answer:", error);
+  useEffect(() => {
+    if (questionDetail.status === "fulfilled") {
+      setQuestions(questionDetail.data.data);
     }
-  };
+  }, [questionDetail]);
+
+  const handleAddAnswer = () => {};
 
   return (
     <Div>
@@ -143,20 +83,14 @@ const QuestionDetailLayout = () => {
             </Writer>
           </Flex>
           <AnswerStart>
-            <h2>{question[ANSWER].length} Answer</h2>
+            <h2>{question[ANSWER]?.length} Answer</h2>
             <div>
               <p>sorted by:</p>
               <div>Highest score (default)</div>
             </div>
           </AnswerStart>
-          {[...question[ANSWER]].map((item, index) => {
-            return (
-              <AnswerArticle
-                key={index}
-                answer={item}
-                onDelete={() => handleDeleteAnswer(item.id)}
-              />
-            );
+          {question[ANSWER]?.map((item, index) => {
+            return <AnswerArticle key={index} answer={item} />;
           })}
           <AnswerForm handleAddAnswer={handleAddAnswer} />
 
