@@ -40,7 +40,7 @@ const Header = ({ smallSidebar = "" }) => {
   };
 
   const onClickLogOutHandler = () => {
-    localStorage.setItem("Authorization", "");
+    localStorage.setItem("Authorization", null);
     navigate("/");
   };
 
@@ -92,7 +92,7 @@ const Header = ({ smallSidebar = "" }) => {
           </SearchDiv>
 
           <TopBtnDiv>
-            {Authorization ? (
+            {Authorization != "null" ? (
               <>
                 <IconDiv>
                   <UserImg

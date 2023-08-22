@@ -38,12 +38,30 @@ const MyPage = () => {
     }
   }, [Authorization]);
 
+  const onClickUserLeaveHnadler = () => {
+    fetch(`${API_URL}/members`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: Authorization,
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          localStorage.setItem("Authorization", "null");
+          navigate("/");
+        }
+      })
+      .catch();
+  };
+
   return user ? (
     <>
       <MyPagePageContainer>
         <MyPagePreview nickname={user.nickname} title={user.title} />
         <MyPageTap />
         <MyPageContent intro={user.intro}></MyPageContent>
+        <p onClick={onClickUserLeaveHnadler}>leave</p>
       </MyPagePageContainer>
     </>
   ) : null;

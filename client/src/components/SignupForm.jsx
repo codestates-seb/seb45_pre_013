@@ -41,11 +41,12 @@ const SignUpForm = () => {
             }),
           })
             .then((response) => response.json())
-            .then((json) => {
-              console.log(json);
-              navigate("/Login");
+            .then((data) => {
+              if (data.status !== 409) {
+                navigate("/Login");
+              }
             })
-            .catch();
+            .catch((err) => console.log(err));
         } else {
           setValidationError("password");
         }
