@@ -29,9 +29,9 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setQuestion,
-  addAnswer,
   deleteAnswer,
   fetchedAnswer,
+  addAnswer,
 } from "../../store/slice/slice.js";
 
 const apiUrl = import.meta.env.VITE_API_URL;
@@ -42,15 +42,14 @@ const QuestionDetailLayout = () => {
 
   useEffect(() => {
     const fetchedQuestion = {
-      //TEMP
-      id: Math.floor(Math.random() * 50) + 1,
-      title: "How to...",
-      text: "How to do something?",
-      userName: "bee",
-      userReputation: 0,
-      created: "today",
-      modified: "today",
-      vote: 10,
+      // id: 0,
+      // title: "",
+      // text: "",
+      // userName: "",
+      // userReputation: 0,
+      // created: "",
+      // modified: "",
+      // vote: 0,
       answer: [
         {
           answerId: 0,
@@ -58,7 +57,7 @@ const QuestionDetailLayout = () => {
           nickname: "",
           questionId: 0,
           text: "",
-          vote: 0,
+          answerVote: 0,
           createdAt: null,
           modifiedAt: null,
         },
@@ -79,35 +78,36 @@ const QuestionDetailLayout = () => {
     dispatch(setQuestion(updatedQuestion));
   };
 
-  const handleDeleteAnswer = async (answerId) => {
-    try {
-      const response = await fetch(
-        `http://ec2-3-34-185-189.ap-northeast-2.compute.amazonaws.com:8080/answers/${answerId}`,
-        {
-          method: "DELETE",
-        }
-      );
+  // const handleDeleteAnswer = async (answerId) => {
+  //   try {
+  //     const jwtToken = localStorage.getItem("Authorization");
+  //     const response = await fetch(`${apiUrl}/answers/${answerId}`, {
+  //       method: "DELETE",
+  //       headers: {
+  //         Authorization: `Bearer ${jwtToken}`,
+  //       },
+  //     });
 
-      if (!response.ok) {
-        throw new Error("Failed to delete answer");
-      }
+  //     if (!response.ok) {
+  //       alert("Failed to delete answer");
+  //     }
 
-      dispatch(deleteAnswer(answerId));
+  //     dispatch(deleteAnswer(answerId));
 
-      const updatedAnswers = question.answer.filter(
-        (answer) => answer.answerId !== answerId
-      );
-      const updatedQuestion = {
-        ...question,
-        answer: updatedAnswers,
-      };
-      dispatch(setQuestion(updatedQuestion));
+  //     const updatedAnswers = question.answer.filter(
+  //       (answer) => answer.answerId !== answerId
+  //     );
+  //     const updatedQuestion = {
+  //       ...question,
+  //       answer: updatedAnswers,
+  //     };
+  //     dispatch(setQuestion(updatedQuestion));
 
-      console.log(...question.answer); //TEMP
-    } catch (error) {
-      console.error("error delete answer:", error);
-    }
-  };
+  //     console(...question.answer); //TEMP
+  //   } catch (error) {
+  //     alert("error delete answer");
+  //   }
+  // };
 
   return (
     <Div>
@@ -154,11 +154,14 @@ const QuestionDetailLayout = () => {
               <AnswerArticle
                 key={index}
                 answer={item}
-                onDelete={() => handleDeleteAnswer(item.id)}
+                // onDelete={() => handleDeleteAnswer(item.answerId)}
               />
             );
           })}
-          <AnswerForm handleAddAnswer={handleAddAnswer} />
+          <AnswerForm
+            questionId={question.questionId}
+            handleAddAnswer={handleAddAnswer}
+          />
 
           <More>
             Not the answer youre looking for? Browse other questions or{" "}
