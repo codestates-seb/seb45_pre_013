@@ -10,7 +10,7 @@ import {
   StatContent,
 } from "@/styles/MyPage/MyPageContent";
 
-const MyPageContent = () => {
+const MyPageContent = ({ intro }) => {
   return (
     <>
       <MyPageContentContainer>
@@ -23,6 +23,7 @@ const MyPageContent = () => {
           <PageContentGrid>
             <AboutMeBlock>
               <HeadlineTxt>About</HeadlineTxt>
+              <p style={{ whiteSpace: "pre" }}>{intro}</p>
             </AboutMeBlock>
             <BadgeBlock>
               <HeadlineTxt>SomeThing</HeadlineTxt>

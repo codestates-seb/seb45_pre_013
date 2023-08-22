@@ -16,7 +16,6 @@ const MyPagePageContainer = styled.div`
 
 const MyPage = () => {
   const navigate = useNavigate();
-  const jwtToken = localStorage.getItem("Authorization");
   const Authorization = localStorage.getItem("Authorization");
   const [user, setUser] = useState();
 
@@ -28,7 +27,7 @@ const MyPage = () => {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          Authorization: jwtToken,
+          Authorization: Authorization,
         },
       })
         .then((res) => res.json())
@@ -44,7 +43,7 @@ const MyPage = () => {
       <MyPagePageContainer>
         <MyPagePreview nickname={user.nickname} title={user.title} />
         <MyPageTap />
-        <MyPageContent></MyPageContent>
+        <MyPageContent intro={user.intro}></MyPageContent>
       </MyPagePageContainer>
     </>
   ) : null;
