@@ -31,7 +31,6 @@ import { useLocation } from "react-router-dom";
 import { getDetailFetch } from "@/store/slice/detailSlice";
 import { useState } from "react";
 
-
 const QuestionDetailLayout = () => {
   const location = useLocation().pathname.slice(11);
   const dispatch = useDispatch();
@@ -49,7 +48,6 @@ const QuestionDetailLayout = () => {
   }, [questionDetail]);
 
   const handleAddAnswer = () => {};
-
 
   return (
     <Div>
@@ -91,14 +89,10 @@ const QuestionDetailLayout = () => {
               <div>Highest score (default)</div>
             </div>
           </AnswerStart>
-          
+
           {question[ANSWER].map((item, index) => {
-            return (
-              <AnswerArticle
-                key={index}
-                answer={item}}
-              />
-            );
+            return <AnswerArticle key={index} answer={item} />;
+          })}
           {question[ANSWER]?.map((item, index) => {
             return <AnswerArticle key={index} answer={item} />;
           })}
