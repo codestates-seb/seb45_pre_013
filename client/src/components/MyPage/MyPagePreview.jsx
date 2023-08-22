@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   MyPageProfileContainer,
@@ -18,7 +19,7 @@ import {
 } from "@/styles/MyPage/MyPagePreview";
 import { RANDOM_AVATAR } from "@/config/config";
 
-const MyPagePreview = () => {
+const MyPagePreview = ({ nickname, title = "title" }) => {
   return (
     <>
       <MyPageProfileContainer>
@@ -27,8 +28,8 @@ const MyPagePreview = () => {
             <ProfileImage src={`${RANDOM_AVATAR}/23.jpg`} alt="PROFILE IMAGE" />
           </ProfileImageContainer>
           <StatusContainer>
-            <DisplayName>DISPLAYNAME</DisplayName>
-            <ProfileTitle>TITLE</ProfileTitle>
+            <DisplayName>{nickname}</DisplayName>
+            <ProfileTitle>{title}</ProfileTitle>
             <ListsContainer>
               MEMBER SINCE {""}, LAST SEEN, CONSECUTIVE{""}{" "}
             </ListsContainer>
