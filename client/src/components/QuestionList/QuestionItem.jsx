@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { ItemDiv } from "@/styles/QuestionList/LayoutStyle";
 import {
-  ID,
   TITLE,
   TEXT,
   USER_NAME,

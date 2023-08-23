@@ -1,4 +1,3 @@
-import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router";
 import useInput from "@/hooks/useInput";
 import { LoginContainer } from "@/styles/Login/LoginFormStyle";
