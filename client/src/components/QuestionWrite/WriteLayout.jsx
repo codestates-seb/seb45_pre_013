@@ -29,7 +29,7 @@ const WriteLayout = () => {
     //   },
     // ];
     const addQuestion = {
-      memberId: 1,
+      memberId: 3,
       title,
       text,
     };
