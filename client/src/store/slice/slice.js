@@ -3,98 +3,136 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 const jwtToken = localStorage.getItem("Authorization");
 
-export const questionSlice = createSlice({
-  name: "question",
-  initialState: {
-    // questionId: 1,
-    // id: 0,
-    // title: "",
-    // text: "",
-    // userName: "",
-    // userReputation: 0,
-    // created: "",
-    // modified: "",
-    // vote: 0,
-    answer: [],
-  },
-  reducers: {
-    setQuestion: (state, action) => {
-      return action.payload;
-    },
-    updateAnswer: (state, action) => {
-      const { answerId, text } = action.payload;
-      const answerToUpdate = state.answer.find(
-        (answer) => answer.answerId === answerId
-      );
-      if (answerToUpdate) {
-        answerToUpdate.text = text;
-      }
-    },
-    deleteAnswer: (state, action) => {
-      const deleteAnswerId = action.payload;
-      state.answer = state.answer.filter(
-        (answer) => answer.answerId !== deleteAnswerId
-      );
-    },
-  },
-  extraReducers: (builder) => {
-    builder.addCase(fetchedAnswer.fulfilled, (state, action) => {
-      state.answer = action.payload.map((item) => ({
-        // answerId: item.answerId,
-        // memberId: item.memberId,
-        // nickname: item.nickname,
-        questionId: item.questionId,
-        text: item.text,
-        // vote: item.answerVote,
-        // createdAt: item.createdAt,
-        // modifiedAt: item.modifiedAt,
-      }));
-    });
-  },
-});
-
-export const fetchedAnswer = createAsyncThunk(
-  "question/fetchAnswer",
-  async () => {
+export const createAnswer = createAsyncThunk(
+  "answers/editAnswer",
+  async ({ answerId, updatedAnswer }) => {
     try {
-      const response = await fetch(`${apiUrl}/answers/`, {
+      const response = await fetch(`${apiUrl}/answers`, {
+        method: "POST",
+        body: JSON.stringify({ content: updatedAnswer }),
         headers: {
-          Authorization: `Bearer ${jwtToken}`,
+          "Content-Type": "application/json",
         },
       });
-      if (!response.ok) {
-        throw new alert("Error in fetch");
-      }
       const data = await response.json();
-      return data;
+      return { answerId, updatedAnswer: data };
     } catch (error) {
-      alert("Error in answeredfetch", error);
+      console.error("Error editing answer:", error);
       throw error;
     }
   }
 );
 
-export const answerSlice = createSlice({
-  name: "newAnswers",
-  initialState: [
-    {
-      answerId: 0,
-      memberId: 0,
-      nickname: "",
-      questionId: 0,
-      text: "",
-      vote: 0,
-      createdAt: null,
-      modifiedAt: null,
-    },
-  ],
-  reducers: {
-    addAnswer: (state, action) => {
-      state.push(action.payload);
-    },
+export const deleteAnswer = createAsyncThunk(
+  "answers/deleteAnswer",
+  async (answerId) => {
+    const response = await fetch(`${apiUrl}/answer/${answerId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: jwtToken,
+      },
+    });
+    const data = await response.json();
+    return data;
+  }
+);
+
+export const editAnswer = createAsyncThunk(
+  "answers/editAnswer",
+  async ({ answerId, updatedAnswer }) => {
+    try {
+      const response = await fetch(`${apiUrl}/answers/${answerId}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${jwtToken}`,
+        },
+        body: JSON.stringify(updatedAnswer),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to update answer");
+      }
+
+      const data = await response.json();
+      return { answerId, updatedAnswer: data };
+    } catch (error) {
+      console.error("Error updating answer:", error);
+      throw error;
+    }
+  }
+);
+
+export const answersSlice = createSlice({
+  name: "answers",
+  initialState: [],
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(editAnswer.fulfilled, (state, action) => {
+      const { answerId, updatedAnswer } = action.payload;
+      const existingAnswer = state.find(
+        (answer) => answer.answerId === answerId
+      );
+      if (existingAnswer) {
+        Object.assign(existingAnswer, updatedAnswer);
+      }
+    });
   },
 });
 
-export const { addAnswer } = answerSlice.actions;
-export const { setQuestion, deleteAnswer, updateAnswer } =
-  questionSlice.actions;
+// export const questionSlice = createSlice({
+//   name: "question",
+//   initialState: {
+//     answer: [],
+//   },
+//   reducers: {
+//     setQuestion: (state, action) => {
+//       return action.payload;
+//     },
+//     updateAnswer: (state, action) => {
+//       const { answerId, text } = action.payload;
+//       const answerToUpdate = state.answer.find(
+//         (answer) => answer.answerId === answerId
+//       );
+//       if (answerToUpdate) {
+//         answerToUpdate.text = text;
+//       }
+//     },
+//     deleteAnswer: (state, action) => {
+//       const deleteAnswerId = action.payload;
+//       state.answer = state.answer.filter(
+//         (answer) => answer.answerId !== deleteAnswerId
+//       );
+//     },
+//   },
+//   extraReducers: (builder) => {
+//     builder.addCase(fetchedAnswer.fulfilled, (state, action) => {
+//       state.answer = action.payload.map((item) => ({
+//         questionId: item.questionId,
+//         text: item.text,
+//       }));
+//     });
+//   },
+// });
+
+// export const fetchedAnswer = createAsyncThunk(
+//   "question/fetchAnswer",
+//   async () => {
+//     try {
+//       const response = await fetch(`${apiUrl}/answers/`, {
+//         headers: {
+//           Authorization: `Bearer ${jwtToken}`,
+//         },
+//       });
+//       if (!response.ok) {
+//         throw new alert("Error in fetch");
+//       }
+//       const data = await response.json();
+//       return data;
+//     } catch (error) {
+//       alert("Error in answeredfetch", error);
+//       throw error;
+//     }
+//   }
+// );

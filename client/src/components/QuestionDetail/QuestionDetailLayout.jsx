@@ -47,8 +47,6 @@ const QuestionDetailLayout = () => {
     }
   }, [questionDetail]);
 
-  const handleAddAnswer = () => {};
-
   return (
     <Div>
       <ArticleTitle title={question[TITLE]} />
@@ -92,10 +90,7 @@ const QuestionDetailLayout = () => {
           {question[ANSWER]?.map((item, index) => {
             return <AnswerArticle key={index} answer={item} />;
           })}
-          <AnswerForm
-            questionId={question.questionId}
-            handleAddAnswer={handleAddAnswer}
-          />
+          <AnswerForm questionId={question.questionId} />
 
           <More>
             Not the answer youre looking for? Browse other questions or{" "}

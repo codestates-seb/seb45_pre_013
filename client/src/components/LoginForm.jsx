@@ -22,7 +22,7 @@ const LoginForm = () => {
         password: password.value,
       }),
     })
-      .then((res) => {
+      .then(async (res) => {
         const jwtToken = res.headers.get("Authorization");
         localStorage.setItem("Authorization", jwtToken);
         token.current = jwtToken;

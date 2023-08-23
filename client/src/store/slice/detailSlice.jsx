@@ -44,6 +44,7 @@ export const updataQuestionFetch = createAsyncThunk(
     return data;
   }
 );
+
 export const SquestionDetail = createSlice({
   name: "Squestion",
   initialState: {

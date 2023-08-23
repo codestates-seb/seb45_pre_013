@@ -21,7 +21,7 @@ export const addQuestionFetch = createAsyncThunk(
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: jwtToken,
+        Authorization: `${jwtToken}`,
       },
       body: JSON.stringify({
         ...addQuestion,
