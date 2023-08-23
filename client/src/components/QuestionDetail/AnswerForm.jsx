@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { FormHeadline, Form } from "@/styles/QuestionDetail/AnswerStyle";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;

@@ -8,7 +8,6 @@ export const RANDOM_AVATAR =
 export const API_URL =
   "http://ec2-3-34-185-189.ap-northeast-2.compute.amazonaws.com";
 
-export const ID = "id";
 export const MEMBERID = "memberId";
 export const TITLE = "title";
 export const TEXT = "text";
