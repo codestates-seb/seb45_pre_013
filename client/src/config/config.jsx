@@ -6,7 +6,7 @@ export const RANDOM_AVATAR =
   "https://xsgames.co/randomusers/assets/avatars/pixel";
 
 export const API_URL =
-  "http://ec2-3-34-185-189.ap-northeast-2.compute.amazonaws.com:8080";
+  "http://ec2-3-34-185-189.ap-northeast-2.compute.amazonaws.com";
 
 export const ID = "id";
 export const MEMBERID = "memberId";
