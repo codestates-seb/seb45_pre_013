@@ -16,7 +16,6 @@ const MyPagePageContainer = styled.div`
 
 const MyPage = () => {
   const navigate = useNavigate();
-  const jwtToken = localStorage.getItem("Authorization");
   const Authorization = localStorage.getItem("Authorization");
   const [user, setUser] = useState();
 
@@ -28,7 +27,7 @@ const MyPage = () => {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          Authorization: jwtToken,
+          Authorization: Authorization,
         },
       })
         .then((res) => res.json())
@@ -39,12 +38,30 @@ const MyPage = () => {
     }
   }, [Authorization]);
 
+  const onClickUserLeaveHnadler = () => {
+    fetch(`${API_URL}/members`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: Authorization,
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          localStorage.setItem("Authorization", "null");
+          navigate("/");
+        }
+      })
+      .catch();
+  };
+
   return user ? (
     <>
       <MyPagePageContainer>
         <MyPagePreview nickname={user.nickname} title={user.title} />
         <MyPageTap />
-        <MyPageContent></MyPageContent>
+        <MyPageContent intro={user.intro}></MyPageContent>
+        <p onClick={onClickUserLeaveHnadler}>leave</p>
       </MyPagePageContainer>
     </>
   ) : null;

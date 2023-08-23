@@ -25,6 +25,7 @@ export const delQuestionFetch = createAsyncThunk(
     return;
   }
 );
+
 export const SquestionDetail = createSlice({
   name: "Squestion",
   initialState: {

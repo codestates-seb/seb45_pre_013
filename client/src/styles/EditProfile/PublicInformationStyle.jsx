@@ -58,7 +58,7 @@ export const AboutMeContainer = styled.div`
   border-radius: 10px;
 `;
 
-export const AboutMeForm = styled.input`
+export const AboutMeForm = styled.textarea`
   width: 100%;
   max-width: 793px;
   height: 255px;
