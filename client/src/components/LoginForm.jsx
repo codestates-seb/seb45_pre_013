@@ -21,9 +21,14 @@ const LoginForm = () => {
         password: password.value,
       }),
     })
-      .then((res) => {
+      .then(async (res) => {
         const jwtToken = res.headers.get("Authorization");
-        localStorage.setItem("Authorization", jwtToken);
+        if (jwtToken) {
+          localStorage.setItem("Authorization", jwtToken);
+          console.log("Token:", jwtToken);
+        } else {
+          console.error("No token found in response headers.");
+        }
       })
       .then(() => {
         navigate("/");
