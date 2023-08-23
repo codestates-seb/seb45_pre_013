@@ -32,7 +32,6 @@ const AnswerForm = ({ questionId }) => {
         },
         body: JSON.stringify(newAnswer),
       });
-      window.location.reload();
       if (!response.ok) {
         alert(response.statusText);
       }
