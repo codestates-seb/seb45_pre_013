@@ -47,67 +47,60 @@ const QuestionDetailLayout = () => {
     }
   }, [questionDetail]);
 
-  if (!question) {
-    return;
-  } else {
-    return (
-      <Div>
-        <ArticleTitle title={question[TITLE]} />
-        <ArticleMoreData>
-          <div>
-            <div>Asked</div>
-            <div>{question[CREATED]}</div>
-          </div>
-          <div>
-            <div>Modified</div>
-            <div>{question[MODIFIED]}</div>
-          </div>
-        </ArticleMoreData>
-        <FlexMain>
-          <Main>
-            <Flex>
-              <Vote vote={question[VOTE]} />
-              <article>{question[TEXT]}</article>
-            </Flex>
-            <Flex>
-              <Writer>
-                <div>
-                  <img
-                    alt={question[USER_NAME] + "'s avatar"}
-                    src={`${RANDOM_AVATAR}/${question[ID]}.jpg`}
-                  />
-                  <div>
-                    <p>{question[USER_NAME]}</p>
-                    <p>{question[USER_REPUTATION]}</p>
-                  </div>
-                </div>
-              </Writer>
-            </Flex>
-            <AnswerStart>
-              <h2>{question[ANSWER]?.length} Answer</h2>
+  return (
+    <Div>
+      <ArticleTitle title={question[TITLE]} />
+      <ArticleMoreData>
+        <div>
+          <div>Asked</div>
+          <div>{question[CREATED]}</div>
+        </div>
+        <div>
+          <div>Modified</div>
+          <div>{question[MODIFIED]}</div>
+        </div>
+      </ArticleMoreData>
+      <FlexMain>
+        <Main>
+          <Flex>
+            <Vote vote={question[VOTE]} />
+            <article>{question[TEXT]}</article>
+          </Flex>
+          <Flex>
+            <Writer>
               <div>
-                <p>sorted by:</p>
-                <div>Highest score (default)</div>
+                <img
+                  alt={question[USER_NAME] + "'s avatar"}
+                  src={`${RANDOM_AVATAR}/${question[ID]}.jpg`}
+                />
+                <div>
+                  <p>{question[USER_NAME]}</p>
+                  <p>{question[USER_REPUTATION]}</p>
+                </div>
               </div>
-            </AnswerStart>
-            {/* {question[ANSWER].map((item, index) => {
+            </Writer>
+          </Flex>
+          <AnswerStart>
+            <h2>{question[ANSWER]?.length} Answer</h2>
+            <div>
+              <p>sorted by:</p>
+              <div>Highest score (default)</div>
+            </div>
+          </AnswerStart>
+          {question[ANSWER]?.map((item, index) => {
             return <AnswerArticle key={index} answer={item} />;
-          })} */}
-            {question[ANSWER]?.map((item, index) => {
-              return <AnswerArticle key={index} answer={item} />;
-            })}
-            <AnswerForm questionId={question.questionId} />
+          })}
+          <AnswerForm questionId={question.questionId} />
 
-            <More>
-              Not the answer youre looking for? Browse other questions or{" "}
-              <span className="link">ask your own question.</span>
-            </More>
-          </Main>
-          <RightSidebar />
-        </FlexMain>
-      </Div>
-    );
-  }
+          <More>
+            Not the answer youre looking for? Browse other questions or{" "}
+            <span className="link">ask your own question.</span>
+          </More>
+        </Main>
+        <RightSidebar />
+      </FlexMain>
+    </Div>
+  );
 };
 
 export default QuestionDetailLayout;
