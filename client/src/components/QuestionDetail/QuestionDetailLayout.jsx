@@ -11,8 +11,9 @@ import {
   FlexMain,
   AnswerStart,
   More,
+  DelModBtn,
 } from "@/styles/QuestionDetail/QuestionStyle";
-import { Flex } from "@/styles/DivStyle";
+import { Flex, ModifyModal } from "@/styles/DivStyle";
 import {
   ID,
   TITLE,
@@ -27,15 +28,17 @@ import {
 import { RANDOM_AVATAR } from "@/config/config";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
-import { getDetailFetch } from "@/store/slice/detailSlice";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { getDetailFetch, delQuestionFetch } from "@/store/slice/detailSlice";
 import { useState } from "react";
 
 const QuestionDetailLayout = () => {
   const location = useLocation().pathname.slice(11);
   const dispatch = useDispatch();
+  const nav = useNavigate();
   const questionDetail = useSelector((state) => state.SquestionDetail);
   const [question, setQuestions] = useState([]);
+  const [isModify, setIsModify] = useState(false);
 
   useEffect(() => {
     dispatch(getDetailFetch(location));
@@ -49,9 +52,25 @@ const QuestionDetailLayout = () => {
 
   const handleAddAnswer = () => {};
 
+  const deleteQuestion = () => {
+    dispatch(delQuestionFetch(location));
+    nav("/Questions/List");
+  };
+
+  const handleModify = () => {
+    setIsModify(!isModify);
+  };
+
   return (
     <Div>
-      <ArticleTitle title={question[TITLE]} />
+      <ArticleTitle title={question[TITLE]}></ArticleTitle>
+      <div className="delmodDiv">
+        <DelModBtn onClick={deleteQuestion}>Delete</DelModBtn>
+        <DelModBtn onClick={handleModify}>Modify</DelModBtn>
+        {isModify && (
+          <ModifyModal onClick={handleModify}>준비중입니다.</ModifyModal>
+        )}
+      </div>
       <ArticleMoreData>
         <div>
           <div>Asked</div>

@@ -116,3 +116,17 @@ export const AnswerStart = styled.div`
 export const More = styled.p`
   font-size: var(--fs-headline2);
 `;
+
+export const DelModBtn = styled.button`
+  cursor: pointer;
+  margin-right: 10px;
+  width: 100px;
+  height: 35px;
+  border-radius: 5px;
+  color: var(--white);
+  background-color: var(--blue-500);
+
+  &:hover {
+    background-color: var(--blue-600);
+  }
+`;
