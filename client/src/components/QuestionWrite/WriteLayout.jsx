@@ -15,9 +15,11 @@ import {
 import { Background } from "@/styles/RootStyle";
 import { useDispatch } from "react-redux";
 import { addQuestionFetch } from "@/store/slice/questionSlice";
+import { useNavigate } from "react-router-dom";
 
 const WriteLayout = () => {
   const dispatch = useDispatch();
+  const nav = useNavigate();
   const submitHandle = (e) => {
     e.preventDefault();
     const title = e.target.title.value;
@@ -28,6 +30,7 @@ const WriteLayout = () => {
       text,
     };
     dispatch(addQuestionFetch(addQuestion));
+    nav("/Questions/List");
   };
 
   return (
