@@ -4,7 +4,6 @@ export const ProfileNav = styled.nav`
   width: 100%;
   max-width: 175px;
   height: 1356px;
-  /* border: 1px solid green; */
   margin-right: 32px;
 `;
 

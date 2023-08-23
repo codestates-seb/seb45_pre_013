@@ -11,7 +11,6 @@ const MyPagePageContainer = styled.div`
   width: calc(100vw - 40px);
   max-width: 1051px;
   height: 982px;
-  /* border: 2px solid red; */
 `;
 
 const MyPage = () => {

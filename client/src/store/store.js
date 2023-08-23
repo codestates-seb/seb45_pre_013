@@ -1,5 +1,4 @@
 import { configureStore } from "@reduxjs/toolkit";
-// import { answerSlice, questionSlice } from "./slice/slice";
 import { Squestion } from "./slice/questionSlice";
 import { SquestionDetail } from "./slice/detailSlice";
 

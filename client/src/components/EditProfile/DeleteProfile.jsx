@@ -12,9 +12,6 @@ const DeleteProfileForm = () => {
   const [isChecked, setIsChecked] = useState(false);
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
-    if (!isChecked) {
-      console.log("CHECK");
-    }
   };
 
   return (

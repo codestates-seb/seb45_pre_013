@@ -6,7 +6,6 @@ export const EditProfileContainer = styled.div`
   width: calc(100vw - 40px);
   max-width: 1051px;
   height: 1359px;
-  /* border: 2px solid red; */
 `;
 
 export const FormContainer = styled.div`
@@ -15,7 +14,6 @@ export const FormContainer = styled.div`
   width: calc(100% - 203px);
   max-width: 832px;
   height: 1358px;
-  /* border:2px solid orange; */
 `;
 
 export const ProfileTitle = styled.div`
@@ -31,7 +29,6 @@ export const ProfileTitle = styled.div`
 
 export const InformationTitle = styled.div`
   max-width: 844px;
-  /* border: 2px solid crimson; */
   margin-bottom: 8px;
   font-size: var(--fs-headline);
 `;
@@ -43,7 +40,6 @@ export const EditFormContainer = styled.div`
 
   justify-content: center;
   align-items: center;
-  /* border: solid 1px red; */
   margin: 1px;
 `;
 
@@ -53,7 +49,6 @@ export const BtnContainer = styled.div`
   width: 100%;
   max-width: 840px;
   height: 46px;
-  /* border:1px solid red; */
 
   align-items: center;
 `;

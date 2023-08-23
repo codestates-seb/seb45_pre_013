@@ -4,7 +4,7 @@ import { VoteForm } from "@/styles/QuestionDetail/VoteStyle";
 const Vote = ({ vote }) => {
   const [voteCount, setVoteCount] = useState(vote);
 
-  const handleVote = (prevote = 1) => {
+  const handleVote = (prevote = 0) => {
     setVoteCount(prevote + 1);
   };
 

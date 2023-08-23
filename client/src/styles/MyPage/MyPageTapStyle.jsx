@@ -7,7 +7,6 @@ export const MyPageTapContainer = styled.div`
   max-width: 1051px;
   height: 33px;
   justify-content: top;
-  /* border: 1px solid blue; */
 `;
 
 export const NormalBtn = styled.button`
@@ -22,8 +21,6 @@ export const NormalBtn = styled.button`
     background-color: var(--black-200);
     /* color: var(); */
   }
-
-  /* border: px solid red; */
 `;
 
 export const ActiveBtn = styled.button`
@@ -41,6 +38,4 @@ export const ActiveBtn = styled.button`
     background-color: var(--orange-700);
     color: var();
   }
-
-  /* border: px solid red; */
 `;

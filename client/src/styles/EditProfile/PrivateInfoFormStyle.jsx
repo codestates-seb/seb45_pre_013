@@ -2,7 +2,6 @@ import { styled } from "styled-components";
 
 export const InformationTitle = styled.div`
   max-width: 844px;
-  /* border: 2px solid crimson; */
   margin-bottom: 8px;
   font-size: var(--fs-headline);
 `;
@@ -25,8 +24,6 @@ export const PrivateInfoFormContainer = styled.div`
   padding: 24px;
   max-width: 844px;
   height: 107px;
-
-  /* border: 1px solid crimson; */
 `;
 export const PrivateInformationForm = styled.input`
   width: 100%;

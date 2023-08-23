@@ -1,8 +1,5 @@
 import React, { useState } from "react";
-// import { useDispatch } from "react-redux";
 import { FormHeadline, Form } from "@/styles/QuestionDetail/AnswerStyle";
-
-// import { addAnswer } from "../../store/slice/slice";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 const jwtToken = localStorage.getItem("Authorization");
