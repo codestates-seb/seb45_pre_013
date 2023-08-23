@@ -10,6 +10,7 @@ import {
   WriteGuide,
   PostButton,
   Null,
+  WriteDiv,
 } from "@/styles/QuestionWriteStyle";
 import { Background } from "@/styles/RootStyle";
 import { useDispatch } from "react-redux";
@@ -28,7 +29,7 @@ const WriteLayout = () => {
     //   },
     // ];
     const addQuestion = {
-      Long: "san",
+      memberId: 1,
       title,
       text,
     };
@@ -71,58 +72,67 @@ const WriteLayout = () => {
               <li>Review your question and post it to the site.</li>
             </ul>
           </Notice>
-          <WriteGuide>
-            <h4>Writing a good title</h4>
-            <div>
-              <img src={iconWrite} />
-              <div>
-                <p>Your title should summarize the problem.</p>
-                <p>
-                  You might find that you have a better idea of your title after
-                  writing out the rest of the question.
-                </p>
-              </div>
-            </div>
-          </WriteGuide>
+
           <form onSubmit={submitHandle}>
-            <Write>
-              <label>Tltle</label>
-              <p>
-                Be specific and imagine you’re asking a question to another
-                person.
-              </p>
-              <input
-                name="title"
-                type="text"
-                maxLength="300"
-                placeholder="e.g. Is there an R function for finding the index of an element in a vector?"
-              />
-            </Write>
-            <WriteGuide>
-              <h4>Introduce the problem</h4>
-              <div>
-                <img src={iconWrite} />
+            <WriteDiv>
+              <Write>
+                <label>Tltle</label>
+                <p>
+                  Be specific and imagine you’re asking a question to another
+                  person.
+                </p>
+                <input
+                  name="title"
+                  type="text"
+                  maxLength="300"
+                  placeholder="e.g. Is there an R function for finding the index of an element in a vector?"
+                />
+              </Write>
+              <WriteGuide>
+                <h4>Writing a good title</h4>
+                <div>
+                  <img src={iconWrite} />
+                  <div>
+                    <p>Your title should summarize the problem.</p>
+                    <p>
+                      You might find that you have a better idea of your title
+                      after writing out the rest of the question.
+                    </p>
+                  </div>
+                </div>
+              </WriteGuide>
+            </WriteDiv>
+            <WriteDiv>
+              <Write>
+                <label>What are the details of your problem?</label>
                 <div>
                   <p>
-                    Explain how you encountered the problem you’re trying to
-                    solve, and any difficulties that have prevented you from
-                    solving it yourself.
+                    Introduce the problem and expand on what you put in the
+                    title. Minimum 20 characters.
                   </p>
                 </div>
-              </div>
-            </WriteGuide>
-            <Write>
-              <label>What are the details of your problem?</label>
-              <div>
-                <p>
-                  Introduce the problem and expand on what you put in the title.
-                  Minimum 20 characters.
-                </p>
-              </div>
-              <textarea name="content"></textarea>
-            </Write>
+                <textarea name="content"></textarea>
+              </Write>
+              <WriteGuide>
+                <h4>Introduce the problem</h4>
+                <div>
+                  <img src={iconWrite} />
+                  <div>
+                    <p>
+                      Explain how you encountered the problem you’re trying to
+                      solve, and any difficulties that have prevented you from
+                      solving it yourself.
+                    </p>
+                  </div>
+                </div>
+              </WriteGuide>
+            </WriteDiv>
             <PostButton type="submit">Post your question</PostButton>
-            <Modal />
+            <Modal
+              btnText="Discard question"
+              subText="Are you sure you want to discard this question? This cannot be
+              undone."
+            />
           </form>
         </div>
         <Footer />

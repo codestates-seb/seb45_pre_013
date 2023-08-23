@@ -118,7 +118,7 @@ const AnswerArticle = ({ answer, onDelete, questionId }) => {
               <AnswerProfile
                 //TEMP
                 alt={answer.nickname + "'s avatar"}
-                src={`${RANDOM_AVATAR}/${answer.memberd}.jpg`}
+                src={`${RANDOM_AVATAR}/1.jpg`}
               />
               <p>{answer.nickname}</p>
             </InfoImageContainer>

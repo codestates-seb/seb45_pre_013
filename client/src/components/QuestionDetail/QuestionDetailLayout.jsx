@@ -73,7 +73,7 @@ const QuestionDetailLayout = () => {
               <div>
                 <img
                   alt={question[USER_NAME] + "'s avatar"}
-                  src={`${RANDOM_AVATAR}/${question[ID]}.jpg`}
+                  src={`${RANDOM_AVATAR}/1.jpg`}
                 />
                 <div>
                   <p>{question[USER_NAME]}</p>
@@ -89,10 +89,6 @@ const QuestionDetailLayout = () => {
               <div>Highest score (default)</div>
             </div>
           </AnswerStart>
-
-          {question[ANSWER].map((item, index) => {
-            return <AnswerArticle key={index} answer={item} />;
-          })}
           {question[ANSWER]?.map((item, index) => {
             return <AnswerArticle key={index} answer={item} />;
           })}

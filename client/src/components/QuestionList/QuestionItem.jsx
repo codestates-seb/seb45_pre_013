@@ -30,7 +30,7 @@ const QuestionItem = ({ item }) => {
         <div>
           <img
             alt={`${item[USER_NAME]}'s avatar`}
-            src={`${RANDOM_AVATAR}/${item[ID]}.jpg`}
+            src={`${RANDOM_AVATAR}/1.jpg`}
           />
           <p>{item[USER_NAME]}</p>
           <p>{item[MODIFIED] ? item[MODIFIED] : item[CREATED]}</p>
