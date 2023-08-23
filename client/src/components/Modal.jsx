@@ -2,7 +2,7 @@ import { ModalOverlay, ModalContent, IsModalBtn } from "@/styles/ModalStyle";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const Modal = () => {
+const Modal = ({ btnText, subText }) => {
   const [isModal, setIsModal] = useState(false);
 
   const toggleModal = () => {
@@ -12,7 +12,7 @@ const Modal = () => {
   return (
     <>
       <IsModalBtn className="discard" onClick={toggleModal}>
-        Discard question
+        {btnText}
       </IsModalBtn>
       {isModal && (
         <>
@@ -21,13 +21,10 @@ const Modal = () => {
             <button className="close" onClick={toggleModal}>
               x
             </button>
-            <h1>Discard question</h1>
-            <h3>
-              Are you sure you want to discard this question? This cannot be
-              undone.
-            </h3>
+            <h1>{btnText}</h1>
+            <h3>{subText}</h3>
             <Link to={"/Questions/List"}>
-              <button className="discard">Discard question</button>
+              <button className="discard">{btnText}</button>
             </Link>
             <button className="cancel" onClick={toggleModal}>
               Cancel

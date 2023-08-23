@@ -202,3 +202,8 @@ export const PostButton = styled.button`
     background-color: var(--blue-600);
   }
 `;
+
+export const WriteDiv = styled.div`
+  display: flex;
+  margin-bottom: 10px;
+`;

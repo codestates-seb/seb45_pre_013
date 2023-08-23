@@ -28,7 +28,6 @@ export const addQuestionFetch = createAsyncThunk(
       }),
     });
     const data = await response.json();
-    console.log(jwtToken, data);
     return data;
   }
 );
@@ -37,6 +36,7 @@ export const Squestion = createSlice({
   name: "Squestion",
   initialState: {
     status: "",
+    data: [],
   },
   reducers: {},
   extraReducers: (builder) => {

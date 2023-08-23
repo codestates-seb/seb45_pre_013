@@ -13,6 +13,7 @@ export const TitleDiv = styled.div`
   }
 
   button {
+    margin-right: 10px;
     width: 100px;
     height: 35px;
     border-radius: 6px;
