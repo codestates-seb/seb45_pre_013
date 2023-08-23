@@ -22,12 +22,6 @@ const WriteLayout = () => {
     e.preventDefault();
     const title = e.target.title.value;
     const text = e.target.content.value;
-    // const questionTagList = [
-    //   {
-    //     Long: "san",
-    //     tagName: "san",
-    //   },
-    // ];
     const addQuestion = {
       memberId: 3,
       title,

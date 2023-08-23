@@ -15,7 +15,6 @@ import {
 } from "@/styles/QuestionDetail/QuestionStyle";
 import { Flex, ModifyModal } from "@/styles/DivStyle";
 import {
-  ID,
   TITLE,
   TEXT,
   USER_NAME,
@@ -28,7 +27,7 @@ import {
 import { RANDOM_AVATAR } from "@/config/config";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { getDetailFetch, delQuestionFetch } from "@/store/slice/detailSlice";
 import { useState } from "react";
 
@@ -90,7 +89,7 @@ const QuestionDetailLayout = () => {
               <div>
                 <img
                   alt={question[USER_NAME] + "'s avatar"}
-                  src={`${RANDOM_AVATAR}/${question[ID]}.jpg`}
+                  src={`${RANDOM_AVATAR}/1.jpg`}
                 />
                 <div>
                   <p>{question[USER_NAME]}</p>

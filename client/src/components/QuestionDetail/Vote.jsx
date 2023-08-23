@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { VoteForm } from "@/styles/QuestionDetail/VoteStyle";
 
 const Vote = ({ vote }) => {
