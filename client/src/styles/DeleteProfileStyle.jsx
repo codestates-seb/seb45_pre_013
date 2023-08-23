@@ -2,7 +2,6 @@ import { styled } from "styled-components";
 
 export const DeleteTitle = styled.div`
   max-width: 844px;
-  /* border: 2px solid crimson; */
   margin-bottom: 8px;
   font-size: var(--fs-headline);
 `;
@@ -19,7 +18,6 @@ export const DeleteTxtContainer = styled.div`
   width: 100%;
   max-width: 831px;
   height: 345px;
-  /* border: 1px solid red; */
   > p {
     margin-bottom: 10px;
   }

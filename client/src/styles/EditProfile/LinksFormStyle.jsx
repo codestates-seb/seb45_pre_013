@@ -28,7 +28,6 @@ export const LinksItemContainer = styled.div`
   width: 100%;
   max-width: 809px;
   height: 72px;
-  /* border: 1px solid royalblue; */
   flex-grow: 1;
 `;
 
@@ -52,7 +51,6 @@ export const LinksFormInput = styled.input`
 
 export const InformationTitle = styled.div`
   max-width: 844px;
-  /* border: 2px solid crimson; */
   margin-bottom: 8px;
   font-size: var(--fs-headline);
 `;

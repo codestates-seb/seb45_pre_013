@@ -97,9 +97,8 @@ const AnswerArticle = ({ answer }) => {
           <div>
             <InfoImageContainer>
               <AnswerProfile
-                //TEMP
                 alt={answer.nickname + "'s avatar"}
-                src={`${RANDOM_AVATAR}/${answer.memberd}.jpg`}
+                src={`${RANDOM_AVATAR}/${answer.memberId}.jpg`}
               />
               <p>{answer.nickname}</p>
             </InfoImageContainer>
@@ -111,33 +110,3 @@ const AnswerArticle = ({ answer }) => {
 };
 
 export default AnswerArticle;
-
-// const timeoptions = {
-//   year: "numeric",
-//   month: "short",
-//   day: "numeric",
-//   hour: "2-digit",
-//   minute: "2-digit",
-//   second: "2-digit",
-// };
-
-// const handleDelete = async () => {
-//   try {
-//     const response = await fetch(`${apiUrl}/answers/1`, {
-//       method: "DELETE",
-//       headers: {
-//         "Content-Type": "application/json",
-//         Authorization: `Bearer ${jwtToken}`,
-//       },
-//     });
-
-//     if (!response.ok) {
-//       throw new Error("Failed to delete answer");
-//     }
-
-//     dispatch(deleteAnswer(answer.answerId));
-//     onDelete();
-//   } catch (error) {
-//     console.error("error delete answer:", error);
-//   }
-// };

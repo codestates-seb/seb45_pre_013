@@ -14,7 +14,6 @@ export const MyPageProfilelayout = styled.div`
   width: 100%;
   height: 144px;
   margin-bottom: var(--su16) !important;
-  /* border: 2px solid red; */
 `;
 
 export const ProfileImageContainer = styled.div`
@@ -22,7 +21,6 @@ export const ProfileImageContainer = styled.div`
   display: flex;
   width: 128px;
   height: 128px;
-  /* border: 2px solid green; */
 `;
 
 export const ProfileImage = styled.img`
@@ -52,7 +50,6 @@ export const DisplayName = styled.div`
   width: 421px;
   height: 50px;
   font-size: var(--fs-headline1);
-  /* border: 1px solid blue; */
 `;
 
 export const ProfileTitle = styled.div`
@@ -62,24 +59,15 @@ export const ProfileTitle = styled.div`
   margin-bottom: var(--su8) !important;
   font-size: var(--fs-headline);
   color: var(--black-400);
-  /* border: 1px solid purple; */
 `;
 
 export const ListsContainer = styled.div`
   width: 484px;
   height: 26px;
   color: var(--black-400);
-  /* border: 1px solid purple; */
 `;
 
 export const EditProfileText = styled.span``;
-
-// const CalendarBtn = styled.button`
-//   width: 196px;
-//   height: 18px;
-//   cursor: pointer
-//
-// `;
 
 const EditIcon = () => (
   <img src="/assets/image/MyPage/editlogo.svg" alt="Edit Logo" />

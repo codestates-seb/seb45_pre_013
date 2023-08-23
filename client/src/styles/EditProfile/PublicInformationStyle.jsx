@@ -10,7 +10,6 @@ export const InformationForm = styled.div`
 `;
 export const InformationTitle = styled.div`
   max-width: 844px;
-  /* border: 2px solid crimson; */
   margin-bottom: 8px;
   font-size: var(--fs-headline);
 `;
@@ -19,7 +18,6 @@ export const EditImageContainer = styled.div`
   width: 100%;
   max-width: 794px;
   height: 164px;
-  /* border: 1px solid red; */
 `;
 
 export const EditImage = styled.div`
@@ -38,7 +36,6 @@ export const EditInfoFormContainer = styled.div`
   max-width: 794px;
   height: 34px;
   margin-bottom: 2px;
-  /* border: 1px solid blue; */
 `;
 
 export const EditInfoForm = styled.input`
@@ -62,5 +59,4 @@ export const AboutMeForm = styled.textarea`
   width: 100%;
   max-width: 793px;
   height: 255px;
-  /* border: 1px solid black; */
 `;

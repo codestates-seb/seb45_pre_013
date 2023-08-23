@@ -105,9 +105,7 @@ const QuestionDetailLayout = () => {
               <div>Highest score (default)</div>
             </div>
           </AnswerStart>
-          {/* {question[ANSWER].map((item, index) => {
-            return <AnswerArticle key={index} answer={item} />;
-          })} */}
+
           {question[ANSWER]?.map((item, index) => {
             return <AnswerArticle key={index} answer={item} />;
           })}
