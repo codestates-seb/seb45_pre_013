@@ -26,15 +26,15 @@ export const createAnswer = createAsyncThunk(
 export const deleteAnswer = createAsyncThunk(
   "answers/deleteAnswer",
   async (answerId) => {
-    const response = await fetch(`${apiUrl}/answers/${answerId}`, {
+    await fetch(`${apiUrl}/answers/${answerId}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
         Authorization: jwtToken,
       },
     });
-    const data = await response.json();
-    return data;
+
+    return;
   }
 );
 

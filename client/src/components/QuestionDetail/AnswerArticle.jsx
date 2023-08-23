@@ -48,6 +48,7 @@ const AnswerArticle = ({ answer }) => {
       const updatedData = await response.json();
       dispatch(editAnswer({ answerId, updatedAnswer: updatedData }));
       setIsEditing(false);
+      window.location.reload();
     } catch (error) {
       console.error("Error updating answer:", error);
     }
@@ -56,13 +57,14 @@ const AnswerArticle = ({ answer }) => {
   const handleDelete = async () => {
     try {
       await dispatch(deleteAnswer(answerId)).unwrap();
+      window.location.reload();
     } catch (error) {
       console.error("Error deleting answer:", error);
     }
   };
   return (
     <Article>
-      <Vote vote={answer.vote} />
+      <Vote vote={answer.answervote} />
       <AnswerContent>
         {isEditing ? (
           <textarea
@@ -97,7 +99,7 @@ const AnswerArticle = ({ answer }) => {
               <AnswerProfile
                 //TEMP
                 alt={answer.nickname + "'s avatar"}
-                src={`${RANDOM_AVATAR}/1.jpg`}
+                src={`${RANDOM_AVATAR}/${answer.memberd}.jpg`}
               />
               <p>{answer.nickname}</p>
             </InfoImageContainer>

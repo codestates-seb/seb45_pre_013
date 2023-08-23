@@ -6,7 +6,7 @@ import { FormHeadline, Form } from "@/styles/QuestionDetail/AnswerStyle";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 const jwtToken = localStorage.getItem("Authorization");
-const AnswerForm = () => {
+const AnswerForm = ({ questionId }) => {
   const [content, setContent] = useState("");
 
   const handleCreate = async (e) => {
@@ -14,9 +14,10 @@ const AnswerForm = () => {
       alert("Please enter your answer.");
     }
     e.preventDefault();
+
     const newAnswer = {
-      questionId: 1,
-      text: content, //FIX
+      questionId: questionId,
+      text: content,
     };
 
     try {
@@ -31,6 +32,7 @@ const AnswerForm = () => {
         },
         body: JSON.stringify(newAnswer),
       });
+      window.location.reload();
       if (!response.ok) {
         alert(response.statusText);
       }
